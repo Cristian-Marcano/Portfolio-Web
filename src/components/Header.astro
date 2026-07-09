@@ -1,5 +1,5 @@
 ---
-// Header component mimicking kashyaprayas.com
+// Header component mimicking kashyaprayas.com using Tailwind CSS
 const navLinks = [
   { name: 'HOME', path: '/', active: true },
   { name: 'WORK', path: '/work', active: false },
@@ -15,139 +15,52 @@ const socialLinks = [
 ];
 ---
 
-<header class="header-container">
+<header class="flex w-full h-[50px] relative border-b border-border-grid">
   <!-- Left extreme line -->
-  <div class="header-extremes left-extreme">
-    <div class="extreme-line"></div>
+  <div class="flex-grow flex items-center">
+    <div class="w-full h-full border-b border-transparent"></div>
   </div>
 
   <!-- Middle content container -->
-  <div class="header-middle">
+  <div class="w-full max-w-[1200px] flex justify-between border-x border-border-grid">
     <!-- Main navigation -->
-    <nav class="nav-left" aria-label="Main navigation">
+    <nav class="flex flex-grow" aria-label="Main navigation">
       {navLinks.map((link) => (
-        <a href={link.path} class={`nav-link ${link.active ? 'active' : ''}`} aria-current={link.active ? 'page' : undefined}>
+        <a 
+          href={link.path} 
+          class={`flex items-center justify-center px-8 text-[13px] font-medium tracking-[0.05em] border-r border-border-grid transition-colors duration-200 ${link.active ? 'text-accent' : 'text-text-muted hover:text-text-main'}`} 
+          aria-current={link.active ? 'page' : undefined}
+        >
           {link.active ? (
-            <><span class="bracket" aria-hidden="true">&lt;</span>{link.name}<span class="bracket" aria-hidden="true">/&gt;</span></>
+            <><span class="font-['Space_Mono',monospace] font-normal mx-1" aria-hidden="true">&lt;</span>{link.name}<span class="font-['Space_Mono',monospace] font-normal mx-1" aria-hidden="true">/&gt;</span></>
           ) : (
             <>{link.name}</>
           )}
         </a>
       ))}
-      <div class="nav-spacer"></div>
+      <div class="flex-grow"></div>
     </nav>
     
     <!-- Social links -->
-    <div class="nav-right">
-      <nav class="social-links" aria-label="Social links">
+    <div class="flex items-stretch border-l border-border-grid">
+      <nav class="flex" aria-label="Social links">
         {socialLinks.map((link) => (
-          <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name} set:html={link.icon} class="social-icon"></a>
+          <a 
+            href={link.url} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label={link.name} 
+            set:html={link.icon} 
+            class="flex items-center justify-center w-[50px] text-accent border-r border-border-grid transition-colors duration-200 hover:text-text-main"
+          ></a>
         ))}
       </nav>
-      <div class="green-rectangle"></div>
+      <div class="w-[60px] bg-accent"></div>
     </div>
   </div>
 
   <!-- Right extreme line -->
-  <div class="header-extremes right-extreme">
-    <div class="extreme-line"></div>
+  <div class="flex-grow flex items-center">
+    <div class="w-full h-full border-b border-transparent"></div>
   </div>
 </header>
-
-<style>
-  .header-container {
-    display: flex;
-    width: 100%;
-    height: var(--header-height);
-    position: relative;
-    border-bottom: 1px solid var(--border-color);
-  }
-
-  .header-extremes {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-  }
-
-  .extreme-line {
-    width: 100%;
-    height: 100%;
-    border-bottom: 1px solid transparent; /* Container handles border */
-  }
-
-  .header-middle {
-    width: 100%;
-    max-width: var(--max-width);
-    display: flex;
-    justify-content: space-between;
-    border-left: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
-  }
-
-  /* Left side navigation (HOME, WORK, etc) */
-  .nav-left {
-    display: flex;
-    flex-grow: 1;
-  }
-
-  .nav-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 2rem;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-    border-right: 1px solid var(--border-color);
-    transition: color 0.2s ease;
-  }
-
-  .nav-link:hover {
-    color: var(--text-color);
-  }
-
-  .nav-link.active {
-    color: var(--accent-color);
-  }
-
-  .bracket {
-    font-family: 'Space Mono', monospace;
-    margin: 0 4px;
-    font-weight: 400;
-  }
-
-  .nav-spacer {
-    flex-grow: 1;
-  }
-
-  /* Right side (socials) */
-  .nav-right {
-    display: flex;
-    align-items: stretch;
-    border-left: 1px solid var(--border-color);
-  }
-
-  .social-links {
-    display: flex;
-  }
-
-  .social-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    color: var(--accent-color);
-    border-right: 1px solid var(--border-color);
-    transition: color 0.2s ease;
-  }
-
-  .social-icon:hover {
-    color: var(--text-color);
-  }
-
-  .green-rectangle {
-    width: 60px;
-    background-color: var(--accent-color);
-  }
-</style>
