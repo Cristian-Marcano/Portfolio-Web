@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: #009063;
+  --color-accent: #00A084;
+  --color-accent-bg: #ecf8f5;
   --color-border-grid: #cdeae0;
   --color-text-main: #112322;
   --color-text-muted: rgba(17, 35, 34, 0.6);

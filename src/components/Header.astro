@@ -5,6 +5,7 @@ import instagram from "../assets/instagram.svg";
 import resume from "../assets/resume.svg";
 
 // Header component mimicking kashyaprayas.com using Tailwind CSS
+// Using the "gap borders" technique: transparent gaps and rounded corners to reveal the parent background
 const navLinks = [
   { name: "HOME", path: "/", active: true },
   { name: "WORK", path: "/work", active: false },
@@ -36,53 +37,49 @@ const socialLinks = [
 ];
 ---
 
-<header class="flex w-full h-[50px] relative border-b border-border-grid">
+<header class="flex w-full h-[50px] gap-[1px] pb-[1px] bg-border-grid">
   <!-- Left extreme line -->
-  <div class="flex-grow flex items-center">
-    <div class="w-full h-full border-b border-transparent"></div>
-  </div>
+  <div class="flex-grow bg-bg-main rounded-br-lg"></div>
 
   <!-- Middle content container -->
-  <section
-    class="w-full max-w-[1200px] flex justify-between border-x border-border-grid"
-  >
+  <div class="w-full max-w-[1200px] flex gap-[1px]">
     <!-- Main navigation -->
-    <nav class="flex flex-grow" aria-label="Main navigation">
+    <nav class="flex flex-grow gap-[1px]" aria-label="Main navigation">
       {
         navLinks.map((link) => (
           <a
             href={link.path}
-            class={`flex items-center justify-center px-8 text-[13px] font-medium tracking-[0.05em] border-r border-border-grid transition-colors duration-200 ${link.active ? "text-accent" : "text-text-muted hover:text-text-main"}`}
+            class={`group flex items-center justify-center px-8 text-[13px] font-medium tracking-[0.05em] transition-colors duration-200 no-underline rounded-b-lg
+            ${
+              link.active
+                ? "bg-bg-main text-text-muted"
+                : "bg-accent-bg text-accent hover:bg-bg-main hover:text-text-muted"
+            }`}
             aria-current={link.active ? "page" : undefined}
           >
-            {link.active ? (
-              <>
-                <span
-                  class="font-['Space_Mono',monospace] font-normal mx-1"
-                  aria-hidden="true"
-                >
-                  &lt;
-                </span>
-                {link.name}
-                <span
-                  class="font-['Space_Mono',monospace] font-normal mx-1"
-                  aria-hidden="true"
-                >
-                  /&gt;
-                </span>
-              </>
-            ) : (
-              <>{link.name}</>
-            )}
+            <span
+              class={`font-['Space_Mono',monospace] font-normal mx-1 transition-opacity duration-200 ${link.active ? "opacity-100" : "opacity-0 group-hover:opacity-100"} text-accent`}
+              aria-hidden="true"
+            >
+              &lt;
+            </span>
+            {link.name}
+            <span
+              class={`font-['Space_Mono',monospace] font-normal mx-1 transition-opacity duration-200 ${link.active ? "opacity-100" : "opacity-0 group-hover:opacity-100"} text-accent`}
+              aria-hidden="true"
+            >
+              /&gt;
+            </span>
           </a>
         ))
       }
-      <div class="flex-grow"></div>
+      <!-- Empty space filler -->
+      <div class="flex-grow bg-bg-main rounded-b-lg"></div>
     </nav>
 
     <!-- Social links -->
-    <div class="flex items-stretch border-l border-border-grid">
-      <nav class="flex" aria-label="Social links">
+    <div class="flex gap-[1px]">
+      <nav class="flex gap-[1px]" aria-label="Social links">
         {
           socialLinks.map((link) => (
             <a
@@ -90,19 +87,18 @@ const socialLinks = [
               target="_blank"
               rel="noopener noreferrer"
               aria-label={link.name}
-              class="flex items-center justify-center w-[50px] text-accent border-r border-border-grid transition-colors duration-200 hover:text-text-main"
+              class="group flex items-center justify-center w-[50px] transition-colors duration-200 no-underline rounded-b-lg bg-accent-bg text-accent hover:bg-bg-main hover:text-text-main"
             >
               <link.icon />
             </a>
           ))
         }
       </nav>
-      <div class="w-[60px] bg-accent"></div>
+      <!-- Green block -->
+      <div class="w-[60px] bg-accent rounded-b-lg"></div>
     </div>
-  </section>
+  </div>
 
   <!-- Right extreme line -->
-  <div class="flex-grow flex items-center">
-    <div class="w-full h-full border-b border-transparent"></div>
-  </div>
+  <div class="flex-grow bg-bg-main rounded-bl-lg"></div>
 </header>
