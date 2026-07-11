@@ -1,88 +1,90 @@
 ---
 // Hero section mimicking kashyaprayas.com
-import myIllustration from '../assets/my-ilustration-portfolio-green.webp';
+import myIllustration from "../assets/my-ilustration-portfolio-green.webp";
+import Star from "../assets/star.svg";
+import "../styles/hero.css";
 ---
-<section class="flex w-full gap-[1px] pb-[1px]">
+
+<section class="hero">
   <!-- Left extreme -->
-  <div class="flex-grow bg-bg-main rounded-lg"></div>
+  <div class="hero__corner"></div>
 
   <!-- Middle content container -->
-  <div class="w-full max-w-[1200px] flex flex-col md:flex-row gap-[1px]">
-    
+  <div class="hero__content">
     <!-- Left Column: Title, Intro, Narrator, Time in ONE container -->
-    <div class="flex flex-col w-full md:w-2/3 bg-bg-main rounded-lg p-10 md:p-14 relative z-10">
+    <div class="hero__text-column">
       <!-- Title -->
-      <h1 class="text-[42px] leading-[42px] font-semibold text-text-main tracking-normal mb-8">
-        Unconventional <span class="font-['Lora',serif] italic font-semibold">ideas</span>, minimalist <br class="hidden md:block"/> execution<span class="text-accent">.</span>
+      <h1 class="hero__title">
+        Si puedes <span class="hero__title-accent">imaginarlo</span>, puedes
+        <br class="hero__title-break" />
+        <span class="hero__title-accent">programarlo</span>
+        <span class="hero__title-dot">.</span>
       </h1>
-      
+
       <!-- Intro Paragraph -->
-      <h2 class="text-text-muted text-[18px] font-normal leading-[27px] max-w-2xl mb-12">
-        Well hello there! I'm <span class="text-text-main font-medium">Kashyap Rayas.</span> I architect 0‑1 products that are intuitive for users and straightforward for developers. I als- <span class="font-['Space_Mono',monospace] font-bold text-text-main">[ muted ]</span>
+      <h2 class="hero__intro">
+        Well hello there! I'm <span class="hero__intro-highlight"
+          >Cristian Marcano.</span
+        > I architect 0‑1 products that are intuitive for users and straightforward
+        for developers. I als- <span class="hero__intro-muted">[ muted ]</span>
       </h2>
-      
+
       <!-- Bottom Row: Narrator & Time -->
-      <div class="flex flex-col items-start justify-end mt-auto w-full pt-16 gap-6">
-        <h2 class="text-text-muted text-[18px] font-normal leading-[27px]">
-          Narrator: This is the loud version of him<span class="animate-pulse">▌</span>
+      <div class="hero__footer">
+        <h2 class="hero__narrator">
+          Narrator: This is the loud version of him<span class="hero__cursor"
+            >▌</span
+          >
         </h2>
-        
-        <div class="flex items-center gap-3">
-          <div class="animate-[spin_4s_linear_infinite] text-accent">
-            <svg width="12" height="13" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3.70596 1.00568C4.02063 0.331439 4.97937 0.33144 5.29404 1.00568L6.17762 2.89892C6.26466 3.08542 6.41458 3.23534 6.60108 3.32238L8.49432 4.20596C9.16856 4.52063 9.16856 5.47937 8.49432 5.79404L6.60108 6.67762C6.41458 6.76466 6.26466 6.91458 6.17762 7.10108L5.29404 8.99432C4.97937 9.66856 4.02063 9.66856 3.70595 8.99432L2.82238 7.10108C2.73534 6.91458 2.58542 6.76466 2.39892 6.67762L0.505681 5.79404C-0.168561 5.47937 -0.16856 4.52063 0.505682 4.20595L2.39892 3.32238C2.58542 3.23534 2.73534 3.08542 2.82238 2.89892L3.70596 1.00568Z" fill="currentColor"></path>
-            </svg>
+
+        <div class="hero__time-wrapper">
+          <div class="hero__spinner">
+            <Star />
           </div>
-          <h3 class="text-text-muted text-[13px] font-[200] leading-none tracking-wide">
-            LOCAL TIME <span class="pl-[9px] font-['Space_Mono',monospace]">05:10</span>
+          <h3 class="hero__time">
+            LOCAL TIME <span class="hero__time-value">05:10</span>
           </h3>
-          <h3 class="text-text-muted text-[13px] font-[200] leading-none tracking-wide ml-2">
-            GMT +0530
-          </h3>
+          <h3 class="hero__time-zone">GMT +0530</h3>
         </div>
       </div>
     </div>
 
     <!-- Right Column: Profile Illustration -->
-    <div class="flex flex-col w-full md:w-1/3 gap-[1px]">
-      <div class="bg-accent-bg flex-grow rounded-lg relative flex flex-col items-center justify-between overflow-hidden min-h-[400px]">
-        
+    <div class="hero__illustration-column">
+      <div class="hero__card">
         <!-- Looping Background Animation (Scaling rects) -->
-        <div class="absolute inset-0 bg-[#00A084] overflow-hidden z-0">
-          <div class="absolute top-0 w-full h-[35%] bg-[#009178] origin-top animate-[scaleDown_1.5s_ease-in-out_infinite_alternate]"></div>
-          <div class="absolute top-0 w-full h-[32%] bg-[#00826B] origin-top animate-[scaleDown_1.5s_ease-in-out_infinite_alternate_0.1s]"></div>
-          <div class="absolute top-0 w-full h-[25%] bg-[#00735F] origin-top animate-[scaleDown_1.5s_ease-in-out_infinite_alternate_0.2s]"></div>
-          <div class="absolute top-0 w-full h-[15%] bg-[#006352] origin-top animate-[scaleDown_1.5s_ease-in-out_infinite_alternate_0.3s]"></div>
+        <div class="hero__background">
+          <div class="hero__wave hero__wave--1"></div>
+          <div class="hero__wave hero__wave--2"></div>
+          <div class="hero__wave hero__wave--3"></div>
+          <div class="hero__wave hero__wave--4"></div>
         </div>
-        
+
         <!-- Role Title (Floating) -->
-        <div class="w-full text-center z-10 mt-8 relative">
-          <div class="inline-block border border-bg-main bg-bg-main px-4 py-1 shadow-sm rounded-sm">
-            <h1 class="text-[28px] font-['Lora',serif] text-text-main tracking-wide">Product</h1>
+        <div class="hero__role">
+          <div class="hero__role-primary-wrapper">
+            <h1 class="hero__role-primary">Product</h1>
           </div>
-          <div class="mt-2">
-            <h1 class="text-[28px] font-['Lora',serif] text-bg-main tracking-wide drop-shadow-md">Designer</h1>
+          <div class="hero__role-secondary-wrapper">
+            <h1 class="hero__role-secondary">Designer</h1>
           </div>
-          
+
           <!-- Connection line to head -->
-          <div class="absolute left-1/2 top-full w-px h-16 bg-bg-main opacity-50 -translate-x-1/2 mt-2"></div>
+          <div class="hero__role-line"></div>
         </div>
-        
+
         <!-- User Illustration -->
-        <div class="relative w-full h-full mt-auto flex justify-center items-end z-10 px-4">
-          <img src={myIllustration.src} alt="Kashyap Rayas Illustration" class="w-full max-w-[250px] object-contain object-bottom pointer-events-none" />
+        <div class="hero__avatar-wrapper">
+          <img
+            src={myIllustration.src}
+            alt="Kashyap Rayas Illustration"
+            class="hero__avatar"
+          />
         </div>
       </div>
     </div>
   </div>
 
   <!-- Right extreme -->
-  <div class="flex-grow bg-bg-main rounded-lg"></div>
+  <div class="hero__corner"></div>
 </section>
-
-<style>
-  @keyframes scaleDown {
-    0% { transform: scaleY(1); }
-    100% { transform: scaleY(1.3); }
-  }
-</style>
