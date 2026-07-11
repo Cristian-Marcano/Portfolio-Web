@@ -3,6 +3,7 @@ import linkedin from "../assets/linkedin.svg";
 import email from "../assets/email.svg";
 import instagram from "../assets/instagram.svg";
 import resume from "../assets/resume.svg";
+import "../styles/header.css";
 
 // Header component mimicking kashyaprayas.com using Tailwind CSS
 // Using the "gap borders" technique: transparent gaps and rounded corners to reveal the parent background
@@ -37,49 +38,35 @@ const socialLinks = [
 ];
 ---
 
-<header class="flex w-full h-[50px] gap-[1px] pb-[1px] bg-border-grid">
+<header class="site-header">
   <!-- Left extreme line -->
-  <div class="flex-grow bg-bg-main rounded-br-lg"></div>
+  <div class="site-header__corner site-header__corner--left"></div>
 
   <!-- Middle content container -->
-  <div class="w-full max-w-[1200px] flex gap-[1px]">
-    <!-- Main navigation -->
-    <nav class="flex flex-grow gap-[1px]" aria-label="Main navigation">
+  <div class="site-header__content">
+    <!-- Main navigation (Left Column - 2/3) -->
+    <nav class="site-header__main-nav" aria-label="Main navigation">
       {
         navLinks.map((link) => (
           <a
             href={link.path}
-            class={`group flex items-center justify-center px-8 text-[13px] font-medium tracking-[0.05em] transition-colors duration-200 no-underline rounded-b-lg
-            ${
-              link.active
-                ? "bg-bg-main text-text-muted"
-                : "bg-accent-bg text-accent hover:bg-bg-main hover:text-text-muted"
-            }`}
+            class={`site-header__nav-link ${link.active ? "site-header__nav-link--active" : ""}`}
+            role="button"
             aria-current={link.active ? "page" : undefined}
           >
-            <span
-              class={`font-['Space_Mono',monospace] font-normal mx-1 transition-opacity duration-200 ${link.active ? "opacity-100" : "opacity-0 group-hover:opacity-100"} text-accent`}
-              aria-hidden="true"
-            >
-              &lt;
-            </span>
+            <span class="site-header__nav-brackets" aria-hidden="true">&lt;</span>
             {link.name}
-            <span
-              class={`font-['Space_Mono',monospace] font-normal mx-1 transition-opacity duration-200 ${link.active ? "opacity-100" : "opacity-0 group-hover:opacity-100"} text-accent`}
-              aria-hidden="true"
-            >
-              /&gt;
-            </span>
+            <span class="site-header__nav-brackets" aria-hidden="true">/&gt;</span>
           </a>
         ))
       }
       <!-- Empty space filler -->
-      <div class="flex-grow bg-bg-main rounded-b-lg"></div>
+      <div class="site-header__nav-filler"></div>
     </nav>
 
-    <!-- Social links -->
-    <div class="flex gap-[1px]">
-      <nav class="flex gap-[1px]" aria-label="Social links">
+    <!-- Social links (Right Column - 1/3) -->
+    <div class="site-header__social-container">
+      <nav class="site-header__social-nav" aria-label="Social links">
         {
           socialLinks.map((link) => (
             <a
@@ -87,18 +74,18 @@ const socialLinks = [
               target="_blank"
               rel="noopener noreferrer"
               aria-label={link.name}
-              class="group flex items-center justify-center w-[50px] transition-colors duration-200 no-underline rounded-b-lg bg-accent-bg text-accent hover:bg-bg-main hover:text-text-main"
+              class="site-header__social-link"
             >
               <link.icon />
             </a>
           ))
         }
       </nav>
-      <!-- Green block -->
-      <div class="w-[60px] bg-accent rounded-b-lg"></div>
+      <!-- Green block filling the rest of the 1/3 column -->
+      <div class="site-header__social-filler"></div>
     </div>
   </div>
 
   <!-- Right extreme line -->
-  <div class="flex-grow bg-bg-main rounded-bl-lg"></div>
+  <div class="site-header__corner site-header__corner--right"></div>
 </header>
