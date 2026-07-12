@@ -23,10 +23,8 @@ import "../styles/hero.css";
 
       <!-- Intro Paragraph -->
       <h2 class="hero__intro">
-        Well hello there! I'm <span class="hero__intro-highlight"
-          >Cristian Marcano.</span
-        > I architect 0‑1 products that are intuitive for users and straightforward
-        for developers. I als- <span class="hero__intro-muted">[ muted ]</span>
+        Hola! Soy <span class="hero__intro-highlight">Cristian Marcano.</span> Texto
+        de presentación. I als- <span class="hero__intro-muted">[ muted ]</span>
       </h2>
 
       <!-- Bottom Row: Narrator & Time -->
@@ -51,15 +49,8 @@ import "../styles/hero.css";
 
     <!-- Right Column: Profile Illustration -->
     <div class="hero__illustration-column">
-      <div class="hero__card">
-        <!-- Looping Background Animation (Scaling rects) -->
-        <div class="hero__background">
-          <div class="hero__wave hero__wave--1"></div>
-          <div class="hero__wave hero__wave--2"></div>
-          <div class="hero__wave hero__wave--3"></div>
-          <div class="hero__wave hero__wave--4"></div>
-        </div>
-
+      <!-- Cell 1: Role -->
+      <div class="hero__role-card">
         <!-- Role Title (Floating) -->
         <div class="hero__role">
           <div class="hero__role-primary-wrapper">
@@ -68,20 +59,31 @@ import "../styles/hero.css";
           <div class="hero__role-secondary-wrapper">
             <h1 class="hero__role-secondary">Designer</h1>
           </div>
+        </div>
+      </div>
 
-          <!-- Connection line to head -->
-          <div class="hero__role-line"></div>
+      <!-- Cell 2: Avatar & Waves -->
+      <div class="hero__avatar-card">
+        <!-- Looping Background Animation (Scaling rects) -->
+        <div class="hero__background">
+          <div class="hero__wave hero__wave--1"></div>
+          <div class="hero__wave hero__wave--2"></div>
+          <div class="hero__wave hero__wave--3"></div>
+          <div class="hero__wave hero__wave--4"></div>
         </div>
 
         <!-- User Illustration -->
         <div class="hero__avatar-wrapper">
           <img
             src={myIllustration.src}
-            alt="Kashyap Rayas Illustration"
+            alt="Cristian Marcano Illustration"
             class="hero__avatar"
           />
         </div>
       </div>
+
+      <!-- Empty margin cell -->
+      <div class="hero__cell-wrapper"></div>
     </div>
   </div>
 

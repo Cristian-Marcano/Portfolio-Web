@@ -5,6 +5,13 @@
   --color-text-main: #112322;
   --color-text-muted: rgba(17, 35, 34, 0.6);
   --color-bg-main: #ffffff;
+
+  --color-rectangle-header: #006352;
+
+  --color-wave-1: var(--color-rectangle-header);
+  --color-wave-2: #00735F;
+  --color-wave-3: #00826B;
+  --color-wave-4: #009178;
 }
 
 *,

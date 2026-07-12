@@ -16,7 +16,7 @@
 
 .hero__content {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
 
   display: flex;
   flex-direction: column;
@@ -29,6 +29,8 @@
 
 .hero__text-column {
   width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 
   padding: 2.5rem;
 
@@ -42,11 +44,12 @@
   border-radius: 9px;
 
   @media (width >= 768px) {
-    width: 66.666667%;
+    width: 54.5%;
 
     padding: 3.5rem;
   }
 }
+
 
 .hero__title {
   margin-bottom: 2rem;
@@ -179,15 +182,31 @@
   width: 100%;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1px;
 
   @media (width >= 768px) {
-    width: 33.333333%;
+    width: calc(45.5% - 1px);
   }
 }
 
-.hero__card {
+.hero__role-card {
+  width: 243px; /* Exact match to the 4 social links */
+  flex-shrink: 0;
+  
+  background-color: var(--color-bg-main);
+  border-radius: 9px;
+  
+  position: relative;
+  
+  display: none;
+  
+  @media (width >= 768px) {
+    display: block;
+  }
+}
+
+.hero__avatar-card {
   min-height: 400px;
 
   position: relative;
@@ -199,9 +218,30 @@
   justify-content: space-between;
  
   background-color: var(--color-accent-bg);
+  border-left: 3px solid var(--color-border-grid);
+  border-right: 3px solid var(--color-border-grid);
+  border-bottom: 3px solid var(--color-border-grid);
   border-radius: 9px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 
   overflow: hidden;
+}
+
+.hero__cell-wrapper {
+  width: 30px;
+  flex-shrink: 0;
+  
+  background-color: var(--color-bg-main);
+  border-radius: 9px;
+  /* border-top-left-radius: 0;
+  border-top-right-radius: 0; */
+
+  display: none;
+
+  @media (width >= 768px) {
+    display: block;
+  }
 }
 
 .hero__background {
@@ -212,7 +252,7 @@
   left: 0;
   z-index: 0;
 
-  background-color: #00A084;
+  background-color: var(--color-wave-1);
 
   overflow: hidden;
 }
@@ -221,22 +261,22 @@
   width: 100%;
 
   position: absolute;
-  top: 0;
+  bottom: 0;
 
-  transform-origin: top;
+  transform-origin: bottom;
   animation: scaleDown 1.5s ease-in-out infinite alternate;
 }
 
 .hero__wave--1 {
   height: 35%;
 
-  background-color: #009178;
+  background-color: var(--color-wave-2);
 }
 
 .hero__wave--2 {
   height: 32%;
 
-  background-color: #00826B;
+  background-color: var(--color-wave-3);
   
   animation-delay: 0.1s;
 }
@@ -244,7 +284,7 @@
 .hero__wave--3 {
   height: 25%;
 
-  background-color: #00735F;
+  background-color: var(--color-wave-4);
 
   animation-delay: 0.2s;
 }
@@ -252,7 +292,7 @@
 .hero__wave--4 {
   height: 15%;
 
-  background-color: #006352;
+  background-color: var(--color-accent);
 
   animation-delay: 0.3s;
 }
@@ -263,14 +303,12 @@
 }
 
 .hero__role {
-  width: 100%;
-
-  margin-top: 2rem;
-
-  position: relative;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
   z-index: 10;
 
-  text-align: center;
+  text-align: left;
 }
 
 .hero__role-primary-wrapper {
@@ -307,19 +345,7 @@
 }
 
 .hero__role-line {
-  width: 1px;
-  height: 4rem;
-
-  margin-top: 0.5rem;
-
-  position: absolute;
-  top: 100%;
-  left: 50%;
-
-  background-color: var(--color-bg-main);
-  opacity: 0.5;
-
-  transform: translateX(-50%);
+  display: none;
 }
 
 .hero__avatar-wrapper {
@@ -340,7 +366,7 @@
 
 .hero__avatar {
   width: 100%;
-  max-width: 250px;
+  max-width: 400px;
   
   object-fit: contain;
   object-position: bottom;
