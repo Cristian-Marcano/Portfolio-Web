@@ -192,14 +192,14 @@
 
 .hero__role-card {
   width: 243px; /* Exact match to the 4 social links */
+
+  position: relative;
+  
+  display: none;
   flex-shrink: 0;
   
   background-color: var(--color-bg-main);
   border-radius: 9px;
-  
-  position: relative;
-  
-  display: none;
   
   @media (width >= 768px) {
     display: block;
@@ -230,14 +230,14 @@
 
 .hero__cell-wrapper {
   width: 30px;
+
+  display: none;
   flex-shrink: 0;
   
   background-color: var(--color-bg-main);
   border-radius: 9px;
   /* border-top-left-radius: 0;
   border-top-right-radius: 0; */
-
-  display: none;
 
   @media (width >= 768px) {
     display: block;
@@ -305,47 +305,80 @@
 .hero__role {
   position: absolute;
   top: 2rem;
-  left: 2rem;
-  z-index: 10;
-
+  left: 1.5rem; /* Reduced from 2rem to give more width */
   text-align: left;
 }
 
-.hero__role-primary-wrapper {
-  padding: 0.25rem 1rem;
-
-  display: inline-block;
-
-  background-color: var(--color-bg-main);
-  border: 1px solid var(--color-bg-main);
-  border-radius: 2px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+.hero__role-row {
+  display: flex;
+  align-items: center;
 }
 
 .hero__role-primary {
+  height: 42px; /* Adjusted for smaller font */
+
+  margin: 0 0 8px 0;
+
   color: var(--color-text-main);
 
   font-family: 'Lora', serif;
-  font-size: 28px;
-  letter-spacing: 0.025em;
+  font-size: 34px; /* Reduced from 42px to fit { Software } inside 243px */
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  white-space: nowrap; /* Prevent wrapping */
 }
 
-.hero__role-secondary-wrapper {
-  margin-top: 0.5rem;
+.hero__role-bracket {
+  color: var(--color-accent);
+
+  font-family: 'Space Mono', monospace;
+  font-weight: 600;
 }
 
 .hero__role-secondary {
-  color: var(--color-bg-main);
+  margin: 0;
+  margin-top: -0.25rem;
 
-  font-family: 'Lora', serif;
-  font-size: 28px;
-  letter-spacing: 0.025em;
-  
-  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+  color: var(--color-text-main);
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 34px; /* Matched primary size */
+  font-weight: 400;
+  letter-spacing: -0.5px;
 }
 
-.hero__role-line {
-  display: none;
+.hero__font-terminal {
+  width: 257px;
+  height: 368px;
+
+  padding: 1rem;
+
+  position: absolute;
+  top: 110px;
+  /* left: 180px; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  z-index: 20;
+
+  background-color: var(--color-text-main);
+  color: var(--color-accent);
+  border-radius: 9px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  font-family: 'FiraCode Nerd Font', 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.hero__font-terminal-cmd {
+  color: #7b8f8d; /* Muted terminal text */
+}
+
+.hero__font-terminal-name {
+  color: var(--color-accent);
 }
 
 .hero__avatar-wrapper {

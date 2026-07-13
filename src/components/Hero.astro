@@ -10,9 +10,9 @@ import "../styles/hero.css";
   <div class="hero__corner"></div>
 
   <!-- Middle content container -->
-  <div class="hero__content">
+  <section class="hero__content">
     <!-- Left Column: Title, Intro, Narrator, Time in ONE container -->
-    <div class="hero__text-column">
+    <article class="hero__text-column">
       <!-- Title -->
       <h1 class="hero__title">
         Si puedes <span class="hero__title-accent">imaginarlo</span>, puedes
@@ -45,19 +45,40 @@ import "../styles/hero.css";
           <h3 class="hero__time-zone">GMT +0530</h3>
         </div>
       </div>
-    </div>
+    </article>
 
     <!-- Right Column: Profile Illustration -->
-    <div class="hero__illustration-column">
+    <section class="hero__illustration-column">
       <!-- Cell 1: Role -->
       <div class="hero__role-card">
         <!-- Role Title (Floating) -->
         <div class="hero__role">
-          <div class="hero__role-primary-wrapper">
-            <h1 class="hero__role-primary">Product</h1>
-          </div>
-          <div class="hero__role-secondary-wrapper">
-            <h1 class="hero__role-secondary">Designer</h1>
+          <h1 class="hero__role-primary">
+            <span class="hero__role-bracket">{"{"}</span><span
+              id="role-primary-text">Software</span
+            ><span class="hero__role-bracket">{"}"}</span>
+          </h1>
+          <h1 class="hero__role-secondary">Engineer</h1>
+
+          <!-- Terminal Box (Matching font-menu dimensions) -->
+          <div class="hero__font-terminal">
+            <div>
+              <span class="hero__font-terminal-cmd"
+                >cristian-portfolio on <span style="color: #b085f5">main</span>
+                <span style="color: #ff9800">[!]</span> on ☁️
+                <span style="color: #36b5e7"> GitHub Pages</span>
+              </span>
+              <br />
+              <span
+                class="hero__font-terminal-cmd"
+                style="color: var(--color-accent)">❯</span
+              >
+              <span class="hero__font-terminal-cmd"> sudo setfont </span>
+              <span class="hero__font-terminal-name" id="font-name-rotator">
+                Lora
+              </span>
+              <span class="hero__cursor">_</span>
+            </div>
           </div>
         </div>
       </div>
@@ -84,9 +105,66 @@ import "../styles/hero.css";
 
       <!-- Empty margin cell -->
       <div class="hero__cell-wrapper"></div>
-    </div>
-  </div>
+    </section>
+  </section>
 
   <!-- Right extreme -->
   <div class="hero__corner"></div>
 </section>
+
+<script>
+  const fonts = [
+    { name: "Abril Fatface", family: "'Abril Fatface', serif" },
+    { name: "Lobster", family: "'Lobster', cursive" },
+    { name: "Lora", family: "'Lora', serif" },
+    { name: "Merriweather", family: "'Merriweather', serif" },
+    { name: "Montserrat", family: "'Montserrat', sans-serif" },
+    { name: "Oswald", family: "'Oswald', sans-serif" },
+    { name: "Pacifico", family: "'Pacifico', cursive" },
+    { name: "Roboto Flex", family: "'Roboto Flex', sans-serif" },
+    { name: "Stara", family: "'Stara', system-ui, sans-serif" },
+    { name: "Inter", family: "'Inter', sans-serif" },
+    { name: "Mono", family: "'Space Mono', monospace" },
+  ];
+  let currentIndex = 0;
+  const rotator = document.getElementById("font-name-rotator");
+  const productText = document.getElementById("role-primary-text");
+
+  const typeSpeed = 150;
+  const deleteSpeed = 75;
+  const pauseTime = 2500;
+
+  async function typeWriter() {
+    if (!rotator || !productText) return;
+
+    while (true) {
+      const nextFont = fonts[(currentIndex + 1) % fonts.length];
+
+      // Esperar con el texto completo
+      await new Promise((r) => setTimeout(r, pauseTime));
+
+      // Borrar texto caracter por caracter
+      let text = rotator.textContent;
+      while (text.length > 0) {
+        text = text.slice(0, -1);
+        rotator.textContent = text;
+        await new Promise((r) => setTimeout(r, deleteSpeed));
+      }
+
+      // Pequeña pausa con la terminal vacía
+      await new Promise((r) => setTimeout(r, 300));
+
+      // Cambiar el indice y la fuente visual
+      currentIndex = (currentIndex + 1) % fonts.length;
+      productText.style.fontFamily = nextFont.family;
+
+      // Escribir nuevo texto caracter por caracter
+      for (let i = 0; i < nextFont.name.length; i++) {
+        rotator.textContent += nextFont.name.charAt(i);
+        await new Promise((r) => setTimeout(r, typeSpeed));
+      }
+    }
+  }
+
+  typeWriter();
+</script>
