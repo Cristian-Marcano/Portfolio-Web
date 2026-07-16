@@ -196,13 +196,16 @@
 
   @media (width >= 768px) {
     width: calc(45.5% - 1px);
-    height: 538px; /* Fixed height for the avatar bento cell */
+    /*height: 538px;*/ /* Fixed height for the avatar bento cell */
   }
 }
 
 .hero__illustration-content {
   width: 100%;
   min-width: 0;
+  height: 511px;
+
+  padding-bottom: 1.6rem;
 
   display: flex;
   flex-direction: row;
@@ -231,7 +234,7 @@
 }
 
 .hero__avatar-card {
-  height: 89%;
+  height: 480px;
   min-height: 400px;
 
   position: relative;
@@ -445,11 +448,30 @@
 }
 
 .hero__avatar {
-  width: 107%; /* Scaled up to resemble Kashyap's large avatar */
+  width: 107%; /* Legacy non-pixel avatar scaling */
   max-width: none;
-  margin-left: -7.5%; /* Center the overflow */
+  margin-left: -7.5%;
   
   object-fit: contain;
   object-position: bottom;
   pointer-events: none;
+}
+
+.hero__mascot {
+  position: absolute;
+  bottom: -0.5rem;
+  right: 1.5rem;
+  z-index: 20;
+
+  /* align-self: center; */
+}
+
+.hero__mascot-img {
+  width: 96px; /* Escalado a un tamaño fijo y nítido para pixel art */
+  height: auto;
+  
+  /* CRÍTICO: Mantiene el pixel art nítido al escalarlo */
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
