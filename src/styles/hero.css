@@ -24,21 +24,24 @@
 
   @media (width >= 768px) {
     flex-direction: row;
+    align-items: flex-start; /* Decouples cell heights for bento style */
   }
 }
 
 .hero__text-column {
   width: 100%;
   min-width: 0;
+  height: 388px;
   box-sizing: border-box;
 
-  padding: 2.5rem;
+  padding: 0.5rem 2rem;
 
   position: relative;
   z-index: 10;
 
   display: flex;
   flex-direction: column;
+  gap: 1.12rem;
 
   background-color: var(--color-bg-main);
   border-radius: 9px;
@@ -46,13 +49,14 @@
   @media (width >= 768px) {
     width: 54.5%;
 
-    padding: 3.5rem;
+    /* Reduced from 3.5rem to ensure content fits within 538px height */
+    padding: 2rem 2rem; 
   }
 }
 
 
 .hero__title {
-  margin-bottom: 2rem;
+  margin: 0;
 
   color: var(--color-text-main);
 
@@ -83,7 +87,7 @@
 .hero__intro {
   max-width: 42rem;
 
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 
   color: var(--color-text-muted);
 
@@ -109,21 +113,25 @@
   width: 100%;
 
   margin-top: auto;
-  padding-top: 4rem;
+  padding-top: 1rem;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
-  gap: 1.5rem;
+  /* gap: 1rem; */
 }
 
 .hero__narrator {
-  color: var(--color-text-muted);
-
+  color: var(--color-text-muted); /* Match the dark color of the web */
   font-size: 18px;
   font-weight: 400;
   line-height: 27px;
+}
+
+.hero__narrator-highlight {
+  color: var(--color-text-main);
+  font-weight: 400;
 }
 
 .hero__cursor {
@@ -156,26 +164,27 @@
   color: var(--color-text-muted);
 
   font-size: 13px;
-  font-weight: 200;
+  font-weight: 400;
   line-height: 1;
   letter-spacing: 0.025em;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 .hero__time-value {
   padding-left: 9px;
-
-  font-family: 'Space Mono', monospace;
+  /* Removed Space Mono so it accurately inherits the 200 font-weight of Inter */
 }
 
 .hero__time-zone {
   margin-left: 0.5rem;
 
-  color: var(--color-text-muted);
+  color: var(--color-accent); /* GMT is accent color on the web */
 
   font-size: 13px;
-  font-weight: 200;
+  font-weight: 400;
   line-height: 1;
   letter-spacing: 0.025em;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 .hero__illustration-column {
@@ -183,11 +192,26 @@
 
   display: flex;
   flex-direction: row;
-  gap: 1px;
+  /* gap: 1px; */
 
   @media (width >= 768px) {
     width: calc(45.5% - 1px);
+    height: 538px; /* Fixed height for the avatar bento cell */
   }
+}
+
+.hero__illustration-content {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  /* gap: 1px; */
+
+  background: linear-gradient(transparent, var(--color-bg-main));
+  border-radius: 9px;
+  border-bottom-right-radius: 0;
 }
 
 .hero__role-card {
@@ -207,6 +231,7 @@
 }
 
 .hero__avatar-card {
+  height: 89%;
   min-height: 400px;
 
   position: relative;
@@ -236,8 +261,8 @@
   
   background-color: var(--color-bg-main);
   border-radius: 9px;
-  /* border-top-left-radius: 0;
-  border-top-right-radius: 0; */
+  border-bottom-left-radius: 0;
+  /* border-bottom-right-radius: 0; */
 
   @media (width >= 768px) {
     display: block;
@@ -268,33 +293,34 @@
 }
 
 .hero__wave--1 {
-  height: 35%;
+  height: 65%;
 
   background-color: var(--color-wave-2);
+  animation-delay: 0.6s;
 }
 
 .hero__wave--2 {
-  height: 32%;
+  height: 54%;
 
   background-color: var(--color-wave-3);
   
-  animation-delay: 0.1s;
+  animation-delay: 0.5s;
 }
 
 .hero__wave--3 {
-  height: 25%;
+  height: 46%;
 
   background-color: var(--color-wave-4);
 
-  animation-delay: 0.2s;
+  animation-delay: 0.45s;
 }
 
 .hero__wave--4 {
-  height: 15%;
+  height: 40%;
 
   background-color: var(--color-accent);
 
-  animation-delay: 0.3s;
+  animation-delay: 0.35s;
 }
 
 @keyframes scaleDown {
@@ -304,7 +330,7 @@
 
 .hero__role {
   position: absolute;
-  top: 2rem;
+  top: 2rem; /* Aligned with the 3rem top padding of the left text column */
   left: 1.5rem; /* Reduced from 2rem to give more width */
   text-align: left;
 }
@@ -349,9 +375,9 @@
 
 .hero__font-terminal {
   width: 257px;
-  height: 368px;
+  height: 338px;
 
-  padding: 1rem;
+  padding: 0.7rem;
 
   position: absolute;
   top: 110px;
@@ -373,6 +399,27 @@
   line-height: 1.5;
 }
 
+.hero__terminal-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.hero__terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.hero__terminal-dot--red { background-color: #ff5f56; }
+.hero__terminal-dot--yellow { background-color: #ffbd2e; }
+.hero__terminal-dot--green { background-color: #27c93f; }
+
+.hero__terminal-content {
+  display: inline-block;
+}
+
 .hero__font-terminal-cmd {
   color: #7b8f8d; /* Muted terminal text */
 }
@@ -386,8 +433,8 @@
   height: 100%;
 
   margin-top: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0; /* Removed padding to let avatar grow */
+  padding-right: 0;
 
   position: relative;
   z-index: 10;
@@ -398,8 +445,9 @@
 }
 
 .hero__avatar {
-  width: 100%;
-  max-width: 400px;
+  width: 107%; /* Scaled up to resemble Kashyap's large avatar */
+  max-width: none;
+  margin-left: -7.5%; /* Center the overflow */
   
   object-fit: contain;
   object-position: bottom;

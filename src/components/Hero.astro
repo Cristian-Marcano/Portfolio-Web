@@ -28,11 +28,11 @@ import "../styles/hero.css";
       </h2>
 
       <!-- Bottom Row: Narrator & Time -->
-      <div class="hero__footer">
+      <footer class="hero__footer">
         <h2 class="hero__narrator">
-          Narrator: This is the loud version of him<span class="hero__cursor"
-            >▌</span
-          >
+          <strong class="hero__narrator-highlight">Narrator: </strong>
+          This is the loud version of him
+          <span class="hero__cursor">▌</span>
         </h2>
 
         <div class="hero__time-wrapper">
@@ -44,66 +44,77 @@ import "../styles/hero.css";
           </h3>
           <h3 class="hero__time-zone">GMT +0530</h3>
         </div>
-      </div>
+      </footer>
     </article>
 
     <!-- Right Column: Profile Illustration -->
     <section class="hero__illustration-column">
-      <!-- Cell 1: Role -->
-      <div class="hero__role-card">
-        <!-- Role Title (Floating) -->
-        <div class="hero__role">
-          <h1 class="hero__role-primary">
-            <span class="hero__role-bracket">{"{"}</span><span
-              id="role-primary-text">Software</span
-            ><span class="hero__role-bracket">{"}"}</span>
-          </h1>
-          <h1 class="hero__role-secondary">Engineer</h1>
+      <!-- Celda i: Contenido Semántico (Role + Avatar) -->
+      <div class="hero__illustration-content">
+        <!-- Cell 1: Role -->
+        <div class="hero__role-card">
+          <!-- Role Title (Floating) -->
+          <div class="hero__role">
+            <h1 class="hero__role-primary">
+              <span class="hero__role-bracket">{"{"}</span><span
+                id="role-primary-text">Software</span
+              ><span class="hero__role-bracket">{"}"}</span>
+            </h1>
+            <h1 class="hero__role-secondary">Engineer</h1>
 
-          <!-- Terminal Box (Matching font-menu dimensions) -->
-          <div class="hero__font-terminal">
-            <div>
-              <span class="hero__font-terminal-cmd"
-                >cristian-portfolio on <span style="color: #b085f5">main</span>
-                <span style="color: #ff9800">[!]</span> on ☁️
-                <span style="color: #36b5e7"> GitHub Pages</span>
-              </span>
-              <br />
-              <span
-                class="hero__font-terminal-cmd"
-                style="color: var(--color-accent)">❯</span
-              >
-              <span class="hero__font-terminal-cmd"> sudo setfont </span>
-              <span class="hero__font-terminal-name" id="font-name-rotator">
-                Lora
-              </span>
-              <span class="hero__cursor">_</span>
+            <!-- Terminal Box (Matching font-menu dimensions) -->
+            <div class="hero__font-terminal">
+              <div class="hero__terminal-header">
+                <span class="hero__terminal-dot hero__terminal-dot--red"></span>
+                <span class="hero__terminal-dot hero__terminal-dot--yellow"
+                ></span>
+                <span class="hero__terminal-dot hero__terminal-dot--green"
+                ></span>
+              </div>
+              <div class="hero__terminal-content">
+                <span class="hero__font-terminal-cmd"
+                  >cristian-portfolio on <span style="color: #b085f5">main</span
+                  >
+                  <span style="color: #ff9800">[!]</span> on ☁️
+                  <span style="color: #36b5e7"> GitHub Pages</span>
+                </span>
+                <br />
+                <span
+                  class="hero__font-terminal-cmd"
+                  style="color: var(--color-accent)">❯</span
+                >
+                <span class="hero__font-terminal-cmd"> sudo setfont </span>
+                <span class="hero__font-terminal-name" id="font-name-rotator">
+                  Lora
+                </span>
+                <span class="hero__cursor">_</span>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Cell 2: Avatar & Waves -->
+        <div class="hero__avatar-card">
+          <!-- Looping Background Animation (Scaling rects) -->
+          <div class="hero__background">
+            <div class="hero__wave hero__wave--1"></div>
+            <div class="hero__wave hero__wave--2"></div>
+            <div class="hero__wave hero__wave--3"></div>
+            <div class="hero__wave hero__wave--4"></div>
+          </div>
+
+          <!-- User Illustration -->
+          <div class="hero__avatar-wrapper">
+            <img
+              src={myIllustration.src}
+              alt="Cristian Marcano Illustration"
+              class="hero__avatar"
+            />
           </div>
         </div>
       </div>
 
-      <!-- Cell 2: Avatar & Waves -->
-      <div class="hero__avatar-card">
-        <!-- Looping Background Animation (Scaling rects) -->
-        <div class="hero__background">
-          <div class="hero__wave hero__wave--1"></div>
-          <div class="hero__wave hero__wave--2"></div>
-          <div class="hero__wave hero__wave--3"></div>
-          <div class="hero__wave hero__wave--4"></div>
-        </div>
-
-        <!-- User Illustration -->
-        <div class="hero__avatar-wrapper">
-          <img
-            src={myIllustration.src}
-            alt="Cristian Marcano Illustration"
-            class="hero__avatar"
-          />
-        </div>
-      </div>
-
-      <!-- Empty margin cell -->
+      <!-- Celda ii: Empty margin cell -->
       <div class="hero__cell-wrapper"></div>
     </section>
   </section>

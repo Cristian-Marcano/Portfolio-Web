@@ -131,7 +131,7 @@
   width: 100%;
   
   display: flex;
-  gap: 1px;
+  /* gap: 1px; */
 
   @media (width >= 768px) {
     width: calc(45.5% - 1px);
