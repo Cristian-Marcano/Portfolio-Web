@@ -1,0 +1,127 @@
+---
+import myIllustration from "../../assets/my-ilustration-portfolio-green.webp";
+---
+
+<section class="hero__illustration-column">
+  <!-- Celda i: Contenido Semántico (Role + Avatar) -->
+  <div class="hero__illustration-content">
+    <!-- Cell 1: Role -->
+    <div class="hero__role-card">
+      <!-- Role Title (Floating) -->
+      <div class="hero__role">
+        <h1 class="hero__role-primary">
+          <span class="hero__role-bracket">{"{"}</span><span
+            id="role-primary-text">Software</span
+          ><span class="hero__role-bracket">{"}"}</span>
+        </h1>
+        <h1 class="hero__role-secondary">Engineer</h1>
+
+        <!-- Terminal Box (Matching font-menu dimensions) -->
+        <div class="hero__font-terminal">
+          <div class="hero__terminal-header">
+            <span class="hero__terminal-dot hero__terminal-dot--red"></span>
+            <span class="hero__terminal-dot hero__terminal-dot--yellow"></span>
+            <span class="hero__terminal-dot hero__terminal-dot--green"></span>
+          </div>
+          <div class="hero__terminal-content">
+            <span class="hero__font-terminal-cmd"
+              >cristian-portfolio on <span style="color: #b085f5">main</span>
+              <span style="color: #ff9800">[!]</span> on ☁️
+              <span style="color: #36b5e7"> GitHub Pages</span>
+            </span>
+            <br />
+            <span
+              class="hero__font-terminal-cmd"
+              style="color: var(--color-accent)">❯</span
+            >
+            <span class="hero__font-terminal-cmd"> sudo setfont </span>
+            <span class="hero__font-terminal-name" id="font-name-rotator">
+              Lora
+            </span>
+            <span class="hero__cursor">_</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell 2: Avatar & Waves -->
+    <div class="hero__avatar-card">
+      <!-- Looping Background Animation (Scaling rects) -->
+      <div class="hero__background">
+        <div class="hero__wave hero__wave--1"></div>
+        <div class="hero__wave hero__wave--2"></div>
+        <div class="hero__wave hero__wave--3"></div>
+        <div class="hero__wave hero__wave--4"></div>
+      </div>
+
+      <!-- User Illustration -->
+      <div class="hero__avatar-wrapper">
+        <img
+          src={myIllustration.src}
+          alt="Cristian Marcano Illustration"
+          class="hero__avatar"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Celda ii: Empty margin cell -->
+  <div class="hero__cell-wrapper"></div>
+</section>
+
+<script>
+  const fonts = [
+    { name: "Abril Fatface", family: "'Abril Fatface', serif" },
+    { name: "Lobster", family: "'Lobster', cursive" },
+    { name: "Lora", family: "'Lora', serif" },
+    { name: "Merriweather", family: "'Merriweather', serif" },
+    { name: "Montserrat", family: "'Montserrat', sans-serif" },
+    { name: "Oswald", family: "'Oswald', sans-serif" },
+    { name: "Pacifico", family: "'Pacifico', cursive" },
+    { name: "Roboto Flex", family: "'Roboto Flex', sans-serif" },
+    { name: "Stara", family: "'Stara', system-ui, sans-serif" },
+    { name: "Inter", family: "'Inter', sans-serif" },
+    { name: "Mono", family: "'Space Mono', monospace" },
+  ];
+  let currentIndex = 0;
+  const rotator = document.getElementById("font-name-rotator");
+  const productText = document.getElementById("role-primary-text");
+
+  const typeSpeed = 150;
+  const deleteSpeed = 75;
+  const pauseTime = 2500;
+
+  async function typeWriter() {
+    if (!rotator || !productText) return;
+
+    while (true) {
+      const nextFont = fonts[(currentIndex + 1) % fonts.length];
+
+      // Esperar con el texto completo
+      await new Promise((r) => setTimeout(r, pauseTime));
+
+      // Borrar texto caracter por caracter
+      let text = rotator.textContent;
+      while (text.length > 0) {
+        text = text.slice(0, -1);
+        rotator.textContent = text;
+        await new Promise((r) => setTimeout(r, deleteSpeed));
+      }
+
+      // Pequeña pausa con la terminal vacía
+      await new Promise((r) => setTimeout(r, 300));
+
+      // Cambiar el indice y la fuente visual
+      currentIndex = (currentIndex + 1) % fonts.length;
+      productText.style.fontFamily = nextFont.family;
+
+      // Escribir nuevo texto caracter por caracter
+      for (let i = 0; i < nextFont.name.length; i++) {
+        rotator.textContent += nextFont.name.charAt(i);
+        await new Promise((r) => setTimeout(r, typeSpeed));
+      }
+    }
+  }
+
+  typeWriter();
+</script>

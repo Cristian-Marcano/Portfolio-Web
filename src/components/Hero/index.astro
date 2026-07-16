@@ -1,0 +1,23 @@
+---
+// Main Hero Wrapper
+import HeroTextColumn from "./HeroTextColumn.astro";
+import HeroIllustrationColumn from "./HeroIllustrationColumn.astro";
+import "../../styles/hero.css";
+---
+
+<section class="hero">
+  <!-- Left extreme -->
+  <div class="hero__corner"></div>
+
+  <!-- Middle content container -->
+  <section class="hero__content">
+    <!-- Left Column: Title, Intro, Narrator, Time -->
+    <HeroTextColumn />
+
+    <!-- Right Column: Profile Illustration -->
+    <HeroIllustrationColumn />
+  </section>
+
+  <!-- Right extreme -->
+  <div class="hero__corner"></div>
+</section>

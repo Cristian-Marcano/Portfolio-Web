@@ -1,0 +1,48 @@
+---
+import myAvatarGif from "../../assets/MyAvatarForMyWebsite.gif";
+import Star from "../../assets/star.svg";
+---
+
+<article class="hero__text-column">
+  <!-- Title -->
+  <h1 class="hero__title">
+    Si puedes <span class="hero__title-accent">imaginarlo</span>, puedes
+    <br class="hero__title-break" />
+    <span class="hero__title-accent">programarlo</span>
+    <span class="hero__title-dot">.</span>
+  </h1>
+
+  <!-- Intro Paragraph -->
+  <h2 class="hero__intro">
+    Hola! Soy <span class="hero__intro-highlight">Cristian Marcano.</span> Texto
+    de presentación. I als- <span class="hero__intro-muted">[ muted ]</span>
+  </h2>
+
+  <!-- Bottom Row: Narrator & Time -->
+  <footer class="hero__footer">
+    <h2 class="hero__narrator">
+      <strong class="hero__narrator-highlight">Narrator: </strong>
+      This is the loud version of him
+      <span class="hero__cursor">▌</span>
+    </h2>
+
+    <div class="hero__time-wrapper">
+      <div class="hero__spinner">
+        <Star />
+      </div>
+      <h3 class="hero__time">
+        LOCAL TIME <span class="hero__time-value">05:10</span>
+      </h3>
+      <h3 class="hero__time-zone">GMT +0530</h3>
+    </div>
+  </footer>
+
+  <!-- Mascot / Pixel Art Animated Character -->
+  <div class="hero__mascot">
+    <img
+      src={myAvatarGif.src}
+      alt="Cristian Marcano Pixel Mascot"
+      class="hero__mascot-img"
+    />
+  </div>
+</article>
