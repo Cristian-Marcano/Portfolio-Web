@@ -261,3 +261,20 @@
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.5;
 }
+
+.hero__corner-grid {
+  position: absolute;
+  z-index: 2;
+  
+  fill: var(--color-border-grid);
+
+  &.hero_corner-grid--top {
+    top: 0;
+    right: calc(52% + 1px);
+  }
+
+  &.hero_corner-grid--bottom-right {
+    top: 302px;
+    right: 0;
+  }
+}

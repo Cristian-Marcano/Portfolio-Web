@@ -1,6 +1,7 @@
 ---
 // Unified Component File but visually separate bento cells
 import Arrow from "../../assets/arrow.svg";
+import CornerGrid from "../../assets/corner-grid.svg";
 import Plus from "../../assets/plus.svg";
 import NumberOne from "../../assets/number-1.svg";
 import NumberFive from "../../assets/number-5.svg";
@@ -9,6 +10,7 @@ import "../../styles/hero-recent-work.css";
 ---
 
 <section class="hero__bento-cell">
+  <CornerGrid class="hero__corner-grid hero_corner-grid--top" />
   <!-- LEFT (Top in this column): Metrics -->
   <article class="hero__metrics-cell">
     <div class="hero__recent-metric-item">
@@ -61,6 +63,7 @@ import "../../styles/hero-recent-work.css";
       </p>
     </div>
   </article>
+  <CornerGrid class="hero__corner-grid hero_corner-grid--bottom-right" />
 </section>
 
 <style>
