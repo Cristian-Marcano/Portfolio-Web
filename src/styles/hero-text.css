@@ -1,0 +1,167 @@
+.hero__text-column {
+  width: 100%;
+  min-width: 0;
+  height: 388px;
+  box-sizing: border-box;
+
+  padding: 0.5rem 2rem;
+
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.12rem;
+
+  background-color: var(--color-bg-main);
+  border-radius: 9px;
+
+  @media (width >= 768px) {
+    padding: 2rem;
+  }
+}
+
+.hero__title {
+  margin: 0;
+
+  color: var(--color-text-main);
+
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 42px;
+}
+
+.hero__title-accent {
+  font-weight: 600;
+  font-family: 'Lora', serif;
+  font-style: italic;
+}
+
+.hero__title-dot {
+  color: var(--color-accent);
+}
+
+.hero__title-break {
+  display: none;
+
+  @media (width >= 768px) {
+    display: block;
+  }
+}
+
+.hero__intro {
+  max-width: 42rem;
+
+  margin-bottom: 1rem;
+
+  color: var(--color-text-muted);
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.hero__intro-highlight {
+  color: var(--color-text-main);
+
+  font-weight: 500;
+}
+
+.hero__intro-muted {
+  color: var(--color-text-main);
+
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+}
+
+.hero__footer {
+  width: 100%;
+
+  margin-top: auto;
+  padding-top: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.hero__narrator {
+  color: var(--color-text-muted);
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.hero__narrator-highlight {
+  color: var(--color-text-main);
+}
+
+.hero__cursor {
+  animation: heroPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes heroPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.hero__time-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero__spinner {
+  color: var(--color-accent);
+
+  animation: heroSpin 4s linear infinite;
+}
+
+@keyframes heroSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero__time {
+  color: var(--color-text-muted);
+
+  font-size: 13px;
+  font-weight: 400;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1;
+  letter-spacing: 0.025em;
+}
+
+.hero__time-value {
+  padding-left: 9px;
+}
+
+.hero__time-zone {
+  margin-left: 0.5rem;
+
+  color: var(--color-accent);
+
+  font-size: 13px;
+  font-weight: 400;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1;
+  letter-spacing: 0.025em;
+}
+
+.hero__mascot {
+  position: absolute;
+  right: 1.5rem;
+  bottom: -0.5rem;
+  z-index: 20;
+}
+
+.hero__mascot-img {
+  width: 96px;
+  height: auto;
+  
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}

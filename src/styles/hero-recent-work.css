@@ -1,0 +1,263 @@
+.hero__bento-cell {
+  width: 100%;
+  box-sizing: border-box;
+
+  position: relative;
+}
+
+.hero__metrics-cell {
+  width: 52%;
+  height: 301px;
+
+  padding: 0 0 1px 1px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1px;
+
+  background-color: var(--color-border-grid);
+  border-radius: 0 0 0 9px;
+}
+
+.hero__recent-metric-item {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  padding: 1.9rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  background-color: var(--color-bg-main);
+  border-radius: 9px;
+}
+
+.hero__recent-number {
+  margin: 0;
+
+  display: flex;
+  gap: 7px;
+}
+
+.hero__recent-label {
+  margin: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero__recent-project-cell {
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  background-color: var(--color-accent-bg);
+  border-radius: 9px;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-bg-main);
+  }
+}
+
+.hero__recent-header {
+  margin: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  letter-spacing: 1.5px;
+}
+
+.hero__recent-img-wrapper {
+  width: 300px;
+
+  position: relative;
+
+  border: 2.2px solid var(--color-border-grid);
+  border-radius: 7.5px;
+
+  overflow: hidden;
+}
+
+.hero__recent-img-container {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+
+  position: relative;
+}
+
+.hero__recent-img {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  opacity: 0.9;
+
+  image-rendering: auto;
+  
+  will-change: auto;
+  transition: 0.3s ease-in-out;
+}
+
+.hero__recent-project-cell:hover .hero__recent-img {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.hero__recent-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hero__recent-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.hero__recent-arrow {
+  width: 24px;
+
+  display: flex;
+  align-items: center;
+
+  color: var(--color-accent);
+
+  overflow: hidden;
+
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero__recent-arrow--hidden {
+  width: 0;
+  transition-delay: 0.5s;
+}
+
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) { 
+  width: 0; 
+  transition-delay: 0.4s;
+}
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden { 
+  width: 24px;
+  transition-delay: 0s;
+}
+
+.hero__recent-arrow svg {
+  width: 22px;
+  height: 22px;
+
+  transform: rotate(-90deg);
+}
+
+.hero__recent-arrow svg path {
+  transition: opacity 0.1s ease;
+}
+
+/* Default state: Left arrow visible, right hidden */
+.hero__recent-arrow--hidden svg path { opacity: 0; }
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path { opacity: 1; }
+
+/* Hover state: Left arrow hides, right appears */
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path { opacity: 0; }
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path { opacity: 1; }
+
+/* SEQUENCE DEFINITIONS */
+/* Disappear Left to Right (Tail to Tip) */
+/* Disappear Left to Right (Tail to Tip) => Tail fades first (delay 0), Tip fades last (delay max) */
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(11) { transition-delay: 0.05s; }
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(8),
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(9),
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(10) { transition-delay: 0.13s; }
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(5),
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(6),
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(7) { transition-delay: 0.17s; }
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(4) { transition-delay: 0.20s; }
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(3) { transition-delay: 0.26s; }
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(2) { transition-delay: 0.32s; }
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(1) { transition-delay: 0.35s; }
+
+/* Re-appear Right to Left (Tip to Tail) => Tip appears first (delay 0), Tail appears last (delay max) */
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(1) { transition-delay: 0.05s; }
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(2) { transition-delay: 0.13s; }
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(3) { transition-delay: 0.17s; }
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(4) { transition-delay: 0.20s; }
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(5),
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(6),
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(7) { transition-delay: 0.26s; }
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(8),
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(9),
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(10) { transition-delay: 0.32s; }
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(11) { transition-delay: 0.35s; }
+
+/* Appear Right to Left (Tip to Tail) => Tip appears first (delay 0), Tail appears last (delay max) */
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(1) { transition-delay: 0.05s; }
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(2) { transition-delay: 0.13s; }
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(3) { transition-delay: 0.17s; }
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(4) { transition-delay: 0.20s; }
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(5),
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(6),
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(7) { transition-delay: 0.26s; }
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(8),
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(9),
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(10) { transition-delay: 0.32s; }
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(11) { transition-delay: 0.35s; }
+
+/* Disappear Left to Right (Tail to Tip) => Tail fades first (delay 0), Tip fades last (delay max) */
+.hero__recent-arrow--hidden svg path:nth-child(11) { transition-delay: 0.05s; }
+.hero__recent-arrow--hidden svg path:nth-child(8),
+.hero__recent-arrow--hidden svg path:nth-child(9),
+.hero__recent-arrow--hidden svg path:nth-child(10) { transition-delay: 0.13s; }
+.hero__recent-arrow--hidden svg path:nth-child(5),
+.hero__recent-arrow--hidden svg path:nth-child(6),
+.hero__recent-arrow--hidden svg path:nth-child(7) { transition-delay: 0.17s; }
+.hero__recent-arrow--hidden svg path:nth-child(4) { transition-delay: 0.20s; }
+.hero__recent-arrow--hidden svg path:nth-child(3) { transition-delay: 0.26s; }
+.hero__recent-arrow--hidden svg path:nth-child(2) { transition-delay: 0.32s; }
+.hero__recent-arrow--hidden svg path:nth-child(1) { transition-delay: 0.35s; }
+
+.hero__recent-title {
+  margin: 0;
+
+  color: var(--color-text-main);
+
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Stara', system-ui, sans-serif;
+}
+
+.hero__recent-description {
+  margin: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 13px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}
