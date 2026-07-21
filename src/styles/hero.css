@@ -578,7 +578,7 @@
   flex-direction: column;
   gap: 1.5rem;
 
-  background-color: #ECF8F5;
+  background-color: var(--color-accent-bg);
   border-radius: 9px;
 
   cursor: pointer;
@@ -608,7 +608,8 @@
 
   position: relative;
 
-  border-radius: 9px;
+  border: 2.2px solid var(--color-border-grid);
+  border-radius: 7.5px;
   overflow: hidden;
 }
 
@@ -648,30 +649,110 @@
 .hero__recent-title-row {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.7rem;
 }
 
 .hero__recent-arrow {
-  width: 36px;
-  height: 30px;
+  width: 24px;
 
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  overflow: hidden;
 
   color: var(--color-accent);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero__recent-arrow--hidden {
+  width: 0;
+  transition-delay: 0.5s;
+}
+
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) {
+  width: 0;
+  transition-delay: 0.4s;
+}
+
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden {
+  width: 24px;
+  transition-delay: 0s;
 }
 
 .hero__recent-arrow svg {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
 
   transform: rotate(-90deg);
 }
 
-.hero__recent-arrow--hidden {
-  opacity: 0;
+
+/* Base styles for paths to enable fading */
+.hero__recent-arrow svg path {
+  transition: opacity 0.1s ease;
 }
+
+/* Default state: Left arrow visible, right hidden */
+.hero__recent-arrow--hidden svg path { opacity: 0; }
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path { opacity: 1; }
+
+/* Hover state: Left arrow hides, right appears */
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path { opacity: 0; }
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path { opacity: 1; }
+
+/* SEQUENCE DEFINITIONS */
+/* Paths are drawn tip (right) to tail (left) in DOM: 1 to 11 */
+
+/* Disappear Left to Right (Tail to Tip) => Tail fades first (delay 0), Tip fades last (delay max) */
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(11) { transition-delay: 0.05s; }
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(8),
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(9),
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(10) { transition-delay: 0.13s; }
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(5),
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(6),
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(7) { transition-delay: 0.17s; }
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(4) { transition-delay: 0.20s; }
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(3) { transition-delay: 0.26s; }
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(2) { transition-delay: 0.32s; }
+.hero__recent-project-cell:hover .hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(1) { transition-delay: 0.35s; }
+
+/* Re-appear Right to Left (Tip to Tail) => Tip appears first (delay 0), Tail appears last (delay max) */
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(1) { transition-delay: 0.05s; }
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(2) { transition-delay: 0.13s; }
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(3) { transition-delay: 0.17s; }
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(4) { transition-delay: 0.20s; }
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(5),
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(6),
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(7) { transition-delay: 0.26s; }
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(8),
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(9),
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(10) { transition-delay: 0.32s; }
+.hero__recent-arrow:not(.hero__recent-arrow--hidden) svg path:nth-child(11) { transition-delay: 0.35s; }
+
+/* Appear Right to Left (Tip to Tail) => Tip appears first (delay 0), Tail appears last (delay max) */
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(1) { transition-delay: 0.05s; }
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(2) { transition-delay: 0.13s; }
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(3) { transition-delay: 0.17s; }
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(4) { transition-delay: 0.20s; }
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(5),
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(6),
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(7) { transition-delay: 0.26s; }
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(8),
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(9),
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(10) { transition-delay: 0.32s; }
+.hero__recent-project-cell:hover .hero__recent-arrow--hidden svg path:nth-child(11) { transition-delay: 0.35s; }
+
+/* Disappear Left to Right (Tail to Tip) => Tail fades first (delay 0), Tip fades last (delay max) */
+.hero__recent-arrow--hidden svg path:nth-child(11) { transition-delay: 0.05s; }
+.hero__recent-arrow--hidden svg path:nth-child(8),
+.hero__recent-arrow--hidden svg path:nth-child(9),
+.hero__recent-arrow--hidden svg path:nth-child(10) { transition-delay: 0.13s; }
+.hero__recent-arrow--hidden svg path:nth-child(5),
+.hero__recent-arrow--hidden svg path:nth-child(6),
+.hero__recent-arrow--hidden svg path:nth-child(7) { transition-delay: 0.17s; }
+.hero__recent-arrow--hidden svg path:nth-child(4) { transition-delay: 0.20s; }
+.hero__recent-arrow--hidden svg path:nth-child(3) { transition-delay: 0.26s; }
+.hero__recent-arrow--hidden svg path:nth-child(2) { transition-delay: 0.32s; }
+.hero__recent-arrow--hidden svg path:nth-child(1) { transition-delay: 0.35s; }
 
 .hero__recent-title {
   margin: 0;
