@@ -3,28 +3,70 @@
 import Arrow from "../../assets/arrow.svg";
 import CornerGrid from "../../assets/corner-grid.svg";
 import Plus from "../../assets/plus.svg";
+import NumberZero from "../../assets/number-0.svg";
 import NumberOne from "../../assets/number-1.svg";
+import NumberTwo from "../../assets/number-2.svg";
+import NumberThree from "../../assets/number-3.svg";
+import NumberFour from "../../assets/number-4.svg";
 import NumberFive from "../../assets/number-5.svg";
+import NumberSix from "../../assets/number-6.svg";
+import NumberSeven from "../../assets/number-7.svg";
+import NumberEight from "../../assets/number-8.svg";
+import NumberNine from "../../assets/number-9.svg";
 import DigitanAgency from "../../assets/digitan-agency.webp";
 import "../../styles/hero-recent-work.css";
+
+const numberMap = {
+  "0": NumberZero,
+  "1": NumberOne,
+  "2": NumberTwo,
+  "3": NumberThree,
+  "4": NumberFour,
+  "5": NumberFive,
+  "6": NumberSix,
+  "7": NumberSeven,
+  "8": NumberEight,
+  "9": NumberNine,
+};
+
+const startDate = new Date("2022-03-15T00:00:00");
+const today = new Date();
+
+let expYears = today.getFullYear() - startDate.getFullYear();
+let expMonths = today.getMonth() - startDate.getMonth();
+
+if (today.getDate() < startDate.getDate()) {
+  expMonths--;
+}
+
+if (expMonths < 0) {
+  expYears--;
+  expMonths += 12;
+}
+
+const showPlus = expMonths > 5;
+const expYearsDigits = expYears.toString().split("");
 ---
 
 <section class="hero__bento-cell">
-  <CornerGrid class="hero__corner-grid hero_corner-grid--top" />
+  <CornerGrid class="hero__corner-grid hero__corner-grid--top" />
   <!-- LEFT (Top in this column): Metrics -->
   <article class="hero__metrics-cell">
     <div class="hero__recent-metric-item">
       <h4 class="hero__recent-label">Projects Developed</h4>
       <div class="hero__recent-number">
         <NumberOne />
-        <NumberFive />
+        <NumberSix />
       </div>
     </div>
     <div class="hero__recent-metric-item">
       <h4 class="hero__recent-label">Years Experience</h4>
       <div class="hero__recent-number">
-        <Plus />
-        <NumberFive />
+        {showPlus && <Plus />}
+        {expYearsDigits.map((digit) => {
+          const DigitComponent = numberMap[digit as keyof typeof numberMap];
+          return <DigitComponent />;
+        })}
       </div>
     </div>
   </article>
@@ -63,7 +105,7 @@ import "../../styles/hero-recent-work.css";
       </p>
     </div>
   </article>
-  <CornerGrid class="hero__corner-grid hero_corner-grid--bottom-right" />
+  <CornerGrid class="hero__corner-grid hero__corner-grid--bottom-right" />
 </section>
 
 <style>

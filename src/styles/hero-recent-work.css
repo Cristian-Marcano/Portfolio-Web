@@ -268,12 +268,12 @@
   
   fill: var(--color-border-grid);
 
-  &.hero_corner-grid--top {
+  &.hero__corner-grid--top {
     top: 0;
     right: calc(52% + 1px);
   }
 
-  &.hero_corner-grid--bottom-right {
+  &.hero__corner-grid--bottom-right {
     top: 302px;
     right: 0;
   }
