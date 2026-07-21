@@ -1,0 +1,155 @@
+---
+// Unified Component File but visually separate bento cells
+import Arrow from "../../assets/arrow.svg";
+import Plus from "../../assets/plus.svg";
+import NumberOne from "../../assets/number-1.svg";
+import NumberFive from "../../assets/number-5.svg";
+import DigitanAgency from "../../assets/digitan-agency.webp";
+---
+
+<section class="hero__bento-cell">
+  <!-- LEFT (Top in this column): Metrics -->
+  <article class="hero__metrics-cell">
+    <div class="hero__recent-metric-item">
+      <h4 class="hero__recent-label">Projects Developed</h4>
+      <div class="hero__recent-number">
+        <NumberOne />
+        <NumberFive />
+      </div>
+    </div>
+    <div class="hero__recent-metric-item">
+      <h4 class="hero__recent-label">Years Experience</h4>
+      <div class="hero__recent-number">
+        <Plus />
+        <NumberFive />
+      </div>
+    </div>
+  </article>
+
+  <!-- LEFT (Bottom in this column): Recent Work Thumbnail & Info -->
+  <article class="hero__recent-project-cell">
+    <h4 class="hero__recent-header">RECENT WORK</h4>
+
+    <div class="hero__recent-img-wrapper">
+      <div class="hero__recent-img-container">
+        <img
+          src={DigitanAgency.src}
+          alt="Digitan Agency"
+          class="hero__recent-img"
+        />
+      </div>
+    </div>
+
+    <div class="hero__recent-info">
+      <div class="hero__recent-title-row">
+        <!-- SVG Arrow Left -->
+        <div class="hero__recent-arrow">
+          <Arrow />
+        </div>
+
+        <h3 class="hero__recent-title">DIGITAN AGENCY</h3>
+
+        <!-- Oculto para simetría -->
+        <div class="hero__recent-arrow hero__recent-arrow--hidden">
+          <Arrow />
+        </div>
+      </div>
+
+      <p class="hero__recent-description">
+        An AI-powered research assistant for Australian tax and compliance
+      </p>
+    </div>
+  </article>
+</section>
+
+<style>
+  .hero__recent-number :global(svg rect) {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    /* Evita que el rect atrape eventos de puntero individuales si es necesario, pero necesitamos mousemove en el contenedor */
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const containers = document.querySelectorAll<HTMLDivElement>(
+      ".hero__recent-number",
+    );
+
+    containers.forEach((container) => {
+      const rects = container.querySelectorAll<SVGRectElement>("svg rect");
+      const baseOpacity = 1;
+      const minOpacity = 0.1;
+      const maxDist = 45;
+
+      let lastMouseX = 0;
+      let lastMouseY = 0;
+      let isHovering = false;
+
+      container.addEventListener("mousemove", (e: MouseEvent) => {
+        isHovering = true;
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+
+        rects.forEach((rect: SVGRectElement) => {
+          if (rect.dataset.waveTimeout1)
+            clearTimeout(Number(rect.dataset.waveTimeout1));
+          if (rect.dataset.waveTimeout2)
+            clearTimeout(Number(rect.dataset.waveTimeout2));
+
+          const rectBounds = rect.getBoundingClientRect();
+          const rectCenterX = rectBounds.left + rectBounds.width / 2;
+          const rectCenterY = rectBounds.top + rectBounds.height / 2;
+
+          const distance = Math.hypot(
+            lastMouseX - rectCenterX,
+            lastMouseY - rectCenterY,
+          );
+
+          let opacity = minOpacity;
+          if (distance < maxDist) {
+            // El más cercano es 1, los lejanos bajan hasta minOpacity
+            opacity = 1 - (distance / maxDist) * (1 - minOpacity);
+          }
+
+          rect.style.transition = "opacity 0.1s ease-out";
+          rect.style.opacity = opacity.toString();
+        });
+      });
+
+      container.addEventListener("mouseleave", () => {
+        isHovering = false;
+
+        const containerBounds = container.getBoundingClientRect();
+
+        rects.forEach((rect: SVGRectElement) => {
+          const rectBounds = rect.getBoundingClientRect();
+          const rectCenterY = rectBounds.top + rectBounds.height / 2;
+
+          // Distancia vertical desde la parte superior del contenedor
+          const y = rectCenterY - containerBounds.top;
+
+          // Delay basado únicamente en el eje Y para que la ola sea de arriba hacia abajo
+          const delay = y * 6;
+
+          rect.style.transition = `opacity 0.2s ease-out`;
+
+          // La opacidad baja para crear la "sombra" de la ola
+          const t1 = setTimeout(() => {
+            if (isHovering) return;
+            rect.style.opacity = minOpacity.toString();
+          }, delay);
+
+          // Después de un instante (que equivale a 2-3 líneas de altura temporal), regresa a 1
+          const t2 = setTimeout(() => {
+            if (isHovering) return;
+            rect.style.opacity = baseOpacity.toString();
+          }, delay + 120);
+
+          rect.dataset.waveTimeout1 = t1.toString();
+          rect.dataset.waveTimeout2 = t2.toString();
+        });
+      });
+    });
+  });
+</script>

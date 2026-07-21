@@ -2,6 +2,7 @@
 // Main Hero Wrapper
 import HeroTextColumn from "./HeroTextColumn.astro";
 import HeroIllustrationColumn from "./HeroIllustrationColumn.astro";
+import HeroRecentWork from "./HeroRecentWork.astro";
 import "../../styles/hero.css";
 ---
 
@@ -9,13 +10,22 @@ import "../../styles/hero.css";
   <!-- Left extreme -->
   <div class="hero__corner"></div>
 
-  <!-- Middle content container -->
+  <!-- Middle content container (Row on desktop) -->
   <section class="hero__content">
-    <!-- Left Column: Title, Intro, Narrator, Time -->
-    <HeroTextColumn />
+    <!-- LEFT COLUMN -->
+    <section class="hero__column hero__column--left">
+      <!-- Title, Intro, Narrator, Time -->
+      <HeroTextColumn />
 
-    <!-- Right Column: Profile Illustration -->
-    <HeroIllustrationColumn />
+      <!-- Recent Work -->
+      <HeroRecentWork />
+    </section>
+
+    <!-- RIGHT COLUMN -->
+    <section class="hero__column hero__column--right">
+      <!-- Profile Illustration & Terminal -->
+      <HeroIllustrationColumn />
+    </section>
   </section>
 
   <!-- Right extreme -->
