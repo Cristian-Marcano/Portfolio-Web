@@ -63,10 +63,12 @@ const expYearsDigits = expYears.toString().split("");
       <h4 class="hero__recent-label">Years Experience</h4>
       <div class="hero__recent-number">
         {showPlus && <Plus />}
-        {expYearsDigits.map((digit) => {
-          const DigitComponent = numberMap[digit as keyof typeof numberMap];
-          return <DigitComponent />;
-        })}
+        {
+          expYearsDigits.map((digit) => {
+            const DigitComponent = numberMap[digit as keyof typeof numberMap];
+            return <DigitComponent />;
+          })
+        }
       </div>
     </div>
   </article>
@@ -101,7 +103,8 @@ const expYearsDigits = expYears.toString().split("");
       </div>
 
       <p class="hero__recent-description">
-        An AI-powered research assistant for Australian tax and compliance
+        Agencia de servicios digitales especializada en marketing y desarrollo
+        web, con enfoque en el crecimiento de pequeñas empresas.
       </p>
     </div>
   </article>

@@ -14,7 +14,7 @@
   min-width: 0;
   height: 511px;
 
-  padding-bottom: 1.6rem;
+  padding-bottom: calc(538px - 511px);
 
   display: flex;
   flex-direction: row;
