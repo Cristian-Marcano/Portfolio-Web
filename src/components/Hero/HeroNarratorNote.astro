@@ -1,0 +1,87 @@
+---
+import Star from "../../assets/star.svg";
+import "../../styles/hero-narrator-note.css";
+---
+
+<section class="hero__narrator-note">
+  <div class="hero__narrator-header">
+    <div class="hero__narrator-icon">
+      <span aria-hidden="true">{">"}</span>
+    </div>
+    <p class="hero__narrator-title">NARRATOR'S NOTE</p>
+  </div>
+
+  <div class="hero__narrator-spacer"></div>
+
+  <h3 class="hero__narrator-text">
+    For the past few years, Cristian has immersed himself in the world of web
+    development, nurturing his dream of becoming a leading software engineer. He
+    is passionate about building intuitive and scalable applications.
+  </h3>
+
+  <div class="hero__narrator-stars">
+    <Star class="hero__star hero__star--1" />
+    <Star class="hero__star hero__star--2" />
+    <Star class="hero__star hero__star--3" />
+    <Star class="hero__star hero__star--4" />
+    <Star class="hero__star hero__star--5" />
+    <Star class="hero__star hero__star--6" />
+    <Star class="hero__star hero__star--7" />
+  </div>
+</section>
+
+<script>
+  // Script para que las estrellas sigan el cursor del mouse y el "centro" del color se desplace
+  const stars = document.querySelectorAll<SVGAElement>(".hero__star");
+
+  if (stars.length > 0) {
+    // Definimos los niveles de distancia para el color y opacidad
+    const distanceLevels = [
+      { color: "var(--color-text-main)", opacity: "1" }, // Nivel 0 (El más cercano)
+      { color: "var(--color-accent)", opacity: "1" }, // Nivel 1 (Vecinos adyacentes)
+      { color: "var(--color-text-secondary)", opacity: "0.6" }, // Nivel 2
+      { color: "var(--color-text-secondary)", opacity: "0.3" }, // Nivel 3+ (Los más lejanos)
+    ];
+
+    window.addEventListener("mousemove", (e: MouseEvent) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      let minDistance = Infinity;
+      let centerIndex = 3;
+
+      // Fase 1: Encontrar la estrella más cercana al mouse
+      stars.forEach((star: SVGAElement, index: number) => {
+        const rect = star.getBoundingClientRect();
+        const starX = rect.left + rect.width / 2;
+        const starY = rect.top + rect.height / 2;
+
+        const dist = Math.hypot(mouseX - starX, mouseY - starY);
+        if (dist < minDistance) {
+          minDistance = dist;
+          centerIndex = index;
+        }
+      });
+
+      // Fase 2: Aplicar las rotaciones y los colores basados en la distancia al centerIndex
+      stars.forEach((star: SVGAElement, index: number) => {
+        const rect = star.getBoundingClientRect();
+        const starX = rect.left + rect.width / 2;
+        const starY = rect.top + rect.height / 2;
+
+        const deltaX = mouseX - starX;
+        const deltaY = mouseY - starY;
+
+        let angle = Math.atan2(deltaY, deltaX) * (270 / Math.PI) + 90;
+
+        // Calcular qué tan lejos está esta estrella de la estrella central (en índices)
+        const level = Math.min(Math.abs(index - centerIndex), 3);
+        const styleProps = distanceLevels[level];
+
+        star.style.transform = `rotate(${angle}deg)`;
+        star.style.color = styleProps.color;
+        star.style.opacity = styleProps.opacity;
+      });
+    });
+  }
+</script>
