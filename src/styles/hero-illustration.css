@@ -21,7 +21,7 @@
   flex-grow: 1;
 
   background: linear-gradient(transparent, var(--color-bg-main));
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
   border-bottom-right-radius: 0;
 }
 
@@ -34,7 +34,7 @@
   flex-shrink: 0;
   
   background-color: var(--color-bg-main);
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
   
   @media (width >= 768px) {
     display: block;
@@ -54,10 +54,10 @@
   justify-content: space-between;
 
   background-color: var(--color-accent-bg);
-  border-bottom: 3px solid var(--color-border-grid);
-  border-left: 3px solid var(--color-border-grid);
-  border-right: 3px solid var(--color-border-grid);
-  border-radius: 9px;
+  border-bottom: var(--border-width-heavy) solid var(--color-border-grid);
+  border-left: var(--border-width-heavy) solid var(--color-border-grid);
+  border-right: var(--border-width-heavy) solid var(--color-border-grid);
+  border-radius: var(--border-radius-base);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 
@@ -71,7 +71,7 @@
   flex-shrink: 0;
   
   background-color: var(--color-bg-main);
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
   border-bottom-left-radius: 0;
 
   @media (width >= 768px) {
@@ -156,7 +156,7 @@
 
   color: var(--color-text-main);
 
-  font-size: 34px;
+  font-size: var(--font-size-h2);
   font-weight: 400;
   font-family: 'Lora', serif;
   letter-spacing: -0.5px;
@@ -175,7 +175,7 @@
 
   color: var(--color-text-main);
 
-  font-size: 34px;
+  font-size: var(--font-size-h2);
   font-weight: 400;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   letter-spacing: -0.5px;
@@ -185,7 +185,7 @@
   width: 257px;
   height: 338px;
 
-  padding: 1rem 0.7rem;
+  padding: var(--spacing-sm) 0.7rem;
 
   position: absolute;
   top: 110px;
@@ -198,7 +198,7 @@
 
   background-color: var(--color-text-main);
   color: var(--color-accent);
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
   font-size: 14px;
@@ -227,7 +227,7 @@
   width: 12px;
   height: 12px;
 
-  border-radius: 50%;
+  border-radius: var(--border-radius-round);
 }
 
 .hero__terminal-dot--red { background-color: #ff5f56; }

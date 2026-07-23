@@ -11,7 +11,7 @@
   flex-grow: 1;
 
   background-color: var(--color-bg-main);
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
 }
 
 .hero__content {

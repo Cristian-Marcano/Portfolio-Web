@@ -17,11 +17,11 @@
 }
 
 .site-header__corner--left {
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
 }
 
 .site-header__corner--right {
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
 }
 
 .site-header__content {
@@ -47,8 +47,8 @@
 .site-header__nav-link {
   min-width: 120px;
 
-  /* padding-left: 2rem; */
-  /* padding-right: 2rem; */
+  /* padding-left: var(--spacing-md); */
+  /* padding-right: var(--spacing-md); */
 
   display: flex;
   align-items: center;
@@ -57,9 +57,9 @@
   background-color: var(--color-accent-bg);
   color: var(--color-accent);
   
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
   
-  font-size: 13px;
+  font-size: var(--font-size-sm);
   font-weight: 500;
   letter-spacing: 0.05em;
   text-decoration: none;
@@ -100,7 +100,7 @@
   display: flex;
   align-items: center;
 
-  font-size: 13px;
+  font-size: var(--font-size-sm);
   transition: font-size 200ms;
   will-change: font-size;
 }
@@ -124,7 +124,7 @@
   flex-grow: 1;
 
   background-color: var(--color-bg-main);
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
 }
 
 .site-header__social-container {
@@ -153,7 +153,7 @@
 
   background-color: var(--color-accent-bg);
   color: var(--color-accent);
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
 
   text-decoration: none;
 
@@ -186,9 +186,9 @@
   flex-grow: 1;
   
   background-color: var(--color-rectangle-header);
-  border-left: 3px solid var(--color-border-grid);
-  border-right: 3px solid var(--color-border-grid);
-  /* border-radius: 9px;
+  border-left: var(--border-width-heavy) solid var(--color-border-grid);
+  border-right: var(--border-width-heavy) solid var(--color-border-grid);
+  /* border-radius: var(--border-radius-base);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0; */
 
@@ -202,7 +202,7 @@
   flex-shrink: 0;
   
   background-color: var(--color-bg-main);
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
   /* border-bottom-left-radius: 0;
   border-bottom-right-radius: 0; */
 

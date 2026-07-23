@@ -4,7 +4,7 @@
   height: 388px;
   box-sizing: border-box;
 
-  padding: 0.5rem 2rem;
+  padding: var(--spacing-xs) var(--spacing-md);
 
   position: relative;
   z-index: 10;
@@ -14,10 +14,10 @@
   gap: 1.12rem;
 
   background-color: var(--color-bg-main);
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
 
   @media (width >= 768px) {
-    padding: 2rem;
+    padding: var(--spacing-md);
   }
 }
 
@@ -26,7 +26,7 @@
 
   color: var(--color-text-main);
 
-  font-size: 42px;
+  font-size: var(--font-size-h1);
   font-weight: 600;
   line-height: 42px;
 }
@@ -52,11 +52,11 @@
 .hero__intro {
   max-width: 42rem;
 
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-sm);
 
   color: var(--color-text-muted);
 
-  font-size: 18px;
+  font-size: var(--font-size-lg);
   font-weight: 400;
   line-height: 27px;
 }
@@ -78,7 +78,7 @@
   width: 100%;
 
   margin-top: auto;
-  padding-top: 1rem;
+  padding-top: var(--spacing-sm);
 
   display: flex;
   flex-direction: column;
@@ -89,7 +89,7 @@
 .hero__narrator {
   color: var(--color-text-muted);
 
-  font-size: 18px;
+  font-size: var(--font-size-lg);
   font-weight: 400;
   line-height: 27px;
 }
@@ -127,7 +127,7 @@
 .hero__time {
   color: var(--color-text-muted);
 
-  font-size: 13px;
+  font-size: var(--font-size-sm);
   font-weight: 400;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1;
@@ -139,11 +139,11 @@
 }
 
 .hero__time-zone {
-  margin-left: 0.5rem;
+  margin-left: var(--spacing-xs);
 
   color: var(--color-accent);
 
-  font-size: 13px;
+  font-size: var(--font-size-sm);
   font-weight: 400;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1;

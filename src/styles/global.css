@@ -3,7 +3,7 @@
   --color-accent-bg: #ecf8f5;
   --color-border-grid: #cdeae0;
   --color-text-main: #112322;
-  --color-text-muted: rgba(17, 35, 34, 0.6);
+  --color-text-muted: #11232299;
   --color-bg-main: #ffffff;
 
   --color-rectangle-header: #006352;
@@ -12,6 +12,32 @@
   --color-wave-2: #00735F;
   --color-wave-3: #00826B;
   --color-wave-4: #009178;
+  
+  /* Border Radius */
+  --border-radius-base: 9px;
+  --border-radius-sm: 4px;
+  --border-radius-round: 50%;
+
+  /* Spacings & Gaps */
+  --spacing-xs: 0.5rem; 
+  --spacing-sm: 1rem;   
+  --spacing-md: 2rem;   
+  --spacing-lg: 30px;
+  --spacing-xl: 60px;
+
+  /* Typography */
+  --font-size-display: 96px;
+  --font-size-h1: 42px;
+  --font-size-h2: 34px;
+  --font-size-h3: 24px;
+  --font-size-lg: 18px;
+  --font-size-base: 15px;
+  --font-size-sm: 13px;
+  --font-size-xs: 12px;
+
+  /* Border Widths */
+  --border-width-base: 1px;
+  --border-width-heavy: 3px;
 }
 
 *,

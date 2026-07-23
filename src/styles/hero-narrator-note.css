@@ -13,7 +13,7 @@
   gap: 1.8rem;
 
   background-color: var(--color-bg-main);
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
   
   overflow: hidden;
 }
@@ -42,7 +42,7 @@
   & > span {
     width: 100%;
 
-    font-size: 13px;
+    font-size: var(--font-size-sm);
     font-weight: 800;
     font-family: 'Stara', 'BlinkMacSystemFont', 'Segoe UI',sans-serif;
     text-wrap: wrap;
@@ -60,7 +60,7 @@
 
   color: var(--color-text-muted);
 
-  font-size: 13px;
+  font-size: var(--font-size-sm);
   font-weight: 400;
 }
 
@@ -74,7 +74,7 @@
 
   color: var(--color-text-muted);
 
-  font-size: 15px;
+  font-size: var(--font-size-base);
   font-weight: 400;
   line-height: 1.5;
 }

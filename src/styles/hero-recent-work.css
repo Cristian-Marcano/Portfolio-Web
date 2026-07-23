@@ -31,7 +31,7 @@
   height: 100%;
   box-sizing: border-box;
 
-  padding: 1.9rem 2rem;
+  padding: 1.9rem var(--spacing-md);
 
   display: flex;
   flex-direction: column;
@@ -39,7 +39,7 @@
   justify-content: space-between;
 
   background-color: var(--color-bg-main);
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
 }
 
 .hero__recent-number {
@@ -54,7 +54,7 @@
 
   color: var(--color-text-muted);
 
-  font-size: 12px;
+  font-size: var(--font-size-xs);
   font-weight: 400;
   font-family: 'Space Mono', monospace;
   letter-spacing: 1px;
@@ -62,14 +62,14 @@
 }
 
 .hero__recent-project-cell {
-  padding: 2rem;
+  padding: var(--spacing-md);
 
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 
   background-color: var(--color-accent-bg);
-  border-radius: 9px;
+  border-radius: var(--border-radius-base);
 
   cursor: pointer;
 
@@ -85,7 +85,7 @@
 
   color: var(--color-text-muted);
 
-  font-size: 12px;
+  font-size: var(--font-size-xs);
   font-weight: 400;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   letter-spacing: 1.5px;
@@ -133,7 +133,7 @@
 .hero__recent-info {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--spacing-xs);
 }
 
 .hero__recent-title-row {
