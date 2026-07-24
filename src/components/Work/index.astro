@@ -1,0 +1,21 @@
+---
+import WorkProjectList from "./WorkProjectList.astro";
+import WorkMockupViewer from "./WorkMockupViewer.astro";
+import "../../styles/work-layout.css";
+---
+
+<section class="work" id="work">
+  <div class="work__corner"></div>
+
+  <section class="work__content">
+    <section class="work__column work__column--left">
+      <WorkProjectList />
+    </section>
+
+    <section class="work__column work__column--right">
+      <WorkMockupViewer />
+    </section>
+  </section>
+
+  <div class="work__corner"></div>
+</section>

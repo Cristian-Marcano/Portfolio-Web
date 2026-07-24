@@ -1,0 +1,105 @@
+.work__mockup-container {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  background-color: var(--color-accent-bg);
+  border-radius: var(--border-radius-base);
+  padding: var(--spacing-md);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.work__mockup-wrapper {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 4/3;
+  position: relative;
+  perspective: 1000px;
+}
+
+.work__mockup-display {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  transform: rotateX(5deg) rotateY(-5deg);
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.work__mockup-container:hover .work__mockup-display {
+  transform: rotateX(0deg) rotateY(0deg) translateY(-10px);
+}
+
+.work__mockup-screen {
+  width: 90%;
+  height: 85%;
+  background: linear-gradient(135deg, var(--color-wave-2), var(--color-wave-4));
+  border-radius: 12px 12px 0 0;
+  border: var(--border-width-heavy) solid var(--color-border-grid);
+  border-bottom: none;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glassmorphism effect over the screen */
+.work__mockup-screen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  pointer-events: none;
+}
+
+.work__mockup-placeholder {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.work__mockup-text {
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  letter-spacing: 1px;
+}
+
+.work__mockup-base {
+  width: 100%;
+  height: 15%;
+  background-color: var(--color-bg-main);
+  border-radius: 0 0 12px 12px;
+  border: var(--border-width-heavy) solid var(--color-border-grid);
+  border-top: var(--border-width-base) solid var(--color-border-grid);
+  position: relative;
+}
+
+/* Simulate a laptop trackpad notch */
+.work__mockup-base::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20%;
+  height: 6px;
+  background-color: var(--color-border-grid);
+  border-radius: 0 0 6px 6px;
+}
