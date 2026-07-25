@@ -74,8 +74,11 @@ const projects = [
           </div>
 
           <ul class="work__project-tags">
-            {project.tags.map((tag) => (
-              <li class="work__project-tag">
+            {project.tags.map((tag, index) => (
+              <li
+                class="work__project-tag"
+                style={`--star-delay: ${(index + 1) * 0.75}s`}
+              >
                 <Star class="work__tag-star" />
                 {tag}
               </li>
@@ -89,15 +92,40 @@ const projects = [
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    // Project Hover Logic
     const projects = document.querySelectorAll(".work__project");
-
     projects.forEach((project) => {
       project.addEventListener("mouseenter", () => {
         projects.forEach((p) => {
-          p.classList.remove("work__project--active", "has-arrow-title--active");
+          p.classList.remove(
+            "work__project--active",
+            "has-arrow-title--active",
+          );
         });
-        project.classList.add("work__project--active", "has-arrow-title--active");
+        project.classList.add(
+          "work__project--active",
+          "has-arrow-title--active",
+        );
       });
     });
+
+    // Sticky Header Accent Logic
+    const header = document.querySelector(".work__projects-header");
+    const heading = document.querySelector(".work__projects-heading");
+
+    if (header && heading) {
+      const onScroll = () => {
+        const rect = header.getBoundingClientRect();
+        // If the header is below the middle of the viewport
+        if (rect.top < window.innerHeight / 2) {
+          heading.classList.add("work__projects-heading--active");
+        } else {
+          heading.classList.remove("work__projects-heading--active");
+        }
+      };
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll(); // Initial check
+    }
   });
 </script>
