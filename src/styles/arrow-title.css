@@ -1,0 +1,107 @@
+.arrow-title-row {
+  display: flex;
+  align-items: center;
+}
+
+.arrow-title__arrow {
+  width: calc(22px + var(--spacing-sm));
+
+  display: flex;
+  align-items: center;
+
+  color: var(--color-accent);
+  overflow: hidden;
+
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.arrow-title__arrow--hidden {
+  width: 0;
+  transition-delay: 0.5s;
+}
+
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow:not(.arrow-title__arrow--hidden) { 
+  width: 0; 
+  transition-delay: 0.4s;
+}
+
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow--hidden { 
+  width: calc(22px + var(--spacing-sm));
+  transition-delay: 0s;
+}
+
+.arrow-title__arrow svg {
+  width: 22px;
+  height: 22px;
+  transform: rotate(-90deg);
+}
+
+.arrow-title__arrow svg path {
+  transition: opacity 0.1s ease;
+}
+
+/* Default state: Left arrow visible, right hidden */
+.arrow-title__arrow--hidden svg path { opacity: 0; }
+.arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path { opacity: 1; }
+
+/* Hover state: Left arrow hides, right appears */
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path { opacity: 0; }
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow--hidden svg path { opacity: 1; }
+
+/* SEQUENCE DEFINITIONS */
+/* Disappear Left to Right (Tail to Tip) */
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(11) { transition-delay: 0.05s; }
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(8),
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(9),
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(10) { transition-delay: 0.13s; }
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(5),
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(6),
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(7) { transition-delay: 0.17s; }
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(4) { transition-delay: 0.20s; }
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(3) { transition-delay: 0.26s; }
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(2) { transition-delay: 0.32s; }
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(1) { transition-delay: 0.35s; }
+
+/* Re-appear Right to Left (Tip to Tail) */
+.arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(1) { transition-delay: 0.05s; }
+.arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(2) { transition-delay: 0.13s; }
+.arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(3) { transition-delay: 0.17s; }
+.arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(4) { transition-delay: 0.20s; }
+.arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(5),
+.arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(6),
+.arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(7) { transition-delay: 0.26s; }
+.arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(8),
+.arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(9),
+.arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(10) { transition-delay: 0.32s; }
+.arrow-title__arrow:not(.arrow-title__arrow--hidden) svg path:nth-child(11) { transition-delay: 0.35s; }
+
+/* Appear Right to Left (Tip to Tail) */
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow--hidden svg path:nth-child(1) { transition-delay: 0.05s; }
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow--hidden svg path:nth-child(2) { transition-delay: 0.13s; }
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow--hidden svg path:nth-child(3) { transition-delay: 0.17s; }
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow--hidden svg path:nth-child(4) { transition-delay: 0.20s; }
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow--hidden svg path:nth-child(5),
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow--hidden svg path:nth-child(6),
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow--hidden svg path:nth-child(7) { transition-delay: 0.26s; }
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow--hidden svg path:nth-child(8),
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow--hidden svg path:nth-child(9),
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow--hidden svg path:nth-child(10) { transition-delay: 0.32s; }
+:is(.has-arrow-title:hover, .has-arrow-title--active) .arrow-title__arrow--hidden svg path:nth-child(11) { transition-delay: 0.35s; }
+
+/* Disappear Left to Right (Tail to Tip) */
+.arrow-title__arrow--hidden svg path:nth-child(11) { transition-delay: 0.05s; }
+.arrow-title__arrow--hidden svg path:nth-child(8),
+.arrow-title__arrow--hidden svg path:nth-child(9),
+.arrow-title__arrow--hidden svg path:nth-child(10) { transition-delay: 0.13s; }
+.arrow-title__arrow--hidden svg path:nth-child(5),
+.arrow-title__arrow--hidden svg path:nth-child(6),
+.arrow-title__arrow--hidden svg path:nth-child(7) { transition-delay: 0.17s; }
+.arrow-title__arrow--hidden svg path:nth-child(4) { transition-delay: 0.20s; }
+.arrow-title__arrow--hidden svg path:nth-child(3) { transition-delay: 0.26s; }
+.arrow-title__arrow--hidden svg path:nth-child(2) { transition-delay: 0.32s; }
+.arrow-title__arrow--hidden svg path:nth-child(1) { transition-delay: 0.35s; }
+
+.arrow-title__text {
+  margin: 0;
+  padding-right: var(--spacing-sm);
+}

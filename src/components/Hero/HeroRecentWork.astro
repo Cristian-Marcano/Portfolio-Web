@@ -1,6 +1,6 @@
 ---
 // Unified Component File but visually separate bento cells
-import Arrow from "../../assets/arrow.svg";
+import ArrowTitle from "../ui/ArrowTitle.astro";
 import CornerGrid from "../../assets/corner-grid.svg";
 import Plus from "../../assets/plus.svg";
 import NumberZero from "../../assets/number-0.svg";
@@ -74,7 +74,7 @@ const expYearsDigits = expYears.toString().split("");
   </article>
 
   <!-- LEFT (Bottom in this column): Recent Work Thumbnail & Info -->
-  <article class="hero__recent-project-cell">
+  <article class="hero__recent-project-cell has-arrow-title">
     <h4 class="hero__recent-header">RECENT WORK</h4>
 
     <div class="hero__recent-img-wrapper">
@@ -88,19 +88,11 @@ const expYearsDigits = expYears.toString().split("");
     </div>
 
     <div class="hero__recent-info">
-      <div class="hero__recent-title-row">
-        <!-- SVG Arrow Left -->
-        <div class="hero__recent-arrow">
-          <Arrow />
-        </div>
-
-        <h3 class="hero__recent-title">DIGITAN AGENCY</h3>
-
-        <!-- Oculto para simetría -->
-        <div class="hero__recent-arrow hero__recent-arrow--hidden">
-          <Arrow />
-        </div>
-      </div>
+      <ArrowTitle
+        text="DIGITAN AGENCY"
+        headingTag="h3"
+        className="hero__recent-title"
+      />
 
       <p class="hero__recent-description">
         Agencia de servicios digitales especializada en marketing y desarrollo

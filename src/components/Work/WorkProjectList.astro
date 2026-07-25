@@ -1,5 +1,7 @@
 ---
 import CornerGrid from "../../assets/corner-grid.svg";
+import Star from "../../assets/star.svg";
+import ArrowTitle from "../ui/ArrowTitle.astro";
 import "../../styles/work-projects.css";
 
 const projects = [
@@ -58,12 +60,14 @@ const projects = [
     {
       projects.map((project) => (
         <li
-          class={`work__project ${project.active ? "work__project--active" : ""}`}
+          class={`work__project has-arrow-title ${project.active ? "work__project--active has-arrow-title--active" : ""}`}
           data-project-id={project.id}
         >
-          <div class="work__project-title-wrapper">
-            <h3 class="work__project-title">{project.title}</h3>
-          </div>
+          <ArrowTitle
+            text={project.title}
+            headingTag="h3"
+            className="work__project-title"
+          />
 
           <div class="work__project-description">
             <p>{project.description}</p>
@@ -72,20 +76,7 @@ const projects = [
           <ul class="work__project-tags">
             {project.tags.map((tag) => (
               <li class="work__project-tag">
-                <svg
-                  width="9"
-                  height="10"
-                  viewBox="0 0 9 10"
-                  fill="none"
-                  class="work__tag-star"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3.70596 1.00568C4.02063 0.331439 4.97937 0.33144 5.29404 1.00568L6.17762 2.89892C6.26466 3.08542 6.41458 3.23534 6.60108 3.32238L8.49432 4.20596C9.16856 4.52063 9.16856 5.47937 8.49432 5.79404L6.60108 6.67762C6.41458 6.76466 6.26466 6.91458 6.17762 7.10108L5.29404 8.99432C4.97937 9.66856 4.02063 9.66856 3.70595 8.99432L2.82238 7.10108C2.73534 6.91458 2.58542 6.76466 2.39892 6.67762L0.505681 5.79404C-0.168561 5.47937 -0.16856 4.52063 0.505682 4.20595L2.39892 3.32238C2.58542 3.23534 2.73534 3.08542 2.82238 2.89892L3.70596 1.00568Z"
-                    fill="currentColor"
-                  />
-                </svg>
+                <Star class="work__tag-star" />
                 {tag}
               </li>
             ))}
@@ -95,3 +86,18 @@ const projects = [
     }
   </ul>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const projects = document.querySelectorAll(".work__project");
+
+    projects.forEach((project) => {
+      project.addEventListener("mouseenter", () => {
+        projects.forEach((p) => {
+          p.classList.remove("work__project--active", "has-arrow-title--active");
+        });
+        project.classList.add("work__project--active", "has-arrow-title--active");
+      });
+    });
+  });
+</script>
