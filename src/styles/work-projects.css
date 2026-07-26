@@ -217,6 +217,12 @@
   color: var(--color-text-muted);
 
   font-size: var(--font-size-base);
+
+  transition: color 0.2s ease;
+}
+
+.work__project--active .work__project-tag {
+  color: var(--color-text-main);
 }
 
 .work__tag-star {

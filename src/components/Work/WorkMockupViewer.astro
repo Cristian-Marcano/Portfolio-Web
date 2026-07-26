@@ -1,22 +1,89 @@
 ---
+import Hand from "../../assets/hand.svg";
+import HandShadow from "../../assets/hand-shadow.svg";
+import CornerGrid from "../../assets/corner-grid.svg";
+import TimeIllustration from "../../assets/dev-time-illustration.gif";
 import "../../styles/work-mockups.css";
 ---
 
-<div class="work__mockup-container">
-  <div class="work__mockup-wrapper">
-    
-    <!-- Base mockup display area -->
-    <div class="work__mockup-display">
-      <div class="work__mockup-screen">
-        <!-- Placeholder for the actual project screenshot -->
-        <div class="work__mockup-placeholder">
-          <span class="work__mockup-text">Hover over a project</span>
-        </div>
-      </div>
-      
-      <!-- Decorative elements to simulate a device or bento style -->
-      <div class="work__mockup-base"></div>
-    </div>
-    
+<section class="work__mockup-container" id="work-mockup-container">
+  <div class="work__hand-wrapper">
+    <Hand class="hand" />
   </div>
-</div>
+
+  <div class="work__mockup-hand">
+    <div class="work__mockup-decorative">
+      <img
+        src={TimeIllustration.src}
+        alt="Mockup-decorative"
+        class="work__decorative-img"
+      />
+    </div>
+    <div class="work__mockup-window"></div>
+    <div class="work__small-cell"></div>
+  </div>
+
+  <div class="work__mockup-picture">
+    <div class="work__hand-shadow">
+      <HandShadow class="hand-shadow" />
+    </div>
+    <div class="work__img-wrapper">
+      <img
+        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+        alt="Ecommerce Dashboard"
+        class="work__mockup-img is-active"
+        data-mockup-id="ecommerce"
+      />
+      <img
+        src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80"
+        alt="AI Code Assistant"
+        class="work__mockup-img"
+        data-mockup-id="code-assistant"
+      />
+      <img
+        src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=800&q=80"
+        alt="Finance Tracker"
+        class="work__mockup-img"
+        data-mockup-id="finance-tracker"
+      />
+      <img
+        src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80"
+        alt="Real Time Chat"
+        class="work__mockup-img"
+        data-mockup-id="real-time-chat"
+      />
+    </div>
+  </div>
+
+  <div class="work__rounder">
+    <CornerGrid class="work__rounder-path work__rounder-path--flipped" />
+    <CornerGrid class="work__rounder-path" />
+  </div>
+
+  <div class="element-below-rounder"></div>
+</section>
+
+<script>
+  // Listen for a custom event from WorkProjectList, or just use DOM observation
+  document.addEventListener("DOMContentLoaded", () => {
+    const projects = document.querySelectorAll(".work__project");
+    const mockups = document.querySelectorAll(".work__mockup-img");
+
+    projects.forEach((project) => {
+      project.addEventListener("mouseenter", () => {
+        const targetId = project.getAttribute("data-project-id");
+
+        // Hide all mockups
+        mockups.forEach((img) => img.classList.remove("is-active"));
+
+        // Show the target mockup
+        const targetMockup = document.querySelector(
+          `.work__mockup-img[data-mockup-id="${targetId}"]`,
+        );
+        if (targetMockup) {
+          targetMockup.classList.add("is-active");
+        }
+      });
+    });
+  });
+</script>

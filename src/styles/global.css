@@ -6,6 +6,10 @@
   --color-text-muted: #11232299;
   --color-bg-main: #ffffff;
 
+  --color-skin: #fecaac;
+  --color-accent-skin: #1d694b;
+  --color-dark-accent-skin: #121312;
+
   --color-rectangle-header: #006352;
 
   --color-wave-1: var(--color-rectangle-header);
@@ -14,13 +18,15 @@
   --color-wave-4: #009178;
   
   /* Border Radius */
+  --border-radius-xs: 4px;
+  --border-radius-sm: 6px;
   --border-radius-base: 9px;
-  --border-radius-sm: 4px;
   --border-radius-round: 50%;
 
   /* Spacings & Gaps */
   --spacing-xs: 0.5rem; 
-  --spacing-sm: 1rem;   
+  --spacing-sm: 1rem;
+  --spacing-base: 21px;   
   --spacing-md: 2rem;   
   --spacing-lg: 30px;
   --spacing-xl: 60px;

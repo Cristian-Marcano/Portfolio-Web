@@ -49,6 +49,8 @@
   /* Mockups side */
   position: relative;
 
+  background-color: var(--color-accent-bg);
+
   @media (width >= 768px) {
     width: calc(45.5% - var(--border-width-base));
   }
