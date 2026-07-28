@@ -7,6 +7,10 @@
   top: 0;
   z-index: 20;
 
+  /* Create a named timeline tracking this full-height container's intersection */
+  view-timeline-name: --mockup-scroll;
+  view-timeline-axis: block;
+
   background-color: var(--color-border-grid);
 }
 
@@ -28,24 +32,22 @@
 
 .hand {
   position: absolute;
-  /* top: -40px; */ /* Scroll transition with translate Y + sticky - work */
+  top: -40px; 
   right: 30px;
 
-  & g path:nth-child(1) {
-    fill: var(--color-skin);
-  }
-  
+  /* Use the named timeline from the parent */
+  animation: parallax-hand-scroll linear forwards;
+  animation-timeline: --mockup-scroll;
+  /* Range: start animating when container top hits viewport top, end when container bottom hits viewport bottom */
+  animation-range: entry 100% exit 0%;
+
+  & g path:nth-child(1) { fill: var(--color-skin); }
   & g path:nth-child(2),
   & g path:nth-child(3),
-  & g path:nth-child(4) {
-    fill: var(--color-accent-skin);
-  }
-
+  & g path:nth-child(4) { fill: var(--color-accent-skin); }
   & g path:nth-child(5),
   & g path:nth-child(6),
-  & g path:nth-child(7) {
-    fill: var(--color-dark-accent-skin);
-  }
+  & g path:nth-child(7) { fill: var(--color-dark-accent-skin); }
 }
 
 .work__mockup-hand {
@@ -78,9 +80,8 @@
 .work__decorative-img {
   width: 100%;
   height: 100%;
-  
+
   object-fit: cover;
-  /* object-position: center; */
 }
 
 .work__mockup-window {
@@ -133,7 +134,10 @@
     right: 264px;
     top: -77px;
 
-    transform: translateY(40px);
+    /* Same animation and timeline as the hand */
+    animation: parallax-hand-scroll linear forwards;
+    animation-timeline: --mockup-scroll;
+    animation-range: entry 100% exit 0%;
   }
 
   & .hand-shadow path {
@@ -169,7 +173,7 @@
   left: 0;
 
   object-fit: cover;
-  
+
   opacity: 0;
   transform: scale(0.98);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -209,4 +213,104 @@
   bottom: -20px;
   width: 100%;
   height: 20px;
+}
+
+/* -- CUSTOM CURSOR TOOLTIP -- */
+.work__hover-tooltip {
+  max-width: 180px;
+
+  /* We use margin to offset the actual pointer tip instead of transform 
+    since JS directly manipulates the top/left properties */
+  margin-top: 15px;
+  margin-left: 10px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  
+  /* Start hidden and slightly scaled down */
+  opacity: 0;
+
+  overflow: visible;
+  pointer-events: none;
+
+  transform: scale(0.8) translate(-50%, 20px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.work__hover-tooltip.is-visible {
+  opacity: 1;
+  transform: scale(1) translate(0, 0);
+}
+
+.work__tooltip-text {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 8px 16px;
+  margin: 0;
+  
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  border: 1.5px solid var(--color-border-grid);
+  border-radius: var(--border-radius-sm);
+  
+  font-family: "Stara", -apple-system, "BlinkMacSystemFont", "Segoe UI", sans-serif;
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  line-height: var(--spacing-base);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+
+  overflow: hidden;
+}
+
+.work__tooltip-marquee {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 9px;
+  
+  background-color: var(--color-accent-bg);
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-border-grid);
+  border-radius: var(--border-radius-sm);
+
+  overflow: hidden;
+}
+
+.work__tooltip-marquee-track {
+  width: max-content;
+
+  display: flex;
+  gap: var(--spacing-sm);
+
+  overflow: hidden;
+  animation: tooltip-marquee 4s linear infinite;
+}
+
+.work__tooltip-arrow {
+  width: 22px;
+  height: auto;
+
+  fill: currentColor;
+
+  transform: rotate(90deg);
+}
+
+@keyframes tooltip-marquee {
+  0% { transform: translateX(0); }
+  /* Since we duplicated the exact same 8 arrows, moving -50% creates a seamless loop */
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes parallax-hand-scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(40px); }
 }

@@ -3,6 +3,7 @@ import Hand from "../../assets/hand.svg";
 import HandShadow from "../../assets/hand-shadow.svg";
 import CornerGrid from "../../assets/corner-grid.svg";
 import TimeIllustration from "../../assets/dev-time-illustration.gif";
+import Arrow from "../../assets/arrow.svg";
 import "../../styles/work-mockups.css";
 ---
 
@@ -61,13 +62,52 @@ import "../../styles/work-mockups.css";
   </div>
 
   <div class="element-below-rounder"></div>
+
+  <!-- Custom Cursor Tooltip -->
+  <div class="work__hover-tooltip" id="work-tooltip">
+    <p class="work__tooltip-text">
+      Hover & click on
+      <br />
+      projects on the left
+    </p>
+    <div class="work__tooltip-marquee">
+      <div class="work__tooltip-marquee-track">
+        <!-- Primer set de flechas -->
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <!-- Duplicado para loop infinito -->
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <!-- Duplicado para loop infinito -->
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+        <Arrow class="work__tooltip-arrow" />
+      </div>
+    </div>
+  </div>
 </section>
 
 <script>
   // Listen for a custom event from WorkProjectList, or just use DOM observation
   document.addEventListener("DOMContentLoaded", () => {
-    const projects = document.querySelectorAll(".work__project");
-    const mockups = document.querySelectorAll(".work__mockup-img");
+    const projects =
+      document.querySelectorAll<HTMLImageElement>(".work__project");
+    const mockups =
+      document.querySelectorAll<HTMLImageElement>(".work__mockup-img");
 
     projects.forEach((project) => {
       project.addEventListener("mouseenter", () => {
@@ -85,5 +125,33 @@ import "../../styles/work-mockups.css";
         }
       });
     });
+
+    // Custom Cursor Logic
+    const tooltip = document.getElementById("work-tooltip");
+    const hoverArea = document.querySelector(".work__img-wrapper");
+
+    if (tooltip && hoverArea) {
+      let isHovering = false;
+
+      hoverArea.addEventListener("mouseenter", () => {
+        isHovering = true;
+        tooltip.classList.add("is-visible");
+      });
+
+      hoverArea.addEventListener("mouseleave", () => {
+        isHovering = false;
+        tooltip.classList.remove("is-visible");
+      });
+
+      hoverArea.addEventListener("mousemove", (e) => {
+        if (!isHovering) return;
+
+        // We use clientX/clientY relative to the viewport because the tooltip
+        // will be position: fixed
+        const mouseEvent = e as MouseEvent;
+        tooltip.style.left = `${mouseEvent.clientX}px`;
+        tooltip.style.top = `${mouseEvent.clientY}px`;
+      });
+    }
   });
 </script>

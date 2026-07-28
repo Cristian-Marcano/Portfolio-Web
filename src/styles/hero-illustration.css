@@ -4,6 +4,9 @@
   display: flex;
   flex-direction: row;
 
+  view-timeline-name: --hero-scroll;
+  view-timeline-axis: block;
+
   @media (width >= 768px) {
     height: 538px;
   }
@@ -261,4 +264,16 @@
   pointer-events: none;
   object-fit: contain;
   object-position: bottom;
+
+  /* CSS Parallax Animation */
+  animation: parallax-hero-avatar linear forwards;
+  animation-timeline: --hero-scroll;
+  /* Starts exactly when the section is at the top of the viewport (scroll 0) 
+     and ends exactly when it completely leaves the viewport */
+  animation-range: exit 0% exit 100%;
+}
+
+@keyframes parallax-hero-avatar {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(60px); }
 }
