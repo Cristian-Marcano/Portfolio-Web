@@ -1,0 +1,28 @@
+.about__block-row {
+  display: flex;
+  flex-direction: row;
+  gap: var(--border-width-base);
+}
+
+.about__block--quote {
+  padding: var(--spacing-lg);
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.about__decorative-cell {
+  width: 150px;
+  flex-shrink: 0;
+
+  background-color: var(--color-accent-bg);
+  border-radius: var(--border-radius-base);
+}
+
+@media (width < 1024px) {
+  .about__decorative-cell {
+    display: none;
+  }
+}

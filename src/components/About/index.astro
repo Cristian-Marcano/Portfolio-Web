@@ -1,0 +1,43 @@
+---
+import AboutObjective from "./AboutObjective.astro";
+import AboutDescriptive from "./AboutDescriptive.astro";
+import AboutUnderground from "./AboutUnderground.astro";
+import AboutPhotoWrapper from "./AboutPhotoWrapper.astro";
+import AboutEnjoys from "./AboutEnjoys.astro";
+import AboutHopesTo from "./AboutHopesTo.astro";
+import "../../styles/about-layout.css";
+---
+
+<section class="about" id="about">
+  <!-- Left extreme corner cell -->
+  <div class="about__corner"></div>
+
+  <!-- Middle: max-width 1400px, flex row, 1px gap -->
+  <section class="about__content">
+    <!-- TEXT COLUMN (~54.5%) — heading + objective + descriptive + underground -->
+    <section class="about__col about__col--text">
+      <h2 class="about__heading">
+        <span class="about__heading-bracket">{"<"}</span>
+        ABOUT
+        <span class="about__heading-bracket">{"/>"}</span>
+      </h2>
+
+      <AboutObjective />
+      <AboutDescriptive />
+      <AboutUnderground />
+    </section>
+
+    <!-- MEDIA COLUMN (~45.5%) — photo + resume + lists -->
+    <section class="about__col about__col--media">
+      <AboutPhotoWrapper />
+
+      <section class="about__lists-row">
+        <AboutEnjoys />
+        <AboutHopesTo />
+      </section>
+    </section>
+  </section>
+
+  <!-- Right extreme corner cell -->
+  <div class="about__corner"></div>
+</section>

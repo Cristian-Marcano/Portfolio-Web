@@ -1,0 +1,31 @@
+.about__block--descriptive {
+  padding: var(--spacing-lg);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.about__body-text {
+  margin: 0;
+
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  line-height: normal;
+  color: var(--color-text-muted);
+}
+
+/* [ ready's intro ] [ 24M ] style tags */
+.about__intro-tag {
+  color: var(--color-accent);
+  font-weight: 400;
+}
+
+/* ensure spaces around inline accent tags render correctly */
+.about__intro-tag::before {
+  content: " ";
+}
+
+.about__intro-tag::after {
+  content: " ";
+}

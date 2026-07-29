@@ -1,0 +1,125 @@
+
+.about {
+  width: 100%;
+
+  padding-bottom: var(--border-width-base);
+
+  display: flex;
+  flex-direction: row;
+  gap: var(--border-width-base);
+}
+
+.about__corner {
+  flex-grow: 1;
+
+  background-color: var(--color-bg-main);
+  border-radius: var(--border-radius-base);
+}
+
+.about__content {
+  width: 100%;
+  max-width: 1400px;
+
+  display: flex;
+  flex-direction: row;
+  gap: var(--border-width-base);
+}
+
+.about__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--border-width-base);
+}
+
+/* Text column: ~54.5% = 763/(763+636+1) ≈ 763px */
+.about__col--text {
+  width: 54.5%;
+}
+
+/* Media column: ~45.4% = 636/(763+636+1) ≈ 636px */
+.about__col--media {
+  flex: 1;
+}
+
+.about__block,
+.about__heading {
+  background-color: var(--color-bg-main);
+  border-radius: var(--border-radius-base);
+}
+
+.about__heading {
+  margin: 0;
+  padding: var(--spacing-lg);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--border-radius-sm);
+
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-main);
+  letter-spacing: normal;
+}
+
+.about__heading-bracket {
+  color: var(--color-accent);
+  font-weight: 400;
+}
+
+.about__label-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.about__icon-wrapper {
+  width: var(--spacing-base);
+  height: var(--spacing-base);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about__icon {
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+
+  line-height: 1;
+}
+
+.about__icon--accent {
+  color: var(--color-accent);
+}
+
+.about__label {
+  margin: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (width < 1024px) {
+  .about__content {
+    flex-direction: column;
+  }
+
+  .about__col--text,
+  .about__col--media {
+    width: 100%;
+  }
+}
+
+@media (width < 768px) {
+  .about__corner {
+    display: none;
+  }
+}

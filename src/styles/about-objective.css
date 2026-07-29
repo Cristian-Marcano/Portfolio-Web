@@ -1,0 +1,41 @@
+.about__block--objective {
+  padding: var(--spacing-lg);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* The big 42px objective statement */
+.about__objective-text {
+  margin: 0;
+
+  color: var(--color-text-main);
+
+  font-size: var(--font-size-h1);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.about__objective-italic {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.about__objective-comma,
+.about__objective-period {
+  color: var(--color-accent);
+}
+
+@media (width < 1024px) {
+  .about__objective-text {
+    font-size: 30px;
+  }
+}
+
+@media (width < 768px) {
+  .about__objective-text {
+    font-size: var(--font-size-h3);
+  }
+}

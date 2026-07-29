@@ -1,0 +1,44 @@
+---
+// AboutHopesTo.astro
+// List card: THINGS HE HOPES TO COMPLETE — checkbox bullets (checked/unchecked)
+import "../../styles/about-lists.css";
+
+interface Goal {
+  text: string;
+  done: boolean;
+}
+
+const goals: Goal[] = [
+  { text: "Design a VR experience",        done: true  },
+  { text: "Master Next.js",                done: true  },
+  { text: "Pursue a Master's Degree",      done: false },
+  { text: "Finish a personal side-project",done: false },
+  { text: "Learn Japanese",               done: false },
+  { text: "Read more books",              done: false },
+];
+---
+
+<div class="about__list-card">
+  <h3 class="about__list-title">THINGS HE HOPES TO COMPLETE</h3>
+  <ul class="about__list">
+    {goals.map((goal) => (
+      <li class="about__list-item">
+        <div class="about__list-icon" aria-hidden="true">
+          {goal.done ? (
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="18" height="18" rx="3" fill="rgb(0, 160, 132)"/>
+              <path d="M4 9l3.5 3.5L14 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.5" y="0.5" width="17" height="17" rx="2.5" stroke="rgba(17, 35, 34, 0.3)"/>
+            </svg>
+          )}
+        </div>
+        <p class={`about__list-text ${goal.done ? "about__list-text--checked" : ""}`}>
+          {goal.text}
+        </p>
+      </li>
+    ))}
+  </ul>
+</div>
