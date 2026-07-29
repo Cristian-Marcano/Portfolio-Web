@@ -1,15 +1,16 @@
 ---
 import Star from "../../assets/star.svg";
+import LabelRow from "../ui/LabelRow.astro";
 import "../../styles/hero-narrator-note.css";
 ---
 
-<section class="hero__narrator-note">
-  <div class="hero__narrator-header">
-    <div class="hero__narrator-icon">
-      <span aria-hidden="true">{">"}</span>
-    </div>
-    <p class="hero__narrator-title">NARRATOR'S NOTE</p>
-  </div>
+<section class="hero__narrator-note hover-group">
+  <LabelRow
+    text="NARRATOR'S NOTE"
+    isAnimated={true}
+    headingTag="h3"
+    className="hero__narrator-header"
+  />
 
   <div class="hero__narrator-spacer"></div>
 

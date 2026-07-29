@@ -1,0 +1,31 @@
+---
+// src/components/ui/LabelRow.astro
+import "../../styles/label-row.css";
+
+interface Props {
+  text: string;
+  isAnimated?: boolean;
+  accentIcon?: boolean;
+  className?: string;
+  headingTag?: "p" | "h2" | "h3" | "h4" | "h5" | "h6";
+}
+
+const { 
+  text, 
+  isAnimated = false, 
+  accentIcon = false, 
+  className = "", 
+  headingTag = "h3" 
+} = Astro.props;
+
+const HeadingTag = headingTag;
+---
+
+<header class={`label-row ${isAnimated ? 'label-row--animated' : ''} ${className}`.trim()}>
+  <div class="label-row__icon-wrapper">
+    <span class={`label-row__icon ${accentIcon ? 'label-row__icon--accent' : ''}`.trim()} aria-hidden="true">
+      {">"}
+    </span>
+  </div>
+  <HeadingTag class="label-row__text">{text}</HeadingTag>
+</header>

@@ -1,22 +1,23 @@
 ---
-// AboutObjective.astro
-// Block: > OBJECTIVE — the big 42px italic statement
+import LabelRow from "../ui/LabelRow.astro";
 import "../../styles/about-objective.css";
 ---
 
-<div class="about__block about__block--objective">
-  <div class="about__label-row">
-    <div class="about__icon-wrapper">
-      <span class="about__icon" aria-hidden="true">&gt;</span>
-    </div>
-    <h3 class="about__label">OBJECTIVE</h3>
-  </div>
+<article class="about__block about__block--objective hover-group">
+  <LabelRow
+    text="OBJECTIVE"
+    isAnimated={true}
+    headingTag="h3"
+    className="about__label-row"
+  />
   <p
     class="about__objective-text"
     aria-label="Ever since I was a kid, I knew I wanted to build things and work cross-functionally across teams."
   >
-    Ever since I was a kid<span class="about__objective-comma">,</span> I knew I
-    wanted to <em class="about__objective-italic">build things</em> and work
-    <em class="about__objective-italic">cross-functionally</em> across teams<span class="about__objective-period">.</span>
+    Ever since I was a kid<span class="about__objective-comma">,</span> I knew I wanted
+    to <em class="about__objective-italic">build things</em> and work
+    <em class="about__objective-italic">cross-functionally</em> across teams<span
+      class="about__objective-period">.</span
+    >
   </p>
-</div>
+</article>

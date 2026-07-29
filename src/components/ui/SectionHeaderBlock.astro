@@ -1,0 +1,44 @@
+---
+// src/components/ui/SectionHeaderBlock.astro
+import "../../styles/section-header-block.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  class?: string;
+}
+
+const { title, description, class: className = "" } = Astro.props;
+---
+
+<div class={`section-header-block ${className}`.trim()}>
+  <h2 class="section-header-block__title">
+    <span class="section-header-block__bracket">&lt;</span>
+    {title}
+    <span class="section-header-block__bracket">/&gt;</span>
+  </h2>
+  {description && <p class="section-header-block__desc">{description}</p>}
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const blocks = document.querySelectorAll(".section-header-block");
+    
+    if (blocks.length > 0) {
+      const onScroll = () => {
+        blocks.forEach((block) => {
+          const rect = block.getBoundingClientRect();
+          // If the block is above the middle of the viewport
+          if (rect.top < window.innerHeight / 2) {
+            block.classList.add("section-header-block--active");
+          } else {
+            block.classList.remove("section-header-block--active");
+          }
+        });
+      };
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll(); // Initial check
+    }
+  });
+</script>

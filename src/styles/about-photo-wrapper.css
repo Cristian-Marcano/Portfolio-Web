@@ -4,40 +4,13 @@
   gap: var(--border-width-base);
 }
 
-.about__lego-col {
+.about__photo-left-cell {
   width: 94px;
 
-  padding: var(--spacing-base) 0;
-
-  display: flex;
   flex-shrink: 0;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
 
   background-color: var(--color-accent-bg);
   border-radius: var(--border-radius-base);
-}
-
-.about__lego-dots {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.about__lego-dot-group {
-  display: flex;
-  flex-direction: row;
-  gap: 6px;
-}
-
-.about__lego-dot {
-  width: 30px;
-  height: 30px;
-
-  background-color: var(--color-bg-main);
-  border-radius: var(--border-radius-round);
 }
 
 /* Photo card wrapper */
@@ -145,6 +118,7 @@
 /* Small decorative right cell next to photo */
 .about__photo-right-cell {
   width: 136px;
+
   flex-shrink: 0;
 
   background-color: var(--color-accent-bg);
@@ -156,9 +130,7 @@
   padding: var(--spacing-lg);
 
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
 
   background-color: var(--color-accent-bg);
   border-radius: var(--border-radius-base);
@@ -169,7 +141,7 @@
   transition: background-color 0.25s ease;
 
   &:hover {
-    background-color: #d8f2ec;
+    background-color: var(--color-bg-main);
   }
 
   &:active {
@@ -177,17 +149,7 @@
   }
 }
 
-.about__resume-arrow {
-  width: 36px;
-  height: 30px;
 
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-
-  color: var(--color-accent);
-}
 
 .about__resume-text {
   margin: 0;

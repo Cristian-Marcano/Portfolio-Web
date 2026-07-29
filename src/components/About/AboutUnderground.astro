@@ -1,24 +1,23 @@
 ---
-// AboutUnderground.astro
-// Block: > THE UNDERGROUND MAN — quote block + decorative green side cell
+import LabelRow from "../ui/LabelRow.astro";
 import "../../styles/about-underground.css";
 ---
 
-<div class="about__block-row">
-  <div class="about__block about__block--quote">
-    <div class="about__label-row">
-      <div class="about__icon-wrapper">
-        <span class="about__icon" aria-hidden="true">&gt;</span>
-      </div>
-      <h3 class="about__label">THE UNDERGROUND MAN</h3>
-    </div>
+<section class="about__block-row">
+  <article class="about__block about__block--quote hover-group">
+    <LabelRow
+      text="THE UNDERGROUND MAN"
+      isAnimated={true}
+      headingTag="h3"
+      className="about__label-row"
+    />
     <p class="about__body-text">
       It is clear to me now that, owing to my unbounded curiosity and to the
       high standard I set for myself, I often looked at code with furious
       discontent, which verged on loathing, and so I inwardly attributed the
       same feeling to everyone's PRs.
     </p>
-  </div>
+  </article>
   <!-- Decorative green side cell (rightS2 equivalent ~150px) -->
   <div class="about__decorative-cell" aria-hidden="true"></div>
-</div>
+</section>

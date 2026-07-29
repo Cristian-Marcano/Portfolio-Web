@@ -5,6 +5,7 @@ import AboutUnderground from "./AboutUnderground.astro";
 import AboutPhotoWrapper from "./AboutPhotoWrapper.astro";
 import AboutEnjoys from "./AboutEnjoys.astro";
 import AboutHopesTo from "./AboutHopesTo.astro";
+import SectionHeaderBlock from "../ui/SectionHeaderBlock.astro";
 import "../../styles/about-layout.css";
 ---
 
@@ -16,11 +17,7 @@ import "../../styles/about-layout.css";
   <section class="about__content">
     <!-- TEXT COLUMN (~54.5%) — heading + objective + descriptive + underground -->
     <section class="about__col about__col--text">
-      <h2 class="about__heading">
-        <span class="about__heading-bracket">{"<"}</span>
-        ABOUT
-        <span class="about__heading-bracket">{"/>"}</span>
-      </h2>
+      <SectionHeaderBlock title="ABOUT" class="about__heading-container" />
 
       <AboutObjective />
       <AboutDescriptive />

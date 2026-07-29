@@ -1,6 +1,4 @@
 ---
-// AboutEnjoys.astro
-// List card: THINGS HE CURRENTLY ENJOYS — star bullets
 import "../../styles/about-lists.css";
 const items = [
   "Anime, Severance & The Office [ US ]",
@@ -12,7 +10,7 @@ const items = [
 ];
 ---
 
-<div class="about__list-card">
+<article class="about__list-card">
   <h3 class="about__list-title">THINGS HE CURRENTLY ENJOYS</h3>
   <ul class="about__list">
     {items.map((item) => (
@@ -30,4 +28,4 @@ const items = [
       </li>
     ))}
   </ul>
-</div>
+</article>

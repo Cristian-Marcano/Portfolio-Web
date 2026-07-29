@@ -2,6 +2,7 @@
 import CornerGrid from "../../assets/corner-grid.svg";
 import Star from "../../assets/star.svg";
 import ArrowTitle from "../ui/ArrowTitle.astro";
+import SectionHeaderBlock from "../ui/SectionHeaderBlock.astro";
 import "../../styles/work-projects.css";
 
 const projects = [
@@ -40,16 +41,11 @@ const projects = [
 
 <section class="work__projects-container">
   <header class="work__projects-header">
-    <div class="work__projects-heading">
-      <h2 class="work__heading-wrapper">
-        <span class="work__heading-bracket">{"<"}</span>
-        WORKS
-        <span class="work__heading-bracket">{"/>"}</span>
-      </h2>
-      <p class="work__heading-desc">
-        A collection of Cristian's curated works. Choose one below to view.
-      </p>
-    </div>
+    <SectionHeaderBlock
+      title="WORKS"
+      description="A collection of Cristian's curated works. Choose one below to view."
+      class="work__projects-heading"
+    />
     <div class="work__projects-rounder">
       <CornerGrid class="work__rounder-path work__rounder-path--flipped" />
       <CornerGrid class="work__rounder-path" />
@@ -109,23 +105,5 @@ const projects = [
       });
     });
 
-    // Sticky Header Accent Logic
-    const header = document.querySelector(".work__projects-header");
-    const heading = document.querySelector(".work__projects-heading");
-
-    if (header && heading) {
-      const onScroll = () => {
-        const rect = header.getBoundingClientRect();
-        // If the header is below the middle of the viewport
-        if (rect.top < window.innerHeight / 2) {
-          heading.classList.add("work__projects-heading--active");
-        } else {
-          heading.classList.remove("work__projects-heading--active");
-        }
-      };
-
-      window.addEventListener("scroll", onScroll, { passive: true });
-      onScroll(); // Initial check
-    }
   });
 </script>

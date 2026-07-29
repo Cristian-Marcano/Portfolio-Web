@@ -1,0 +1,73 @@
+/* src/styles/section-header-block.css */
+.section-header-block {
+  box-sizing: border-box;
+  height: 100%;
+
+  padding: var(--spacing-lg);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--font-size-base);
+
+  background-color: var(--color-accent-bg);
+  border-radius: var(--border-radius-base);
+
+  transition: background-color 0.4s ease-in;
+}
+
+.section-header-block--active {
+  background-color: var(--color-bg-main);
+}
+
+/* Title wrapper customization */
+.section-header-block__title {
+  margin: 0;
+  padding: 0;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--border-radius-sm);
+
+  font-size: var(--font-size-lg);
+  letter-spacing: normal;
+  
+  color: var(--color-accent);
+  font-weight: 500;
+  font-family: 'Stara', 'BlinkMacSystemFont', 'Segoe UI', sans-serif;
+  
+  transition: color 0.4s ease;
+}
+
+.section-header-block--active .section-header-block__title {
+  color: var(--color-text-main);
+}
+
+/* Bracket animation */
+.section-header-block__bracket {
+  color: var(--color-accent);
+  font-weight: 400;
+
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: color 0.4s ease-in, width 0.3s ease-out, opacity 0.2s ease-out;
+}
+
+.section-header-block--active .section-header-block__bracket {
+  width: auto;
+  opacity: 1;
+}
+
+/* Description styles */
+.section-header-block__desc {
+  margin: 0;
+  color: var(--color-accent);
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  transition: color 0.4s ease;
+}
+
+.section-header-block--active .section-header-block__desc {
+  color: var(--color-text-muted);
+}

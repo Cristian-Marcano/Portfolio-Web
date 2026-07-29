@@ -3,13 +3,13 @@ import Arrow from "../../assets/arrow.svg";
 import "../../styles/arrow-title.css";
 
 interface Props {
-  text: string;
-  headingTag?: "h2" | "h3" | "h4" | "h5" | "h6";
+  text?: string;
+  headingTag?: "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "div" | "span";
   className?: string;
   containerClass?: string;
 }
 
-const { text, headingTag = "h3", className = "", containerClass = "" } = Astro.props;
+const { text = "", headingTag = "h3", className = "", containerClass = "" } = Astro.props;
 const HeadingTag = headingTag;
 ---
 
@@ -20,7 +20,7 @@ const HeadingTag = headingTag;
   </div>
 
   <HeadingTag class={`arrow-title__text ${className}`}>
-    {text}
+    {Astro.slots.has('default') ? <slot /> : text}
   </HeadingTag>
 
   <!-- Hidden Arrow for symmetry -->
