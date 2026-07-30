@@ -1,23 +1,21 @@
 ---
 import linkedin from "../assets/linkedin.svg";
 import email from "../assets/email.svg";
-import instagram from "../assets/instagram.svg";
+import github from "../assets/github.svg";
 import resume from "../assets/resume.svg";
 import "../styles/header.css";
 
-// Header component mimicking kashyaprayas.com using Tailwind CSS
-// Using the "gap borders" technique: transparent gaps and rounded corners to reveal the parent background
 const navLinks = [
-  { name: "HOME", path: "/", active: true },
-  { name: "WORK", path: "/work", active: false },
-  { name: "ABOUT", path: "/about", active: false },
-  { name: "CONTACT", path: "/contact", active: false },
+  { name: "HOME", path: "#homer", active: true },
+  { name: "WORK", path: "#work", active: false },
+  { name: "ABOUT", path: "#about", active: false },
+  { name: "CONTACT", path: "#contact", active: false },
 ];
 
 const socialLinks = [
   {
     name: "LinkedIn",
-    url: "https://linkedin.com",
+    url: "https://www.linkedin.com/in/cristian-ram%C3%B3n-marcano-mirabal-379782278/",
     icon: linkedin,
   },
   {
@@ -26,9 +24,9 @@ const socialLinks = [
     icon: email,
   },
   {
-    name: "Instagram",
-    url: "https://instagram.com",
-    icon: instagram,
+    name: "GitHub",
+    url: "https://github.com/Cristian-Marcano",
+    icon: github,
   },
   {
     name: "Resume",

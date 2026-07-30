@@ -67,11 +67,6 @@
   &:active .site-footer__social-icon {
     transform: scale(0.95);
   }
-
-  & svg {
-    width: 14px;
-    height: 14px;
-  }
 }
 
 .site-footer__social-icon {
