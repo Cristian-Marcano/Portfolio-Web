@@ -1,0 +1,93 @@
+---
+import linkedin from "../assets/linkedin.svg";
+import email from "../assets/email.svg";
+import instagram from "../assets/instagram.svg";
+import resume from "../assets/resume.svg";
+import "../styles/footer.css";
+
+const navLinks = [
+  { name: "HOME", href: "#HOME" },
+  { name: "WORK", href: "#WORK" },
+  { name: "ABOUT", href: "#ABOUT" },
+  { name: "2024 SITE", href: "https://cristian-marcano.github.io" },
+];
+
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    href: "https://linkedin.com/in/cristian-marcano",
+    icon: linkedin,
+  },
+  { name: "Email", href: "mailto:cristianmm.1112@gmail.com", icon: email },
+  { name: "Instagram", href: "https://instagram.com", icon: instagram },
+  { name: "Resume", href: "#", icon: resume },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__corner" aria-hidden="true"></div>
+
+  <section class="site-footer__body">
+    <!-- Left column: social icon links (mirrors header) -->
+    <nav class="site-footer__social-nav" aria-label="Social links">
+      {
+        socialLinks.map((link) => (
+          <a
+            href={link.href}
+            target={link.href.startsWith("mailto") ? undefined : "_blank"}
+            rel="noopener noreferrer"
+            aria-label={link.name}
+            class="site-footer__social-link"
+          >
+            <span class="site-footer__social-icon">
+              <link.icon aria-hidden="true" />
+            </span>
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Right column: nav links row + main info block -->
+    <div class="site-footer__right">
+      <!-- Nav links row (mirrors header nav) -->
+      <nav class="site-footer__nav" aria-label="Footer navigation">
+        {
+          navLinks.map((link) => (
+            <a href={link.href} class="site-footer__nav-link">
+              <span class="site-footer__nav-text">
+                <span class="site-footer__nav-bracket" aria-hidden="true">
+                  &lt;
+                </span>
+                {link.name}
+                <span class="site-footer__nav-bracket" aria-hidden="true">
+                  /&gt;
+                </span>
+              </span>
+            </a>
+          ))
+        }
+        <!-- Filler to stretch last nav items -->
+        <div class="site-footer__nav-filler" aria-hidden="true"></div>
+      </nav>
+
+      <!-- Main info block: copyright + La Fin -->
+      <div class="site-footer__info">
+        <div class="site-footer__meta">
+          <p class="site-footer__copyright">
+            CRISTIAN MARCANO &copy; {currentYear}
+          </p>
+          <p class="site-footer__tagline">ALL LEFTS UNRESERVED</p>
+        </div>
+        <p class="site-footer__fin" aria-hidden="true">
+          La <span class="site-footer__fin-italic">Fin</span><span
+            class="site-footer__fin-dot">.</span
+          >
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="site-footer__corner" aria-hidden="true"></div>
+</footer>
