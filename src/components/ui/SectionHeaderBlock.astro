@@ -1,5 +1,4 @@
 ---
-// src/components/ui/SectionHeaderBlock.astro
 import "../../styles/section-header-block.css";
 
 interface Props {
@@ -23,7 +22,7 @@ const { title, description, class: className = "" } = Astro.props;
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const blocks = document.querySelectorAll(".section-header-block");
-    
+
     if (blocks.length > 0) {
       const onScroll = () => {
         blocks.forEach((block) => {

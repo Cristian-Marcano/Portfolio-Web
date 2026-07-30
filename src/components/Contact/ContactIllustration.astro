@@ -1,0 +1,25 @@
+---
+import illustration from "../../assets/9s-dev-green.webp";
+import "../../styles/contact-illustration.css";
+---
+
+<section class="contact__illustration">
+  <!-- Wave background (same pattern as HeroIllustrationColumn) -->
+  <div class="contact__waves" aria-hidden="true">
+    <div class="contact__wave contact__wave--1"></div>
+    <div class="contact__wave contact__wave--2"></div>
+    <div class="contact__wave contact__wave--3"></div>
+    <div class="contact__wave contact__wave--4"></div>
+  </div>
+
+  <!-- Illustration -->
+  <div class="contact__illustration-wrapper">
+    <img
+      src={illustration.src}
+      alt="9S illustration"
+      class="contact__illustration-img"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+</section>

@@ -1,0 +1,71 @@
+.contact__message {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: var(--spacing-lg);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+
+  background-color: var(--color-bg-main);
+  border-radius: var(--border-radius-base);
+}
+
+/* ─── UNMUTE TAG ─────────────────────────────────────────── */
+.contact__unmute-label {
+  margin: 0;
+}
+
+.contact__unmute-tag {
+  color: var(--color-accent);
+
+  font-size: var(--font-size-h3);
+  font-weight: 400;
+}
+
+/* ─── ANIMATED TITLE ─────────────────────────────────────── */
+.contact__message-title {
+  margin: 0;
+
+  color: var(--color-text-main);
+
+  font-size: var(--font-size-h2);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.contact__word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition-delay: var(--word-delay, 0ms);
+}
+
+.contact__message--visible .contact__word {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── DESCRIPTION ────────────────────────────────────────── */
+.contact__description {
+  margin: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (width < 768px) {
+  .contact__message-title {
+    font-size: var(--font-size-h3);
+  }
+
+  .contact__message {
+    gap: var(--spacing-md);
+  }
+}

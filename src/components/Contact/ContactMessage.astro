@@ -1,0 +1,38 @@
+---
+import "../../styles/contact-message.css";
+---
+
+<article class="contact__message">
+  <h3 class="contact__unmute-label">
+    <span class="contact__unmute-tag">[ Unmutes ]</span>
+  </h3>
+  <h2 class="contact__message-title" aria-label="Nothing from my side ..">
+    <span class="contact__word" style="--word-delay: 0ms">Nothing</span>{" "}
+    <span class="contact__word" style="--word-delay: 80ms">from</span>{" "}
+    <span class="contact__word" style="--word-delay: 160ms">my</span>{" "}
+    <span class="contact__word" style="--word-delay: 240ms">side</span>{" "}
+    <span class="contact__word" style="--word-delay: 320ms">..</span>
+  </h2>
+  <p class="contact__description">
+    I'm always up for a chat, about the latest tech, design philosophy, or your
+    next project. You can reach me at..
+  </p>
+</article>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const message = document.querySelector(".contact__message");
+    if (!message) return;
+
+    const onScroll = () => {
+      const rect = message.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.85) {
+        message.classList.add("contact__message--visible");
+        window.removeEventListener("scroll", onScroll);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // Initial check
+  });
+</script>

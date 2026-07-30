@@ -1,0 +1,46 @@
+.contact__email-link {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: var(--spacing-lg);
+
+  display: flex;
+  align-items: center;
+
+  background-color: var(--color-accent-bg);
+  border-radius: var(--border-radius-base);
+
+  text-decoration: none;
+  color: var(--color-text-main);
+
+  transition: background-color 0.25s ease;
+
+  &:hover {
+    background-color: var(--color-bg-main);
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
+}
+
+.contact__email-text {
+  margin: 0;
+
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+  color: var(--color-text-main);
+  letter-spacing: -0.01em;
+}
+
+.contact__email-highlight {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (width < 768px) {
+  .contact__email-text {
+    font-size: var(--font-size-lg);
+  }
+}

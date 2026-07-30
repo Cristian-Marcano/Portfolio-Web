@@ -1,0 +1,27 @@
+---
+import SectionHeaderBlock from "../ui/SectionHeaderBlock.astro";
+import ContactMessage from "./ContactMessage.astro";
+import ContactEmailLink from "./ContactEmailLink.astro";
+import ContactIllustration from "./ContactIllustration.astro";
+import "../../styles/contact-layout.css";
+---
+
+<section id="CONTACT" class="contact" aria-label="Contact">
+  <div class="contact__corner" aria-hidden="true"></div>
+
+  <div class="contact__body">
+    <!-- Left: text column -->
+    <section class="contact__content">
+      <SectionHeaderBlock title="CONTACT" class="contact__heading" />
+      <ContactMessage />
+      <ContactEmailLink />
+    </section>
+
+    <!-- Right: illustration column -->
+    <section class="contact__media">
+      <ContactIllustration />
+    </section>
+  </div>
+
+  <div class="contact__corner" aria-hidden="true"></div>
+</section>
