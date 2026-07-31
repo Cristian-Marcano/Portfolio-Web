@@ -52,6 +52,28 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+  color-scheme: var(--color-accent);
+  scrollbar-gutter: stable;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent);
+  border-radius: var(--border-radius-base);
+  border: 3px solid var(--color-border-grid);
+}
+
 body {
   width: 100%;
   min-height: 100vh;

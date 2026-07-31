@@ -1,39 +1,6 @@
 ---
-import linkedin from "../assets/linkedin.svg";
-import email from "../assets/email.svg";
-import github from "../assets/github.svg";
-import resume from "../assets/resume.svg";
 import "../styles/header.css";
-
-const navLinks = [
-  { name: "HOME", path: "#homer", active: true },
-  { name: "WORK", path: "#work", active: false },
-  { name: "ABOUT", path: "#about", active: false },
-  { name: "CONTACT", path: "#contact", active: false },
-];
-
-const socialLinks = [
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/cristian-ram%C3%B3n-marcano-mirabal-379782278/",
-    icon: linkedin,
-  },
-  {
-    name: "Email",
-    url: "mailto:hi@example.com",
-    icon: email,
-  },
-  {
-    name: "GitHub",
-    url: "https://github.com/Cristian-Marcano",
-    icon: github,
-  },
-  {
-    name: "Resume",
-    url: "#",
-    icon: resume,
-  },
-];
+import { HEADER_NAV_LINKS, SOCIAL_LINKS } from "../data/site-config";
 ---
 
 <header class="site-header">
@@ -45,7 +12,7 @@ const socialLinks = [
     <!-- Main navigation (Left Column - 2/3) -->
     <nav class="site-header__main-nav" aria-label="Main navigation">
       {
-        navLinks.map((link) => (
+        HEADER_NAV_LINKS.map((link) => (
           <a
             href={link.path}
             class={`site-header__nav-link ${link.active ? "site-header__nav-link--active" : ""}`}
@@ -72,7 +39,7 @@ const socialLinks = [
     <div class="site-header__social-container">
       <nav class="site-header__social-nav" aria-label="Social links">
         {
-          socialLinks.map((link) => (
+          SOCIAL_LINKS.map((link) => (
             <a
               href={link.url}
               target="_blank"

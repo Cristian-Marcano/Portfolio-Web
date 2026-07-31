@@ -15,8 +15,8 @@ import "../../styles/hero-text.css";
 
   <!-- Intro Paragraph -->
   <h2 class="hero__intro">
-    Hola! Soy <span class="hero__intro-highlight">Cristian Marcano.</span> Texto
-    de presentación. I als- <span class="hero__intro-muted">[ muted ]</span>
+    Hola! Soy <span class="hero__intro-highlight">Cristian Marcano.</span> Texto de
+    presentación. I als- <span class="hero__intro-muted">[ muted ]</span>
   </h2>
 
   <!-- Bottom Row: Narrator & Time -->
@@ -32,9 +32,10 @@ import "../../styles/hero-text.css";
         <Star />
       </div>
       <h3 class="hero__time">
-        LOCAL TIME <span class="hero__time-value">05:10</span>
+        LOCAL TIME
+        <span class="hero__time-value" id="local-time-value"> 00:00</span>
       </h3>
-      <h3 class="hero__time-zone">GMT +0530</h3>
+      <h3 class="hero__time-zone">UTC -04</h3>
     </div>
   </footer>
 
@@ -47,3 +48,27 @@ import "../../styles/hero-text.css";
     />
   </div>
 </article>
+
+<script>
+  function updateTime() {
+    const timeElement = document.getElementById("local-time-value");
+    if (!timeElement) return;
+
+    // Get time in Caracas, Venezuela (UTC-4)
+    const options: Intl.DateTimeFormatOptions = {
+      timeZone: "America/Caracas",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    };
+
+    const formatter = new Intl.DateTimeFormat("en-US", options);
+    timeElement.textContent = formatter.format(new Date());
+  }
+
+  // Update immediately
+  updateTime();
+
+  // Update every second to catch minute changes precisely
+  setInterval(updateTime, 1000);
+</script>

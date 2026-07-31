@@ -4,39 +4,10 @@ import Star from "../../assets/star.svg";
 import ArrowTitle from "../ui/ArrowTitle.astro";
 import SectionHeaderBlock from "../ui/SectionHeaderBlock.astro";
 import "../../styles/work-projects.css";
+import { PROJECTS } from "../../data/projects";
+import type { Language } from "../../data/projects";
 
-const projects = [
-  {
-    id: "ecommerce",
-    title: "ECOMMERCE DASHBOARD",
-    description:
-      "A modern dashboard for tracking sales and managing inventory.",
-    tags: ["Web App", "React", "Next.js"],
-    active: true,
-  },
-  {
-    id: "code-assistant",
-    title: "AI CODE ASSISTANT",
-    description:
-      "An intelligent assistant for accelerating developer workflows.",
-    tags: ["AI Integrated", "Web App", "TypeScript"],
-    active: false,
-  },
-  {
-    id: "finance-tracker",
-    title: "FINANCE TRACKER",
-    description: "Personal finance application with real-time analytics.",
-    tags: ["Mobile App", "React Native", "Firebase"],
-    active: false,
-  },
-  {
-    id: "real-time-chat",
-    title: "REAL-TIME CHAT",
-    description: "A scalable chat application with WebSocket integration.",
-    tags: ["Web App", "Node.js", "Socket.io"],
-    active: false,
-  },
-];
+const lang: Language = "es"; // Podrás pasarlo como prop luego: const { lang = "es" } = Astro.props;
 ---
 
 <section class="work__projects-container">
@@ -54,19 +25,19 @@ const projects = [
 
   <ul class="work__projects-list">
     {
-      projects.map((project) => (
+      PROJECTS.map((project) => (
         <li
           class={`work__project has-arrow-title ${project.active ? "work__project--active has-arrow-title--active" : ""}`}
           data-project-id={project.id}
         >
           <ArrowTitle
-            text={project.title}
+            text={project.title[lang]}
             headingTag="h3"
             className="work__project-title"
           />
 
           <div class="work__project-description">
-            <p>{project.description}</p>
+            <p>{project.description[lang]}</p>
           </div>
 
           <ul class="work__project-tags">

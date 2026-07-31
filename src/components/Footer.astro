@@ -1,27 +1,6 @@
 ---
-import linkedin from "../assets/linkedin.svg";
-import email from "../assets/email.svg";
-import github from "../assets/github.svg";
-import resume from "../assets/resume.svg";
 import "../styles/footer.css";
-
-const navLinks = [
-  { name: "HOME", href: "#home" },
-  { name: "WORK", href: "#work" },
-  { name: "ABOUT", href: "#about" },
-  { name: "2024 SITE", href: "https://cristian-marcano.github.io" },
-];
-
-const socialLinks = [
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/cristian-ram%C3%B3n-marcano-mirabal-379782278/",
-    icon: linkedin,
-  },
-  { name: "Email", href: "mailto:cristianmm.1112@gmail.com", icon: email },
-  { name: "GitHub", href: "https://github.com/Cristian-Marcano", icon: github },
-  { name: "Resume", href: "#", icon: resume },
-];
+import { FOOTER_NAV_LINKS, SOCIAL_LINKS } from "../data/site-config";
 
 const currentYear = new Date().getFullYear();
 ---
@@ -33,10 +12,10 @@ const currentYear = new Date().getFullYear();
     <!-- Left column: social icon links (mirrors header) -->
     <nav class="site-footer__social-nav" aria-label="Social links">
       {
-        socialLinks.map((link) => (
+        SOCIAL_LINKS.map((link) => (
           <a
-            href={link.href}
-            target={link.href.startsWith("mailto") ? undefined : "_blank"}
+            href={link.url}
+            target={link.url.startsWith("mailto") ? undefined : "_blank"}
             rel="noopener noreferrer"
             aria-label={link.name}
             class="site-footer__social-link"
@@ -54,7 +33,7 @@ const currentYear = new Date().getFullYear();
       <!-- Nav links row (mirrors header nav) -->
       <nav class="site-footer__nav" aria-label="Footer navigation">
         {
-          navLinks.map((link) => (
+          FOOTER_NAV_LINKS.map((link) => (
             <a href={link.href} class="site-footer__nav-link">
               <span class="site-footer__nav-text">
                 <span class="site-footer__nav-bracket" aria-hidden="true">
