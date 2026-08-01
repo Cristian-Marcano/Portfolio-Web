@@ -15,6 +15,10 @@ import NumberEight from "../../assets/number-8.svg";
 import NumberNine from "../../assets/number-9.svg";
 import DigitanAgency from "../../assets/digitan-agency.webp";
 import "../../styles/hero-recent-work.css";
+import { HERO_CONTENT } from "../../data/hero";
+import type { Language } from "../../data/hero";
+
+const lang: Language = "es";
 
 const numberMap = {
   "0": NumberZero,
@@ -53,14 +57,14 @@ const expYearsDigits = expYears.toString().split("");
   <!-- LEFT (Top in this column): Metrics -->
   <article class="hero__metrics-cell">
     <div class="hero__recent-metric-item">
-      <h4 class="hero__recent-label">Projects Developed</h4>
+      <h4 class="hero__recent-label">{HERO_CONTENT.recentWork.metrics.projects[lang]}</h4>
       <div class="hero__recent-number">
         <NumberOne />
         <NumberSix />
       </div>
     </div>
     <div class="hero__recent-metric-item">
-      <h4 class="hero__recent-label">Years Experience</h4>
+      <h4 class="hero__recent-label">{HERO_CONTENT.recentWork.metrics.experience[lang]}</h4>
       <div class="hero__recent-number">
         {showPlus && <Plus />}
         {
@@ -75,13 +79,13 @@ const expYearsDigits = expYears.toString().split("");
 
   <!-- LEFT (Bottom in this column): Recent Work Thumbnail & Info -->
   <article class="hero__recent-project-cell has-arrow-title">
-    <h4 class="hero__recent-header">RECENT WORK</h4>
+    <h4 class="hero__recent-header">{HERO_CONTENT.recentWork.header[lang]}</h4>
 
     <div class="hero__recent-img-wrapper">
       <div class="hero__recent-img-container">
         <img
           src={DigitanAgency.src}
-          alt="Digitan Agency"
+          alt={HERO_CONTENT.recentWork.project.title}
           class="hero__recent-img"
         />
       </div>
@@ -89,14 +93,13 @@ const expYearsDigits = expYears.toString().split("");
 
     <div class="hero__recent-info">
       <ArrowTitle
-        text="DIGITAN AGENCY"
+        text={HERO_CONTENT.recentWork.project.title}
         headingTag="h3"
         className="hero__recent-title"
       />
 
       <p class="hero__recent-description">
-        Agencia de servicios digitales especializada en marketing y desarrollo
-        web, con enfoque en el crecimiento de pequeñas empresas.
+        {HERO_CONTENT.recentWork.project.description[lang]}
       </p>
     </div>
   </article>

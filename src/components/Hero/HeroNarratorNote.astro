@@ -2,11 +2,15 @@
 import Star from "../../assets/star.svg";
 import LabelRow from "../ui/LabelRow.astro";
 import "../../styles/hero-narrator-note.css";
+import { HERO_CONTENT } from "../../data/hero";
+import type { Language } from "../../data/hero";
+
+const lang: Language = "es";
 ---
 
 <section class="hero__narrator-note hover-group">
   <LabelRow
-    text="NARRATOR'S NOTE"
+    text={HERO_CONTENT.narratorNote.label[lang]}
     isAnimated={true}
     headingTag="h3"
     className="hero__narrator-header"
@@ -15,9 +19,7 @@ import "../../styles/hero-narrator-note.css";
   <div class="hero__narrator-spacer"></div>
 
   <h3 class="hero__narrator-text">
-    For the past few years, Cristian has immersed himself in the world of web
-    development, nurturing his dream of becoming a leading software engineer. He
-    is passionate about building intuitive and scalable applications.
+    {HERO_CONTENT.narratorNote.text[lang]}
   </h3>
 
   <div class="hero__narrator-stars">

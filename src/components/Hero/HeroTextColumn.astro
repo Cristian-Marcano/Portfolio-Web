@@ -2,28 +2,34 @@
 import myAvatarGif from "../../assets/MyAvatarForMyWebsite.gif";
 import Star from "../../assets/star.svg";
 import "../../styles/hero-text.css";
+import { HERO_CONTENT } from "../../data/hero";
+import type { Language } from "../../data/hero";
+
+const lang: Language = "es";
 ---
 
 <article class="hero__text-column">
   <!-- Title -->
   <h1 class="hero__title">
-    Si puedes <span class="hero__title-accent">imaginarlo</span>, puedes
+    {HERO_CONTENT.textColumn.title.line1[lang]}<span class="hero__title-accent">{HERO_CONTENT.textColumn.title.accent1[lang]}</span>{HERO_CONTENT.textColumn.title.line2[lang]}
     <br class="hero__title-break" />
-    <span class="hero__title-accent">programarlo</span>
+    <span class="hero__title-accent">{HERO_CONTENT.textColumn.title.accent2[lang]}</span>
     <span class="hero__title-dot">.</span>
   </h1>
 
   <!-- Intro Paragraph -->
   <h2 class="hero__intro">
-    Hola! Soy <span class="hero__intro-highlight">Cristian Marcano.</span> Texto de
-    presentación. I als- <span class="hero__intro-muted">[ muted ]</span>
+    {HERO_CONTENT.textColumn.intro.greeting[lang]}<span class="hero__intro-highlight">
+      {HERO_CONTENT.textColumn.intro.name}
+    </span>
+    {HERO_CONTENT.textColumn.intro.description[lang]}<span class="hero__intro-muted">{HERO_CONTENT.textColumn.intro.muted[lang]}</span>
   </h2>
 
   <!-- Bottom Row: Narrator & Time -->
   <footer class="hero__footer">
     <h2 class="hero__narrator">
-      <strong class="hero__narrator-highlight">Narrator: </strong>
-      This is the loud version of him
+      <strong class="hero__narrator-highlight">{HERO_CONTENT.textColumn.narrator.label[lang]}</strong>
+      {HERO_CONTENT.textColumn.narrator.text[lang]}
       <span class="hero__cursor">▌</span>
     </h2>
 
@@ -32,7 +38,7 @@ import "../../styles/hero-text.css";
         <Star />
       </div>
       <h3 class="hero__time">
-        LOCAL TIME
+        {HERO_CONTENT.textColumn.timeLabel[lang]}
         <span class="hero__time-value" id="local-time-value"> 00:00</span>
       </h3>
       <h3 class="hero__time-zone">UTC -04</h3>
