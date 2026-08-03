@@ -1,4 +1,3 @@
-// src/data/about.ts
 export type Language = "en" | "es";
 
 export const ABOUT_SECTION = {
@@ -28,10 +27,10 @@ export const ABOUT_SECTION = {
       age: { es: "[ 24 años ]", en: "[ 24 M ]" },
       birthplace: { es: "[ nacido ahí ]", en: "[ born there ]" },
     },
-    // body: {
-    //   es: `Es Cristian Marcano [ 24 M ], Ingeniero de Software por oficio y solucionador de problemas por naturaleza. Radicado en Venezuela [ nacido ahí ]. Le importan mucho las cosas que la mayoría ni notaría. A veces demasiado. Pero por eso mismo los productos que moldea se sienten naturales y tienen sentido rápidamente.\n\nCon formación en ciencias de la computación y arquitectura de software, trabaja cómodamente donde la tecnología se encuentra con la creatividad — lógica de un lado, intuición del otro.\n\nAhora mismo, lidera el desarrollo web y la estrategia de ingeniería para un conjunto de aplicaciones digitales, construyendo cosas que son intuitivas para los usuarios y mantenibles para los desarrolladores.`,
-    //   en: `He's Cristian Marcano [ 24 M ], Software Engineer by trade and professional problem-solver by nature. Based in Venezuela [ born there ]. He cares a lot about things most people won't even notice. Sometimes a little too much. But that's also why the products he shapes feel effortless and make sense fast.\n\nWith a background in computer science and software architecture, he works comfortably where technology meets creativity — logic on one side, intuition on the other.\n\nRight now, he's leading web development & engineering strategy for a suite of digital applications, building things that are both intuitive for users and maintainable for developers.`,
-    // },
+    body: {
+      es: `Es Cristian Marcano [ 24 años ], Ingeniero de Software por oficio y solucionador de problemas por naturaleza. Vive en Venezuela [ nacido ahí ]. Le importan mucho las cosas que la mayoría ni notaría. A veces demasiado. Pero por eso mismo los productos que moldea se sienten naturales y tienen sentido rápidamente.\n\nCon formación en informatica y arquitectura de software, trabaja cómodamente donde la tecnología se encuentra con la creatividad — lógica de un lado, intuición del otro.\n\nAhora mismo, lidera el desarrollo web y la estrategia de ingeniería para un conjunto de aplicaciones digitales, construyendo cosas que son intuitivas para los usuarios y mantenibles para los desarrolladores.`,
+      en: `He's Cristian Marcano [ 24 M ], Software Engineer by trade and professional problem-solver by nature. Lives in Venezuela [ born there ]. He cares a lot about things most people won't even notice. Sometimes a little too much. But that's also why the products he shapes feel effortless and make sense fast.\n\nWith a background in computer science and software architecture, he works comfortably where technology meets creativity — logic on one side, intuition on the other.\n\nRight now, he's leading web development & engineering strategy for a suite of digital applications, building things that are both intuitive for users and maintainable for developers.`,
+    },
   },
 
   // ─── AboutUnderground → Hard Skills ──────────────────

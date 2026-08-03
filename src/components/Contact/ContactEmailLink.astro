@@ -1,14 +1,23 @@
 ---
 import ArrowTitle from "../ui/ArrowTitle.astro";
 import "../../styles/contact-email-link.css";
+import { CONTACT_SECTION } from "../../data/contact";
+import type { Language } from "../../data/contact";
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = CONTACT_SECTION.email;
 ---
 
 <a
-  href="mailto:crist0.marcano@gmail.com"
-  aria-label="Email Cristian at crist0.marcano@gmail.com"
+  href={t.href}
+  aria-label={t.ariaLabel[lang]}
   class="contact__email-link has-arrow-title"
 >
   <ArrowTitle headingTag="p" className="contact__email-text">
-    CRISTIANMM.1112<span class="contact__email-highlight">@GMAIL.COM</span>
+    {t.address}<span class="contact__email-highlight">{t.domain}</span>
   </ArrowTitle>
 </a>

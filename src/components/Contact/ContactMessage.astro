@@ -1,21 +1,30 @@
 ---
 import "../../styles/contact-message.css";
+import { CONTACT_SECTION } from "../../data/contact";
+import type { Language } from "../../data/contact";
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = CONTACT_SECTION.message;
 ---
 
 <article class="contact__message">
   <h3 class="contact__unmute-label">
-    <span class="contact__unmute-tag">[ Unmutes ]</span>
+    <span class="contact__unmute-tag">{t.unmuteLabel[lang]}</span>
   </h3>
-  <h2 class="contact__message-title" aria-label="Nothing from my side ..">
-    <span class="contact__word" style="--word-delay: 0ms">Nothing</span>{" "}
-    <span class="contact__word" style="--word-delay: 80ms">from</span>{" "}
-    <span class="contact__word" style="--word-delay: 160ms">my</span>{" "}
-    <span class="contact__word" style="--word-delay: 240ms">side</span>{" "}
-    <span class="contact__word" style="--word-delay: 320ms">..</span>
+  <h2 class="contact__message-title" aria-label={t.titleAriaLabel[lang]}>
+    {t.titleWords[lang].map((word, i) => (
+      <>
+        <span class="contact__word" style={`--word-delay: ${i * 80}ms`}>{word}</span>
+        {i < t.titleWords[lang].length - 1 && " "}
+      </>
+    ))}
   </h2>
   <p class="contact__description">
-    I'm always up for a chat, about the latest tech, design philosophy, or your
-    next project. You can reach me at..
+    {t.description[lang]}
   </p>
 </article>
 
