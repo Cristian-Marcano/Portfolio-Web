@@ -1,4 +1,3 @@
-// src/data/hero.ts
 export type Language = "en" | "es";
 
 export const HERO_CONTENT = {
@@ -35,6 +34,9 @@ export const HERO_CONTENT = {
     header: { es: "TRABAJO RECIENTE", en: "RECENT WORK" },
     project: {
       title: "DIGITAN AGENCY", // Generalmente los nombres propios no se traducen
+      role: { es: "Ingeniero de Software Junior", en: "Junior Software Engineer" },
+      modality: { es: "Remoto", en: "Remote" },
+      period: { es: "Mayo 2025 — Julio 2026", en: "May 2025 — July 2026" },
       description: {
         es: "Agencia de servicios digitales especializada en marketing y desarrollo web, con enfoque en el crecimiento de pequeñas empresas.",
         en: "Digital services agency specialized in marketing and web development, focused on small business growth.",

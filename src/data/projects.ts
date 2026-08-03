@@ -4,6 +4,17 @@ import Reporter from "../assets/ferrominera-java-swing.webp";
 
 export type Language = "en" | "es";
 
+export const WORK_SECTION = {
+  title: {
+    es: "WORKS",
+    en: "WORKS",
+  },
+  description: {
+    es: "Una colección de los trabajos seleccionados de Cristian. Elige uno para verlo.",
+    en: "A collection of Cristian's curated works. Choose one below to view.",
+  },
+};
+
 export const PROJECTS = [
   {
     id: "rouletteCasino",

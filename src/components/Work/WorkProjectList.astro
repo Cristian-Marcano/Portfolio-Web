@@ -4,7 +4,7 @@ import Star from "../../assets/star.svg";
 import ArrowTitle from "../ui/ArrowTitle.astro";
 import SectionHeaderBlock from "../ui/SectionHeaderBlock.astro";
 import "../../styles/work-projects.css";
-import { PROJECTS } from "../../data/projects";
+import { PROJECTS, WORK_SECTION } from "../../data/projects";
 import type { Language } from "../../data/projects";
 
 const lang: Language = "es"; // Podrás pasarlo como prop luego: const { lang = "es" } = Astro.props;
@@ -13,8 +13,8 @@ const lang: Language = "es"; // Podrás pasarlo como prop luego: const { lang = 
 <section class="work__projects-container">
   <header class="work__projects-header">
     <SectionHeaderBlock
-      title="WORKS"
-      description="A collection of Cristian's curated works. Choose one below to view."
+      title={WORK_SECTION.title[lang]}
+      description={WORK_SECTION.description[lang]}
       class="work__projects-heading"
     />
     <div class="work__projects-rounder">

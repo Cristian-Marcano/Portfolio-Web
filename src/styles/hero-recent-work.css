@@ -136,6 +136,49 @@
   gap: var(--spacing-xs);
 }
 
+.hero__recent-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.hero__recent-role {
+  color: var(--color-text-main);
+
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.hero__recent-badge {
+  padding: 2px 8px;
+
+  display: inline-flex;
+  align-items: center;
+
+  background-color: var(--color-accent-bg);
+  border: var(--border-width-base) solid var(--color-border-grid);
+  border-radius: 99px;
+
+  color: var(--color-accent);
+
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.hero__recent-period {
+  margin: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-sm);
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.5px;
+}
+
 
 .hero__recent-title {
   margin: 0;

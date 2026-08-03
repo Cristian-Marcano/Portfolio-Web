@@ -98,6 +98,13 @@ const expYearsDigits = expYears.toString().split("");
         className="hero__recent-title"
       />
 
+      <div class="hero__recent-meta">
+        <span class="hero__recent-role">{HERO_CONTENT.recentWork.project.role[lang]}</span>
+        <span class="hero__recent-badge">{HERO_CONTENT.recentWork.project.modality[lang]}</span>
+      </div>
+
+      <p class="hero__recent-period">{HERO_CONTENT.recentWork.project.period[lang]}</p>
+
       <p class="hero__recent-description">
         {HERO_CONTENT.recentWork.project.description[lang]}
       </p>
