@@ -7,6 +7,10 @@ import AboutEnjoys from "./AboutEnjoys.astro";
 import AboutHopesTo from "./AboutHopesTo.astro";
 import SectionHeaderBlock from "../ui/SectionHeaderBlock.astro";
 import "../../styles/about-layout.css";
+import { ABOUT_SECTION } from "../../data/about";
+import type { Language } from "../../data/about";
+
+const lang: Language = "es";
 ---
 
 <section class="about" id="about">
@@ -17,20 +21,20 @@ import "../../styles/about-layout.css";
   <section class="about__content">
     <!-- TEXT COLUMN (~54.5%) — heading + objective + descriptive + underground -->
     <section class="about__col about__col--text">
-      <SectionHeaderBlock title="ABOUT" class="about__heading-container" />
+      <SectionHeaderBlock title={ABOUT_SECTION.heading[lang]} class="about__heading-container" />
 
-      <AboutObjective />
-      <AboutDescriptive />
-      <AboutUnderground />
+      <AboutObjective lang={lang} />
+      <AboutDescriptive lang={lang} />
+      <AboutUnderground lang={lang} />
     </section>
 
     <!-- MEDIA COLUMN (~45.5%) — photo + resume + lists -->
     <section class="about__col about__col--media">
-      <AboutPhotoWrapper />
+      <AboutPhotoWrapper lang={lang} />
 
       <section class="about__lists-row">
-        <AboutEnjoys />
-        <AboutHopesTo />
+        <AboutEnjoys lang={lang} />
+        <AboutHopesTo lang={lang} />
       </section>
     </section>
   </section>

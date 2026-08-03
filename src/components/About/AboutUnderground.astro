@@ -1,23 +1,37 @@
 ---
 import LabelRow from "../ui/LabelRow.astro";
 import "../../styles/about-underground.css";
+import { ABOUT_SECTION } from "../../data/about";
+import type { Language } from "../../data/about";
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = ABOUT_SECTION.skills;
 ---
 
 <section class="about__block-row">
-  <article class="about__block about__block--quote hover-group">
+  <article class="about__block about__block--skills hover-group">
     <LabelRow
-      text="THE UNDERGROUND MAN"
+      text={t.label[lang]}
       isAnimated={true}
       headingTag="h3"
       className="about__label-row"
     />
-    <p class="about__body-text">
-      It is clear to me now that, owing to my unbounded curiosity and to the
-      high standard I set for myself, I often looked at code with furious
-      discontent, which verged on loathing, and so I inwardly attributed the
-      same feeling to everyone's PRs.
-    </p>
+
+    <ul class="about__skills-list">
+      {
+        t.items.map((skill) => (
+          <li class={`about__skill-tag about__skill-tag--${skill.tier}`}>
+            {skill.name}
+          </li>
+        ))
+      }
+    </ul>
   </article>
-  <!-- Decorative green side cell (rightS2 equivalent ~150px) -->
+
+  <!-- Decorative green side cell -->
   <div class="about__decorative-cell" aria-hidden="true"></div>
 </section>

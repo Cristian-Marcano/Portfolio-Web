@@ -2,6 +2,15 @@
 import myPhoto from "../../assets/me-irl.webp";
 import ArrowTitle from "../ui/ArrowTitle.astro";
 import "../../styles/about-photo-wrapper.css";
+import { ABOUT_SECTION } from "../../data/about";
+import type { Language } from "../../data/about";
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = ABOUT_SECTION.photo;
 ---
 
 <!-- Photo row: lego dots | photo card | right decorative cell -->
@@ -12,13 +21,13 @@ import "../../styles/about-photo-wrapper.css";
   <!-- Photo card (~404px, padding 21px) -->
   <div class="about__photo-card">
     <div class="about__photo-wrapper">
-      <img
-        class="about__photo"
-        src={myPhoto.src}
-        alt="Cristian Marcano"
-        loading="lazy"
-        decoding="async"
-      />
+        <img
+          class="about__photo"
+          src={myPhoto.src}
+          alt={t.alt[lang]}
+          loading="lazy"
+          decoding="async"
+        />
     </div>
 
     <!-- Slideshow-style progress control bar -->
@@ -56,9 +65,9 @@ import "../../styles/about-photo-wrapper.css";
   target="_blank"
   rel="noopener noreferrer"
   class="about__resume-link has-arrow-title"
-  aria-label="View Cristian's resume (opens in new tab)"
+  aria-label={t.resume.ariaLabel[lang]}
 >
   <ArrowTitle headingTag="p" className="about__resume-text">
-    VIEW CRISTIAN'S <span class="about__resume-highlight">RESUME</span>
+    {t.resume.text[lang]}<span class="about__resume-highlight">{t.resume.highlight[lang]}</span>
   </ArrowTitle>
 </a>

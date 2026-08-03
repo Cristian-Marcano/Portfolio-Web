@@ -1,19 +1,20 @@
 ---
 import "../../styles/about-lists.css";
-const items = [
-  "Anime, Severance & The Office [ US ]",
-  "Video Games",
-  "Technology & Web Development",
-  "UI/UX Design",
-  "Lego Kits",
-  "The color green",
-];
+import { ABOUT_SECTION } from "../../data/about";
+import type { Language } from "../../data/about";
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = ABOUT_SECTION.enjoys;
 ---
 
 <article class="about__list-card">
-  <h3 class="about__list-title">THINGS HE CURRENTLY ENJOYS</h3>
+  <h3 class="about__list-title">{t.title[lang]}</h3>
   <ul class="about__list">
-    {items.map((item) => (
+    {t.items[lang].map((item) => (
       <li class="about__list-item">
         <div class="about__list-icon" aria-hidden="true">
           <!-- Star / diamond bullet (matches original /star.svg) -->

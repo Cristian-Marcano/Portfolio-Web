@@ -1,26 +1,21 @@
 ---
 import "../../styles/about-lists.css";
+import { ABOUT_SECTION } from "../../data/about";
+import type { Language } from "../../data/about";
 
-interface Goal {
-  text: string;
-  done: boolean;
+interface Props {
+  lang: Language;
 }
 
-const goals: Goal[] = [
-  { text: "Design a VR experience", done: true },
-  { text: "Master Next.js", done: true },
-  { text: "Pursue a Master's Degree", done: false },
-  { text: "Finish a personal side-project", done: false },
-  { text: "Learn Japanese", done: false },
-  { text: "Read more books", done: false },
-];
+const { lang } = Astro.props;
+const t = ABOUT_SECTION.hopesTo;
 ---
 
 <article class="about__list-card">
-  <h3 class="about__list-title">THINGS HE HOPES TO COMPLETE</h3>
+  <h3 class="about__list-title">{t.title[lang]}</h3>
   <ul class="about__list">
     {
-      goals.map((goal) => (
+      t.goals[lang].map((goal) => (
         <li class="about__list-item">
           <div class="about__list-icon" aria-hidden="true">
             {goal.done ? (

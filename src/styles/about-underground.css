@@ -1,18 +1,105 @@
+/* src/styles/about-underground.css */
+
 .about__block-row {
   display: flex;
   flex-direction: row;
   gap: var(--border-width-base);
 }
 
-.about__block--quote {
+.about__block--skills {
   padding: var(--spacing-lg);
 
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-base);
 }
 
+/* ─── SKILLS LIST ─────────────────────────────────────── */
+.about__skills-list {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  list-style: none;
+}
+
+.about__skill-tag {
+  padding: 4px 12px;
+
+  display: inline-flex;
+  align-items: center;
+
+  border: var(--border-width-base) solid var(--color-border-grid);
+  border-radius: var(--border-radius-base);
+
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+
+  cursor: default;
+  transition: transform 0.15s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Tier: primary — color de acento completo, mayor peso visual */
+.about__skill-tag--primary {
+  background-color: var(--color-accent-bg);
+  border-color: var(--color-border-grid);
+
+  color: var(--color-accent);
+
+  &:hover {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg-main);
+  }
+}
+
+/* Tier: secondary — tono neutro, menos protagonismo */
+.about__skill-tag--secondary {
+  background-color: var(--color-bg-main);
+  border-color: var(--color-border-grid);
+
+  color: var(--color-text-muted);
+
+  &:hover {
+    background-color: var(--color-border-grid);
+    color: var(--color-text-main);
+  }
+}
+
+/* Tier: tertiary — más apagado, operacional */
+.about__skill-tag--tertiary {
+  background-color: transparent;
+  border-color: var(--color-border-grid);
+  border-style: dashed;
+
+  color: var(--color-text-muted);
+
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+    background-color: var(--color-accent-bg);
+    color: var(--color-accent);
+    border-style: solid;
+  }
+}
+
+/* ─── DECORATIVE CELL ─────────────────────────────────── */
 .about__decorative-cell {
   width: 150px;
   flex-shrink: 0;
