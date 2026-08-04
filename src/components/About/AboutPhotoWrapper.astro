@@ -4,6 +4,7 @@ import ArrowTitle from "../ui/ArrowTitle.astro";
 import "../../styles/about-photo-wrapper.css";
 import { ABOUT_SECTION } from "../../data/about";
 import type { Language } from "../../data/about";
+import { PERSONAL_LINKS } from "../../data/site-config";
 
 interface Props {
   lang: Language;
@@ -61,7 +62,7 @@ const t = ABOUT_SECTION.photo;
 
 <!-- Resume link -->
 <a
-  href="#"
+  href={PERSONAL_LINKS.resume}
   target="_blank"
   rel="noopener noreferrer"
   class="about__resume-link has-arrow-title"

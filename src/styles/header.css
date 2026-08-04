@@ -46,9 +46,9 @@
 
 .site-header__nav-link {
   min-width: 120px;
+  /* box-sizing: border-box; */
 
-  /* padding-left: var(--spacing-md); */
-  /* padding-right: var(--spacing-md); */
+  padding: 0 var(--border-width-heavy);
 
   display: flex;
   align-items: center;

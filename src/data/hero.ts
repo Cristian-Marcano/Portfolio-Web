@@ -12,8 +12,8 @@ export const HERO_CONTENT = {
       greeting: { es: "Mucho Gusto! Soy ", en: "Nice to meet you! I'm " },
       name: "Cristian Marcano",
       description: {
-        es: ". Un desarrollador que usa paradigmas y tecnologías para aplicar la solución correcta en el sitio correcto-",
-        en: ". A developer who uses paradigms and technologies to apply the right solution in the right place-",
+        es: ". Un ingeniero que usa paradigmas y tecnologías para aplicar la solución correcta en el sitio correcto-",
+        en: ". A engineer who uses paradigms and technologies to apply the right solution in the right place-",
       },
       muted: { es: "[ muted ]", en: "[ muted ]" },
     },
@@ -34,7 +34,10 @@ export const HERO_CONTENT = {
     header: { es: "TRABAJO RECIENTE", en: "RECENT WORK" },
     project: {
       title: "DIGITAN AGENCY", // Generalmente los nombres propios no se traducen
-      role: { es: "Ingeniero de Software Junior", en: "Junior Software Engineer" },
+      role: {
+        es: "Ingeniero de Software Junior",
+        en: "Junior Software Engineer",
+      },
       modality: { es: "Remoto", en: "Remote" },
       period: { es: "Mayo 2025 — Julio 2026", en: "May 2025 — July 2026" },
       description: {

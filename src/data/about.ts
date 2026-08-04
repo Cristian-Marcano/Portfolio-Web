@@ -3,7 +3,7 @@ export type Language = "en" | "es";
 export const ABOUT_SECTION = {
   // ─── SectionHeaderBlock ───────────────────────────────
   heading: {
-    es: "ABOUT",
+    es: "SOBRE MÍ",
     en: "ABOUT",
   },
 

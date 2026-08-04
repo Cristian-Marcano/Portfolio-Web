@@ -1,6 +1,9 @@
 ---
 import "../styles/header.css";
 import { HEADER_NAV_LINKS, SOCIAL_LINKS } from "../data/site-config";
+import type { Language } from "../data/site-config";
+
+const lang: Language = "es";
 ---
 
 <header class="site-header">
@@ -23,7 +26,7 @@ import { HEADER_NAV_LINKS, SOCIAL_LINKS } from "../data/site-config";
               <span class="site-header__nav-brackets" aria-hidden="true">
                 &lt;
               </span>
-              {link.name}
+              {link.name[lang]}
               <span class="site-header__nav-brackets" aria-hidden="true">
                 /&gt;
               </span>

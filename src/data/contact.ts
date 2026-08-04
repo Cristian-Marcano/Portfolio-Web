@@ -1,10 +1,14 @@
 // src/data/contact.ts
+import { PERSONAL_LINKS } from "./site-config";
 export type Language = "en" | "es";
+
+const emailAddressStr = PERSONAL_LINKS.email.replace("mailto:", "");
+const [emailUsername, emailDomain] = emailAddressStr.split("@");
 
 export const CONTACT_SECTION = {
   // ─── SectionHeaderBlock ───────────────────────────────
   heading: {
-    es: "CONTACT",
+    es: "CONTACTO",
     en: "CONTACT",
   },
 
@@ -32,12 +36,12 @@ export const CONTACT_SECTION = {
 
   // ─── ContactEmailLink ─────────────────────────────────
   email: {
-    address: "CRISTIANMM.1112",
-    domain: "@GMAIL.COM",
-    href: "mailto:cristianmm.1112@gmail.com",
+    address: emailUsername.toUpperCase(), // Texto visible (display only)
+    domain: `@${emailDomain.toUpperCase()}`, // Texto visible con highlight
+    href: PERSONAL_LINKS.email,
     ariaLabel: {
-      es: "Enviar correo a Cristian a cristianmm.1112@gmail.com",
-      en: "Email Cristian at cristianmm.1112@gmail.com",
+      es: `Enviar correo a Cristian a ${emailAddressStr}`,
+      en: `Email Cristian at ${emailAddressStr}`,
     },
   },
 };

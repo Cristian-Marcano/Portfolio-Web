@@ -6,7 +6,7 @@ export type Language = "en" | "es";
 
 export const WORK_SECTION = {
   title: {
-    es: "WORKS",
+    es: "PROYECTOS",
     en: "WORKS",
   },
   description: {

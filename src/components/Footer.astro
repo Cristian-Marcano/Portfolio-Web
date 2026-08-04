@@ -1,7 +1,9 @@
 ---
 import "../styles/footer.css";
 import { FOOTER_NAV_LINKS, SOCIAL_LINKS } from "../data/site-config";
+import type { Language } from "../data/site-config";
 
+const lang: Language = "es";
 const currentYear = new Date().getFullYear();
 ---
 
@@ -39,7 +41,7 @@ const currentYear = new Date().getFullYear();
                 <span class="site-footer__nav-bracket" aria-hidden="true">
                   &lt;
                 </span>
-                {link.name}
+                {link.name[lang]}
                 <span class="site-footer__nav-bracket" aria-hidden="true">
                   /&gt;
                 </span>
