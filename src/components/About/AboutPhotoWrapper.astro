@@ -3,7 +3,7 @@ import myPhoto from "../../assets/me-irl.webp";
 import ArrowTitle from "../ui/ArrowTitle.astro";
 import "../../styles/about-photo-wrapper.css";
 import { ABOUT_SECTION } from "../../data/about";
-import type { Language } from "../../data/about";
+import type { Language } from "../../data/site-config";
 import { PERSONAL_LINKS } from "../../data/site-config";
 
 interface Props {
@@ -16,19 +16,18 @@ const t = ABOUT_SECTION.photo;
 
 <!-- Photo row: lego dots | photo card | right decorative cell -->
 <section class="about__photo-row">
-  <!-- Decorative lego-like left column (~94px wide) -->
   <div class="about__photo-left-cell" aria-hidden="true"></div>
 
   <!-- Photo card (~404px, padding 21px) -->
   <div class="about__photo-card">
     <div class="about__photo-wrapper">
-        <img
-          class="about__photo"
-          src={myPhoto.src}
-          alt={t.alt[lang]}
-          loading="lazy"
-          decoding="async"
-        />
+      <img
+        class="about__photo"
+        src={myPhoto.src}
+        alt={t.alt[lang]}
+        loading="lazy"
+        decoding="async"
+      />
     </div>
 
     <!-- Slideshow-style progress control bar -->
@@ -69,6 +68,8 @@ const t = ABOUT_SECTION.photo;
   aria-label={t.resume.ariaLabel[lang]}
 >
   <ArrowTitle headingTag="p" className="about__resume-text">
-    {t.resume.text[lang]}<span class="about__resume-highlight">{t.resume.highlight[lang]}</span>
+    {t.resume.text[lang]}<span class="about__resume-highlight"
+      >{t.resume.highlight[lang]}</span
+    >
   </ArrowTitle>
 </a>

@@ -2,9 +2,9 @@
 import myIllustration from "../../assets/my-ilustration-portfolio-green.webp";
 import "../../styles/hero-illustration.css";
 import { HERO_CONTENT } from "../../data/hero";
-import type { Language } from "../../data/hero";
+import type { Language } from "../../data/site-config";
 
-const lang: Language = "es";
+const lang = (Astro.currentLocale ?? "es") as Language;
 ---
 
 <section class="hero__illustration-column">
@@ -16,10 +16,13 @@ const lang: Language = "es";
       <div class="hero__role">
         <h1 class="hero__role-primary">
           <span class="hero__role-bracket">{"{"}</span><span
-            id="role-primary-text">{HERO_CONTENT.illustration.rolePrimary[lang]}</span
+            id="role-primary-text"
+            >{HERO_CONTENT.illustration.rolePrimary[lang]}</span
           ><span class="hero__role-bracket">{"}"}</span>
         </h1>
-        <h1 class="hero__role-secondary">{HERO_CONTENT.illustration.roleSecondary[lang]}</h1>
+        <h1 class="hero__role-secondary">
+          {HERO_CONTENT.illustration.roleSecondary[lang]}
+        </h1>
 
         <!-- Terminal Box (Matching font-menu dimensions) -->
         <div class="hero__font-terminal">

@@ -1,5 +1,3 @@
-export type Language = "en" | "es";
-
 export const ABOUT_SECTION = {
   // ─── SectionHeaderBlock ───────────────────────────────
   heading: {

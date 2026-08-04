@@ -5,9 +5,9 @@ import ArrowTitle from "../ui/ArrowTitle.astro";
 import SectionHeaderBlock from "../ui/SectionHeaderBlock.astro";
 import "../../styles/work-projects.css";
 import { PROJECTS, WORK_SECTION } from "../../data/projects";
-import type { Language } from "../../data/projects";
+import type { Language } from "../../data/site-config";
 
-const lang: Language = "es"; // Podrás pasarlo como prop luego: const { lang = "es" } = Astro.props;
+const lang = (Astro.currentLocale ?? "es") as Language;
 ---
 
 <section class="work__projects-container">
@@ -75,6 +75,5 @@ const lang: Language = "es"; // Podrás pasarlo como prop luego: const { lang = 
         );
       });
     });
-
   });
 </script>

@@ -3,7 +3,7 @@ import "../styles/footer.css";
 import { FOOTER_NAV_LINKS, SOCIAL_LINKS } from "../data/site-config";
 import type { Language } from "../data/site-config";
 
-const lang: Language = "es";
+const lang = (Astro.currentLocale ?? "es") as Language;
 const currentYear = new Date().getFullYear();
 ---
 

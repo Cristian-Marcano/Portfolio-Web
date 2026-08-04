@@ -6,9 +6,9 @@ import TimeIllustration from "../../assets/dev-time-illustration.gif";
 import Arrow from "../../assets/arrow.svg";
 import "../../styles/work-mockups.css";
 import { PROJECTS } from "../../data/projects";
-import type { Language } from "../../data/projects";
+import type { Language } from "../../data/site-config";
 
-const lang: Language = "es";
+const lang = (Astro.currentLocale ?? "es") as Language;
 ---
 
 <section class="work__mockup-container" id="work-mockup-container">

@@ -5,9 +5,9 @@ import ContactEmailLink from "./ContactEmailLink.astro";
 import ContactIllustration from "./ContactIllustration.astro";
 import "../../styles/contact-layout.css";
 import { CONTACT_SECTION } from "../../data/contact";
-import type { Language } from "../../data/contact";
+import type { Language } from "../../data/site-config";
 
-const lang: Language = "es";
+const lang = (Astro.currentLocale ?? "es") as Language;
 ---
 
 <section id="contact" class="contact" aria-label="Contact">
@@ -16,7 +16,10 @@ const lang: Language = "es";
   <div class="contact__body">
     <!-- Left: text column -->
     <section class="contact__content">
-      <SectionHeaderBlock title={CONTACT_SECTION.heading[lang]} class="contact__heading" />
+      <SectionHeaderBlock
+        title={CONTACT_SECTION.heading[lang]}
+        class="contact__heading"
+      />
       <ContactMessage lang={lang} />
       <ContactEmailLink lang={lang} />
     </section>

@@ -1,5 +1,4 @@
 ---
-// Unified Component File but visually separate bento cells
 import ArrowTitle from "../ui/ArrowTitle.astro";
 import CornerGrid from "../../assets/corner-grid.svg";
 import Plus from "../../assets/plus.svg";
@@ -16,9 +15,9 @@ import NumberNine from "../../assets/number-9.svg";
 import DigitanAgency from "../../assets/digitan-agency.webp";
 import "../../styles/hero-recent-work.css";
 import { HERO_CONTENT } from "../../data/hero";
-import type { Language } from "../../data/hero";
+import type { Language } from "../../data/site-config";
 
-const lang: Language = "es";
+const lang = (Astro.currentLocale ?? "es") as Language;
 
 const numberMap = {
   "0": NumberZero,
@@ -57,14 +56,18 @@ const expYearsDigits = expYears.toString().split("");
   <!-- LEFT (Top in this column): Metrics -->
   <article class="hero__metrics-cell">
     <div class="hero__recent-metric-item">
-      <h4 class="hero__recent-label">{HERO_CONTENT.recentWork.metrics.projects[lang]}</h4>
+      <h4 class="hero__recent-label">
+        {HERO_CONTENT.recentWork.metrics.projects[lang]}
+      </h4>
       <div class="hero__recent-number">
         <NumberOne />
         <NumberSix />
       </div>
     </div>
     <div class="hero__recent-metric-item">
-      <h4 class="hero__recent-label">{HERO_CONTENT.recentWork.metrics.experience[lang]}</h4>
+      <h4 class="hero__recent-label">
+        {HERO_CONTENT.recentWork.metrics.experience[lang]}
+      </h4>
       <div class="hero__recent-number">
         {showPlus && <Plus />}
         {
@@ -99,11 +102,17 @@ const expYearsDigits = expYears.toString().split("");
       />
 
       <div class="hero__recent-meta">
-        <span class="hero__recent-role">{HERO_CONTENT.recentWork.project.role[lang]}</span>
-        <span class="hero__recent-badge">{HERO_CONTENT.recentWork.project.modality[lang]}</span>
+        <span class="hero__recent-role"
+          >{HERO_CONTENT.recentWork.project.role[lang]}</span
+        >
+        <span class="hero__recent-badge"
+          >{HERO_CONTENT.recentWork.project.modality[lang]}</span
+        >
       </div>
 
-      <p class="hero__recent-period">{HERO_CONTENT.recentWork.project.period[lang]}</p>
+      <p class="hero__recent-period">
+        {HERO_CONTENT.recentWork.project.period[lang]}
+      </p>
 
       <p class="hero__recent-description">
         {HERO_CONTENT.recentWork.project.description[lang]}

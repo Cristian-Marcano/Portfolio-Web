@@ -1,5 +1,3 @@
-export type Language = "en" | "es";
-
 export const HERO_CONTENT = {
   textColumn: {
     title: {

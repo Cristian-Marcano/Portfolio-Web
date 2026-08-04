@@ -1,6 +1,5 @@
 // src/data/contact.ts
 import { PERSONAL_LINKS } from "./site-config";
-export type Language = "en" | "es";
 
 const emailAddressStr = PERSONAL_LINKS.email.replace("mailto:", "");
 const [emailUsername, emailDomain] = emailAddressStr.split("@");

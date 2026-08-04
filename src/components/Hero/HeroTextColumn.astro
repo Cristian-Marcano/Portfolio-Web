@@ -3,32 +3,43 @@ import myAvatarGif from "../../assets/MyAvatarForMyWebsite.gif";
 import Star from "../../assets/star.svg";
 import "../../styles/hero-text.css";
 import { HERO_CONTENT } from "../../data/hero";
-import type { Language } from "../../data/hero";
+import type { Language } from "../../data/site-config";
 
-const lang: Language = "es";
+const lang = (Astro.currentLocale ?? "es") as Language;
 ---
 
 <article class="hero__text-column">
   <!-- Title -->
   <h1 class="hero__title">
-    {HERO_CONTENT.textColumn.title.line1[lang]}<span class="hero__title-accent">{HERO_CONTENT.textColumn.title.accent1[lang]}</span>{HERO_CONTENT.textColumn.title.line2[lang]}
+    {HERO_CONTENT.textColumn.title.line1[lang]}<span class="hero__title-accent"
+      >{HERO_CONTENT.textColumn.title.accent1[lang]}</span
+    >{HERO_CONTENT.textColumn.title.line2[lang]}
     <br class="hero__title-break" />
-    <span class="hero__title-accent">{HERO_CONTENT.textColumn.title.accent2[lang]}</span>
+    <span class="hero__title-accent"
+      >{HERO_CONTENT.textColumn.title.accent2[lang]}</span
+    >
     <span class="hero__title-dot">.</span>
   </h1>
 
   <!-- Intro Paragraph -->
   <h2 class="hero__intro">
-    {HERO_CONTENT.textColumn.intro.greeting[lang]}<span class="hero__intro-highlight">
+    {HERO_CONTENT.textColumn.intro.greeting[lang]}<span
+      class="hero__intro-highlight"
+    >
       {HERO_CONTENT.textColumn.intro.name}
     </span>
-    {HERO_CONTENT.textColumn.intro.description[lang]}<span class="hero__intro-muted">{HERO_CONTENT.textColumn.intro.muted[lang]}</span>
+    {HERO_CONTENT.textColumn.intro.description[lang]}<span
+      class="hero__intro-muted"
+      >{HERO_CONTENT.textColumn.intro.muted[lang]}</span
+    >
   </h2>
 
   <!-- Bottom Row: Narrator & Time -->
   <footer class="hero__footer">
     <h2 class="hero__narrator">
-      <strong class="hero__narrator-highlight">{HERO_CONTENT.textColumn.narrator.label[lang]}</strong>
+      <strong class="hero__narrator-highlight"
+        >{HERO_CONTENT.textColumn.narrator.label[lang]}</strong
+      >
       {HERO_CONTENT.textColumn.narrator.text[lang]}
       <span class="hero__cursor">▌</span>
     </h2>

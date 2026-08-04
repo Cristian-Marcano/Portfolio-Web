@@ -3,9 +3,9 @@ import Star from "../../assets/star.svg";
 import LabelRow from "../ui/LabelRow.astro";
 import "../../styles/hero-narrator-note.css";
 import { HERO_CONTENT } from "../../data/hero";
-import type { Language } from "../../data/hero";
+import type { Language } from "../../data/site-config";
 
-const lang: Language = "es";
+const lang = (Astro.currentLocale ?? "es") as Language;
 ---
 
 <section class="hero__narrator-note hover-group">

@@ -2,8 +2,6 @@ import RouletteCasino from "../assets/roulette-project-window.webp";
 import Pong from "../assets/pong-project.webp";
 import Reporter from "../assets/ferrominera-java-swing.webp";
 
-export type Language = "en" | "es";
-
 export const WORK_SECTION = {
   title: {
     es: "PROYECTOS",

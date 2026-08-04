@@ -8,9 +8,9 @@ import AboutHopesTo from "./AboutHopesTo.astro";
 import SectionHeaderBlock from "../ui/SectionHeaderBlock.astro";
 import "../../styles/about-layout.css";
 import { ABOUT_SECTION } from "../../data/about";
-import type { Language } from "../../data/about";
+import type { Language } from "../../data/site-config";
 
-const lang: Language = "es";
+const lang = (Astro.currentLocale ?? "es") as Language;
 ---
 
 <section class="about" id="about">
@@ -21,7 +21,10 @@ const lang: Language = "es";
   <section class="about__content">
     <!-- TEXT COLUMN (~54.5%) — heading + objective + descriptive + underground -->
     <section class="about__col about__col--text">
-      <SectionHeaderBlock title={ABOUT_SECTION.heading[lang]} class="about__heading-container" />
+      <SectionHeaderBlock
+        title={ABOUT_SECTION.heading[lang]}
+        class="about__heading-container"
+      />
 
       <AboutObjective lang={lang} />
       <AboutDescriptive lang={lang} />
