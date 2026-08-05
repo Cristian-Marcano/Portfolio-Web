@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
@@ -26,6 +26,32 @@
       href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&family=Merriweather:wght@400;700&family=Montserrat:wght@400;600&family=Oswald:wght@400;600&family=Pacifico&family=Roboto+Flex:opsz,wght@8..144,400;8..144,600&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Viewport scaling: keeps the design proportional on large monitors (>1920px). -->
+    <!-- On mobile (< 768px), scaling is always disabled so responsive CSS takes over. -->
+    <script is:inline>
+      (function () {
+        const STANDARD_WIDTH = 1920; // The viewport width the design was built for
+        const MOBILE_BREAKPOINT = 768; // Below this, never scale — let CSS handle it
+
+        function applyScale() {
+          const width = window.innerWidth;
+          const root = document.documentElement;
+
+          if (width >= MOBILE_BREAKPOINT && width > STANDARD_WIDTH) {
+            const scale = width / STANDARD_WIDTH;
+            root.style.setProperty('--app-scale', scale);
+            root.style.zoom = scale;
+          } else {
+            root.style.setProperty('--app-scale', 1);
+            root.style.zoom = 1;
+          }
+        }
+
+        applyScale();
+        window.addEventListener('resize', applyScale);
+      })();
+    </script>
   </head>
   <body>
     <slot />
