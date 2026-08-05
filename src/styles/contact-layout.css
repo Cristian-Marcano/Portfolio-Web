@@ -60,7 +60,7 @@
   }
 
   .contact__media {
-    min-height: 300px;
+    flex: 1;
   }
 
   .contact__corner {

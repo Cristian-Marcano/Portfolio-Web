@@ -181,3 +181,19 @@
   animation: spin-star 2s linear infinite;
   animation-delay: var(--star-delay, 0s);
 }
+
+/* ─── MOBILE ─────────────────────────────────────────────── */
+@media (width < 768px) {
+  .work__projects-header {
+    height: 100px;
+  }
+
+  .work__project {
+    padding: var(--spacing-md);
+  }
+
+  .work__project-tags {
+    padding-top: var(--spacing-md);
+  }
+}
+

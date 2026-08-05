@@ -3,7 +3,7 @@ export const HERO_CONTENT = {
     title: {
       line1: { es: "Si puedes ", en: "If you can " },
       accent1: { es: "imaginarlo", en: "imagine it" },
-      line2: { es: ", puedes", en: ", you can" },
+      line2: { es: ", puedes ", en: ", you can " },
       accent2: { es: "programarlo", en: "code it" },
     },
     intro: {
@@ -13,7 +13,7 @@ export const HERO_CONTENT = {
         es: ". Un ingeniero que usa paradigmas y tecnologías para aplicar la solución correcta en el sitio correcto-",
         en: ". A engineer who uses paradigms and technologies to apply the right solution in the right place-",
       },
-      muted: { es: "[ muted ]", en: "[ muted ]" },
+      muted: { es: "[ muteado ]", en: "[ muted ]" },
     },
     narrator: {
       label: { es: "Narrador: ", en: "Narrator: " },

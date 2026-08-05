@@ -16,7 +16,13 @@
   border-radius: var(--border-radius-base);
   
   overflow: hidden;
+
+  @media (width < 768px) {
+    order: 4;
+  }
 }
+
+
 
 
 .hero__narrator-spacer {

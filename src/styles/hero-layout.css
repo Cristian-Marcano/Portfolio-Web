@@ -47,3 +47,42 @@
     width: calc(45.5% - 1px);
   }
 }
+
+/* ─── MOBILE ─────────────────────────────────────────────── */
+@media (width < 768px) {
+  .hero {
+    gap: 0;
+  }
+
+  .hero__corner {
+    display: none;
+  }
+
+  .hero__content {
+    gap: 1px;
+  }
+
+  /* On mobile, reorder visually:
+     1. hero__column--left  (text column)      → order: 1 (default)
+     2. hero__column--right (illustration col) → order: 2  ← pulled up between text and recent work
+     We achieve text → illustration → recent-work by making the content
+     container wrap using flex with per-child order values.
+  */
+  .hero__content {
+    /* Allow items to reorder freely */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* LEFT col: TextColumn (order 1) + RecentWork (order 3) */
+  .hero__column--left {
+    /* The column itself has no order; its children get individual orders */
+    display: contents; /* Flattens children into the parent flex container */
+  }
+
+  /* RIGHT col: IllustrationColumn etc (order 2) */
+  .hero__column--right {
+    display: contents;
+  }
+}
+

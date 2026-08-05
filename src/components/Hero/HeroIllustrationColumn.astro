@@ -10,7 +10,7 @@ const lang = (Astro.currentLocale ?? "es") as Language;
 <section class="hero__illustration-column">
   <!-- Celda i: Contenido Semántico (Role + Avatar) -->
   <div class="hero__illustration-content">
-    <!-- Cell 1: Role -->
+    <!-- Cell 1: Role label (title only, no terminal here) -->
     <div class="hero__role-card">
       <!-- Role Title (Floating) -->
       <div class="hero__role">
@@ -23,37 +23,12 @@ const lang = (Astro.currentLocale ?? "es") as Language;
         <h1 class="hero__role-secondary">
           {HERO_CONTENT.illustration.roleSecondary[lang]}
         </h1>
-
-        <!-- Terminal Box (Matching font-menu dimensions) -->
-        <div class="hero__font-terminal">
-          <div class="hero__terminal-header">
-            <span class="hero__terminal-dot hero__terminal-dot--red"></span>
-            <span class="hero__terminal-dot hero__terminal-dot--yellow"></span>
-            <span class="hero__terminal-dot hero__terminal-dot--green"></span>
-          </div>
-          <div class="hero__terminal-content">
-            <span class="hero__font-terminal-cmd"
-              >cristian-portfolio on <span style="color: #b085f5">main</span>
-              <span style="color: #ff9800">[!]</span> on ☁️
-              <span style="color: #36b5e7"> GitHub Pages</span>
-            </span>
-            <br />
-            <span
-              class="hero__font-terminal-cmd"
-              style="color: var(--color-accent)">❯</span
-            >
-            <span class="hero__font-terminal-cmd"> sudo setfont </span>
-            <span class="hero__font-terminal-name" id="font-name-rotator">
-              Lora
-            </span>
-            <span class="hero__cursor">_</span>
-          </div>
-        </div>
       </div>
     </div>
 
     <!-- Cell 2: Avatar & Waves -->
     <div class="hero__avatar-card">
+
       <!-- Looping Background Animation (Scaling rects) -->
       <div class="hero__background">
         <div class="hero__wave hero__wave--1"></div>
@@ -69,6 +44,32 @@ const lang = (Astro.currentLocale ?? "es") as Language;
           alt="Cristian Marcano Illustration"
           class="hero__avatar"
         />
+      </div>
+    </div>
+
+    <!-- Terminal Box — sibling of avatar-card for CSS order control on mobile -->
+    <div class="hero__font-terminal">
+      <div class="hero__terminal-header">
+        <span class="hero__terminal-dot hero__terminal-dot--red"></span>
+        <span class="hero__terminal-dot hero__terminal-dot--yellow"></span>
+        <span class="hero__terminal-dot hero__terminal-dot--green"></span>
+      </div>
+      <div class="hero__terminal-content">
+        <span class="hero__font-terminal-cmd"
+          >cristian-portfolio on <span style="color: #b085f5">main</span>
+          <span style="color: #ff9800">[!]</span> on ☁️
+          <span style="color: #36b5e7"> GitHub Pages</span>
+        </span>
+        <br />
+        <span
+          class="hero__font-terminal-cmd"
+          style="color: var(--color-accent)">❯</span
+        >
+        <span class="hero__font-terminal-cmd"> sudo setfont </span>
+        <span class="hero__font-terminal-name" id="font-name-rotator">
+          Lora
+        </span>
+        <span class="hero__cursor">_</span>
       </div>
     </div>
   </div>

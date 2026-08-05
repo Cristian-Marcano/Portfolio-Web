@@ -80,32 +80,113 @@ const lang = (Astro.currentLocale ?? "es") as Language;
 
   <!-- Right extreme line -->
   <div class="site-header__corner site-header__corner--right"></div>
+
+  <!-- Mobile nav overlay (inside header for correct semantics) -->
+  <section
+    class="site-header__mobile-overlay"
+    id="mobile-nav-overlay"
+    aria-hidden="true"
+  >
+    <nav class="site-header__mobile-nav" aria-label="Mobile navigation">
+      {
+        HEADER_NAV_LINKS.map((link) => (
+          <a
+            href={link.path}
+            class={`site-header__mobile-nav-link ${link.active ? "site-header__mobile-nav-link--active" : ""}`}
+          >
+            <span class="site-header__mobile-nav-brackets" aria-hidden="true">
+              &lt;
+            </span>
+            {link.name[lang]}
+            <span class="site-header__mobile-nav-brackets" aria-hidden="true">
+              /&gt;
+            </span>
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="site-header__mobile-social">
+      {
+        SOCIAL_LINKS.map((link) => (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={link.name}
+            class="site-header__mobile-social-link"
+          >
+            <span class="site-header__social-icon">
+              <link.icon />
+            </span>
+            <span class="site-header__mobile-social-name">{link.name}</span>
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Language toggle inside overlay -->
+    <button
+      id="lang-toggle-mobile"
+      class="site-header__mobile-lang-btn"
+      data-lang={lang}
+    >
+      <span id="lang-current-mobile">{lang.toUpperCase()}</span>
+      <span aria-hidden="true"> / </span>
+      <span id="lang-other-mobile">{lang === "es" ? "EN" : "ES"}</span>
+    </button>
+  </section>
 </header>
 
 <script>
-  const toggle  = document.getElementById("lang-toggle") as HTMLButtonElement;
+  const toggle = document.getElementById("lang-toggle") as HTMLButtonElement;
   const current = document.getElementById("lang-current") as HTMLSpanElement;
-  const other   = document.getElementById("lang-other")   as HTMLSpanElement;
+  const other = document.getElementById("lang-other") as HTMLSpanElement;
 
   // Read current locale from the data attribute set by Astro at build time
   const currentLang = toggle?.dataset.lang as "es" | "en";
 
   // Reflect current state in button labels
   if (current) current.textContent = currentLang?.toUpperCase();
-  if (other)   other.textContent   = currentLang === "es" ? "EN" : "ES";
+  if (other) other.textContent = currentLang === "es" ? "EN" : "ES";
 
   toggle?.addEventListener("click", () => {
+    // On mobile: toggle the overlay instead of navigating
+    if (window.innerWidth < 768) {
+      const overlay = document.getElementById("mobile-nav-overlay");
+      const isOpen = overlay?.classList.contains("is-open");
+      overlay?.classList.toggle("is-open", !isOpen);
+      overlay?.setAttribute("aria-hidden", isOpen ? "true" : "false");
+      toggle.classList.toggle("site-header__lang-btn--open", !isOpen);
+      return;
+    }
+
+    // On desktop: switch language
     toggle.classList.add("site-header__lang-btn--switching");
-
     const next = currentLang === "es" ? "en" : "es";
-
-    // Navigate to the locale URL:
-    // "es" (default) → "/"
-    // "en"           → "/en/"
     const nextPath = next === "es" ? "/" : "/en/";
-
     setTimeout(() => {
       window.location.href = nextPath;
     }, 250);
+  });
+
+  // Mobile lang toggle inside overlay
+  const mobileLangBtn = document.getElementById(
+    "lang-toggle-mobile",
+  ) as HTMLButtonElement;
+  mobileLangBtn?.addEventListener("click", () => {
+    const next = currentLang === "es" ? "en" : "es";
+    const nextPath = next === "es" ? "/" : "/en/";
+    window.location.href = nextPath;
+  });
+
+  // Close overlay when a nav link is clicked
+  document.querySelectorAll(".site-header__mobile-nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      const overlay = document.getElementById("mobile-nav-overlay");
+      overlay?.classList.remove("is-open");
+      overlay?.setAttribute("aria-hidden", "true");
+      toggle?.classList.remove("site-header__lang-btn--open");
+    });
   });
 </script>

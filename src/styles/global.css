@@ -46,6 +46,23 @@
   --border-width-heavy: 3px;
 }
 
+@media (width < 768px) {
+  :root {
+    /* Typography — scale down for mobile */
+    --font-size-display: 52px;
+    --font-size-h1: 35px;
+    --font-size-h2: 27px;
+    --font-size-h3: 22px;
+    --font-size-lg: 16.5px;
+
+    /* Spacing — tighter on mobile */
+    --spacing-xl: 36px;
+    --spacing-lg: 20px;
+    --spacing-md: 1.25rem;
+  }
+}
+
+
 *,
 *::before,
 *::after {

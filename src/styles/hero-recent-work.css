@@ -3,6 +3,10 @@
   box-sizing: border-box;
 
   position: relative;
+
+  @media (width < 768px) {
+    order: 5;
+  }
 }
 
 .hero__metrics-cell {
@@ -214,5 +218,39 @@
   &.hero__corner-grid--bottom-right {
     top: 302px;
     right: 0;
+  }
+}
+
+/* ─── MOBILE ─────────────────────────────────────────────── */
+@media (width < 768px) {
+  .hero__bento-cell {
+    position: static;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--border-width-base);
+  }
+
+  /* Stack metrics as a horizontal row instead of absolute overlay */
+  .hero__metrics-cell {
+    width: 100%;
+    height: auto;
+
+    padding: 0;
+
+    position: static;
+  }
+
+  .hero__recent-metric-item {
+    gap: var(--spacing-md);
+  }
+
+  .hero__recent-img-wrapper {
+    width: 100%;
+  }
+
+  /* Hide decorative grid corner SVGs on mobile */
+  .hero__corner-grid {
+    display: none;
   }
 }

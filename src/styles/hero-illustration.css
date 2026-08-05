@@ -10,7 +10,14 @@
   @media (width >= 768px) {
     height: 538px;
   }
+
+  @media (width < 768px) {
+    order: 2;
+
+    height: auto;
+  }
 }
+
 
 .hero__illustration-content {
   width: 100%;
@@ -18,6 +25,8 @@
   height: 511px;
 
   padding-bottom: calc(538px - 511px);
+
+  position: relative;   /* contains the absolutely positioned terminal */
 
   display: flex;
   flex-direction: row;
@@ -191,7 +200,8 @@
   padding: var(--spacing-sm) 0.7rem;
 
   position: absolute;
-  top: 110px;
+  top: 135px;
+  left: var(--spacing-base);
   z-index: 20;
 
   display: flex;
@@ -208,6 +218,7 @@
   font-family: 'FiraCode Nerd Font', 'Fira Code', monospace;
   line-height: 1.5;
 }
+
 
 .hero__font-terminal-cmd {
   color: #7b8f8d;
@@ -276,4 +287,125 @@
 @keyframes parallax-hero-avatar {
   0% { transform: translateY(0); }
   100% { transform: translateY(60px); }
+}
+
+/* ─── MOBILE ─────────────────────────────────────────────── */
+@media (width < 768px) {
+  .hero__illustration-column {
+    height: auto;
+
+    flex-direction: column;
+  }
+
+  /* The content wrapper: column layout, centered, with horizontal padding
+     so it looks like the reference site's contained card */
+  .hero__illustration-content {
+    height: auto;
+    box-sizing: border-box;
+
+    padding: var(--spacing-md) var(--spacing-md) 0;
+
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+
+    background: var(--color-bg-main);
+  }
+
+  /* Show the role card inline on mobile */
+  .hero__role-card {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+
+    background-color: transparent;
+    border-radius: 0;
+  }
+
+  .hero__role {
+    padding: 0;
+
+    position: static;
+
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+  }
+
+  .hero__role-row {
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .hero__role-primary {
+    height: auto;
+
+    margin: 0;
+
+    font-size: var(--font-size-h2);
+    white-space: normal;
+    line-height: 1;
+  }
+
+  .hero__role-secondary {
+    margin: 0;
+    
+    font-size: var(--font-size-h2);
+    line-height: 1;
+  }
+
+  /* Avatar card: contained width with rounded corners, shorter height */
+  .hero__avatar-card {
+    height: 320px;
+    min-height: 0;
+    aspect-ratio: 8/10;
+
+    align-self: flex-start;
+
+    border-radius: var(--border-radius-base);
+    border-left: var(--border-width-heavy) solid var(--color-border-grid);
+    border-right: var(--border-width-heavy) solid var(--color-border-grid);
+    border-bottom: var(--border-width-heavy) solid var(--color-border-grid);
+
+    overflow: hidden;
+  }
+
+  .hero__avatar {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  /* Terminal: shown below avatar as normal block (no position: absolute),
+     same width as avatar card, dark panel just like the reference */
+  .hero__font-terminal {
+    width: 100%;
+    height: auto;
+    min-height: 210px;
+    box-sizing: border-box;
+
+    display: flex;        /* override the parent's display: none */
+    align-self: flex-start;
+    position: static;     /* remove absolute positioning */
+
+    padding: var(--spacing-sm) var(--spacing-md);
+
+    top: auto;
+    z-index: auto;
+
+    border-radius: var(--border-radius-base);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+    /* Keep font-size compact for mobile */
+    font-size: 13px;
+
+    /* Small gap after the avatar card */
+    margin-bottom: var(--spacing-md);
+  }
+
+  /* Cell wrapper (corner piece) hidden */
+  .hero__cell-wrapper {
+    display: none;
+  }
 }

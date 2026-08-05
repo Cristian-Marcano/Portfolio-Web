@@ -55,3 +55,25 @@
     width: calc(45.5% - var(--border-width-base));
   }
 }
+
+/* ─── MOBILE ─────────────────────────────────────────────── */
+@media (width < 768px) {
+  .work {
+    gap: 0;
+  }
+
+  .work__corner {
+    display: none;
+  }
+
+  /* Hide the mockup column entirely on mobile */
+  .work__column--right {
+    display: none;
+  }
+
+  /* Project list takes full width */
+  .work__column--left {
+    width: 100%;
+  }
+}
+
