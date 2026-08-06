@@ -31,6 +31,8 @@
   font-weight: 600;
   color: var(--color-text-main);
   letter-spacing: -0.01em;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .contact__email-highlight {

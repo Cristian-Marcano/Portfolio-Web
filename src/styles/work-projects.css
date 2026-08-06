@@ -185,7 +185,7 @@
 }
 
 /* ─── MOBILE ─────────────────────────────────────────────── */
-@media (width < 768px) {
+@media (width < 1200px) {
   .work__projects-header {
     min-height: 100px;
     height: auto;

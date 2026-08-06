@@ -9,7 +9,15 @@ const lang = (Astro.currentLocale ?? "es") as Language;
 
 <header class="site-header">
   <!-- Left extreme line -->
-  <div class="site-header__corner site-header__corner--left"></div>
+  <div class="site-header__corner site-header__corner--left">
+    <!-- Rounder corner grid below header -->
+    <div class="site-header__rounder">
+      <CornerGrid
+        class="site-header__rounder-path site-header__rounder-path--flipped"
+      />
+      <CornerGrid class="site-header__rounder-path" />
+    </div>
+  </div>
 
   <!-- Middle content container -->
   <section class="site-header__content">
@@ -77,74 +85,82 @@ const lang = (Astro.currentLocale ?? "es") as Language;
       <!-- Empty margin cell -->
       <div class="site-header__cell-wrapper"></div>
     </div>
+    <!-- Rounder corner grid below header -->
+    <div class="site-header__rounder">
+      <CornerGrid
+        class="site-header__rounder-path site-header__rounder-path--flipped"
+      />
+      <CornerGrid class="site-header__rounder-path" />
+    </div>
+    <!-- Mobile nav overlay (inside header for correct semantics) -->
+    <section
+      class="site-header__mobile-overlay"
+      id="mobile-nav-overlay"
+      aria-hidden="true"
+    >
+      <nav class="site-header__mobile-nav" aria-label="Mobile navigation">
+        {
+          HEADER_NAV_LINKS.map((link) => (
+            <a
+              href={link.path}
+              class={`site-header__mobile-nav-link ${link.active ? "site-header__mobile-nav-link--active" : ""}`}
+            >
+              <span class="site-header__mobile-nav-text">
+                <span class="site-header__mobile-nav-brackets" aria-hidden="true">
+                  &lt;
+                </span>
+                {link.name[lang]}
+                <span class="site-header__mobile-nav-brackets" aria-hidden="true">
+                  /&gt;
+                </span>
+              </span>
+            </a>
+          ))
+        }
+      </nav>
+
+      <div class="site-header__mobile-social">
+        {
+          SOCIAL_LINKS.map((link) => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.name}
+              class="site-header__mobile-social-link"
+            >
+              <span class="site-header__social-icon">
+                <link.icon />
+              </span>
+              <span class="site-header__mobile-social-name">{link.name}</span>
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Language toggle inside overlay -->
+      <button
+        id="lang-toggle-mobile"
+        class="site-header__mobile-lang-btn"
+        data-lang={lang}
+      >
+        <span id="lang-current-mobile">{lang.toUpperCase()}</span>
+        <span aria-hidden="true"> / </span>
+        <span id="lang-other-mobile">{lang === "es" ? "EN" : "ES"}</span>
+      </button>
+    </section>
   </section>
 
   <!-- Right extreme line -->
-  <div class="site-header__corner site-header__corner--right"></div>
-
-  <!-- Rounder corner grid below header -->
-  <div class="site-header__rounder">
-    <CornerGrid class="site-header__rounder-path site-header__rounder-path--flipped" />
-    <CornerGrid class="site-header__rounder-path" />
-  </div>
-
-  <!-- Mobile nav overlay (inside header for correct semantics) -->
-  <section
-    class="site-header__mobile-overlay"
-    id="mobile-nav-overlay"
-    aria-hidden="true"
-  >
-    <nav class="site-header__mobile-nav" aria-label="Mobile navigation">
-      {
-        HEADER_NAV_LINKS.map((link) => (
-          <a
-            href={link.path}
-            class={`site-header__mobile-nav-link ${link.active ? "site-header__mobile-nav-link--active" : ""}`}
-          >
-            <span class="site-header__mobile-nav-text">
-              <span class="site-header__mobile-nav-brackets" aria-hidden="true">
-                &lt;
-              </span>
-              {link.name[lang]}
-              <span class="site-header__mobile-nav-brackets" aria-hidden="true">
-                /&gt;
-              </span>
-            </span>
-          </a>
-        ))
-      }
-    </nav>
-
-    <div class="site-header__mobile-social">
-      {
-        SOCIAL_LINKS.map((link) => (
-          <a
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={link.name}
-            class="site-header__mobile-social-link"
-          >
-            <span class="site-header__social-icon">
-              <link.icon />
-            </span>
-            <span class="site-header__mobile-social-name">{link.name}</span>
-          </a>
-        ))
-      }
+  <div class="site-header__corner site-header__corner--right">
+    <!-- Rounder corner grid below header -->
+    <div class="site-header__rounder">
+      <CornerGrid
+        class="site-header__rounder-path site-header__rounder-path--flipped"
+      />
+      <CornerGrid class="site-header__rounder-path" />
     </div>
-
-    <!-- Language toggle inside overlay -->
-    <button
-      id="lang-toggle-mobile"
-      class="site-header__mobile-lang-btn"
-      data-lang={lang}
-    >
-      <span id="lang-current-mobile">{lang.toUpperCase()}</span>
-      <span aria-hidden="true"> / </span>
-      <span id="lang-other-mobile">{lang === "es" ? "EN" : "ES"}</span>
-    </button>
-  </section>
+  </div>
 </header>
 
 <script>
@@ -168,7 +184,7 @@ const lang = (Astro.currentLocale ?? "es") as Language;
 
   toggle?.addEventListener("click", () => {
     // On mobile: toggle the overlay instead of navigating
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 1200) {
       const isOpen = overlay?.classList.contains("is-open");
       if (isOpen) {
         closeMobileOverlay();

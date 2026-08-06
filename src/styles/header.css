@@ -5,15 +5,24 @@
   padding-bottom: 1px;
 
   display: flex;
-  gap: 1px;
+  gap: var(--border-width-base);
 
   background-color: var(--color-border-grid);
 }
 
 .site-header__corner {
+  min-width: 20px;
   flex-grow: 1;
 
   background-color: var(--color-bg-main);
+  
+  transition: background-color 0.3s ease;
+}
+
+@media (width < 1200px) {
+  .site-header__corner {
+    background-color: var(--color-accent-bg);
+  }
 }
 
 .site-header__corner--left {
@@ -26,10 +35,12 @@
 
 .site-header__content {
   width: 100%;
+  min-width: 0;
   max-width: 1400px;
+  /* position: relative; */
 
   display: flex;
-  gap: 1px;
+  gap: var(--border-width-base);
 }
 
 .site-header__main-nav {
@@ -39,7 +50,7 @@
   display: flex;
   gap: 1px;
 
-  @media (width >= 768px) {
+  @media (width >= 1200px) {
     width: 54.5%;
   }
 }
@@ -201,7 +212,7 @@
   
   display: flex;
 
-  @media (width >= 768px) {
+  @media (width >= 1200px) {
     width: calc(45.5% - 1px);
   }
 }
@@ -271,27 +282,29 @@
 
   display: none;
 
-  @media (width >= 768px) {
+  @media (width >= 1200px) {
     display: block;
   }
 }
 
 /* ─── HEADER CORNER ROUNDER ──────────────────────────── */
 .site-header__rounder {
-  width: 100%;
-  height: 9px;
-
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 90;
-
-  display: flex;
-  justify-content: space-between;
-
-  border-top: 1px solid var(--color-border-grid);
+  display: none;
 
   pointer-events: none;
+
+  @media (width <= 1200px) {
+    width: 100%;
+    height: 9px;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 90;
+
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .site-header__rounder-path {
@@ -304,7 +317,7 @@
 
 /* ─── MOBILE HEADER ──────────────────────────────────────── */
 /* On mobile, collapse the full nav into a minimal MENU bar  */
-@media (width < 768px) {
+@media (width < 1200px) {
   .site-header {
     height: 44px;
 
@@ -315,13 +328,13 @@
     z-index: 100;
   }
 
-
-  .site-header__corner {
-    display: none;
-  }
-
   .site-header__content {
     position: relative;
+  }
+
+  .site-header__corner {
+    position: relative;
+    /* z-index: -1; */
   }
 
   /* Hide all nav links */
@@ -408,10 +421,9 @@
 
   padding: var(--spacing-md);
 
-  position: fixed;
-  top: 44px;       /* Height of the collapsed header */
+  position: absolute;
+  top: 100%;       /* Exactly below the relative content container */
   left: 0;
-  right: 0;
   z-index: 100;
 
   display: none;
@@ -426,7 +438,7 @@
   opacity: 0;
   transition: transform 250ms ease, opacity 250ms ease;
 
-  @media (width >= 768px) {
+  @media (width >= 1200px) {
     display: none;
   }
 }

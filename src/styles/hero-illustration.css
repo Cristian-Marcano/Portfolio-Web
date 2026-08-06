@@ -7,11 +7,11 @@
   view-timeline-name: --hero-scroll;
   view-timeline-axis: block;
 
-  @media (width >= 768px) {
+  @media (width >= 1200px) {
     height: 538px;
   }
 
-  @media (width < 768px) {
+  @media (width < 1200px) {
     order: 2;
 
     height: auto;

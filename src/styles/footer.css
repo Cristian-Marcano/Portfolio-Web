@@ -9,15 +9,25 @@
 }
 
 .site-footer__corner {
+  min-width: 20px;
   flex-grow: 1;
 
   background-color: var(--color-bg-main);
   border-radius: var(--border-radius-base);
+  
+  transition: background-color 0.3s ease;
+}
+
+@media (width < 1200px) {
+  .site-footer__corner {
+    background-color: var(--color-accent-bg);
+  }
 }
 
 /* Body = social column + right column */
 .site-footer__body {
   width: 100%;
+  min-width: 0;
   height: 100%;
   max-width: 1400px;
 
@@ -228,13 +238,7 @@
 }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
-@media (width < 1024px) {
-  .site-footer__corner {
-    display: none;
-  }
-}
-
-@media (width < 768px) {
+@media (width < 1200px) {
   .site-footer__body {
     flex-direction: column;
   }

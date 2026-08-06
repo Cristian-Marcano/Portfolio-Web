@@ -10,14 +10,24 @@
 }
 
 .about__corner {
+  min-width: 20px;
   flex-grow: 1;
 
   background-color: var(--color-bg-main);
   border-radius: var(--border-radius-base);
+  
+  transition: background-color 0.3s ease;
+}
+
+@media (width < 1200px) {
+  .about__corner {
+    background-color: var(--color-accent-bg);
+  }
 }
 
 .about__content {
   width: 100%;
+  min-width: 0;
   max-width: 1400px;
 
   display: flex;
@@ -49,7 +59,7 @@
 
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
-@media (width < 1024px) {
+@media (width < 1200px) {
   .about__content {
     flex-direction: column;
   }
@@ -57,11 +67,5 @@
   .about__col--text,
   .about__col--media {
     width: 100%;
-  }
-}
-
-@media (width < 768px) {
-  .about__corner {
-    display: none;
   }
 }
