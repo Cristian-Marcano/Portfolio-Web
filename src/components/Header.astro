@@ -151,6 +151,13 @@ const lang = (Astro.currentLocale ?? "es") as Language;
   const toggle = document.getElementById("lang-toggle") as HTMLButtonElement;
   const current = document.getElementById("lang-current") as HTMLSpanElement;
   const other = document.getElementById("lang-other") as HTMLSpanElement;
+  const overlay = document.getElementById("mobile-nav-overlay");
+
+  const closeMobileOverlay = () => {
+    overlay?.classList.remove("is-open");
+    overlay?.setAttribute("aria-hidden", "true");
+    toggle?.classList.remove("site-header__lang-btn--open");
+  };
 
   // Read current locale from the data attribute set by Astro at build time
   const currentLang = toggle?.dataset.lang as "es" | "en";
@@ -162,11 +169,14 @@ const lang = (Astro.currentLocale ?? "es") as Language;
   toggle?.addEventListener("click", () => {
     // On mobile: toggle the overlay instead of navigating
     if (window.innerWidth < 768) {
-      const overlay = document.getElementById("mobile-nav-overlay");
       const isOpen = overlay?.classList.contains("is-open");
-      overlay?.classList.toggle("is-open", !isOpen);
-      overlay?.setAttribute("aria-hidden", isOpen ? "true" : "false");
-      toggle.classList.toggle("site-header__lang-btn--open", !isOpen);
+      if (isOpen) {
+        closeMobileOverlay();
+      } else {
+        overlay?.classList.add("is-open");
+        overlay?.setAttribute("aria-hidden", "false");
+        toggle.classList.add("site-header__lang-btn--open");
+      }
       return;
     }
 
@@ -191,11 +201,18 @@ const lang = (Astro.currentLocale ?? "es") as Language;
 
   // Close overlay when a nav link is clicked
   document.querySelectorAll(".site-header__mobile-nav-link").forEach((link) => {
-    link.addEventListener("click", () => {
-      const overlay = document.getElementById("mobile-nav-overlay");
-      overlay?.classList.remove("is-open");
-      overlay?.setAttribute("aria-hidden", "true");
-      toggle?.classList.remove("site-header__lang-btn--open");
-    });
+    link.addEventListener("click", closeMobileOverlay);
+  });
+
+  // Close overlay when clicking outside of overlay and toggle button
+  document.addEventListener("click", (event) => {
+    const target = event.target as Node;
+    if (
+      overlay?.classList.contains("is-open") &&
+      !overlay.contains(target) &&
+      !toggle?.contains(target)
+    ) {
+      closeMobileOverlay();
+    }
   });
 </script>
