@@ -186,6 +186,7 @@
 @media (width < 768px) {
   .work__projects-header {
     height: 100px;
+    top: 44px;
   }
 
   .work__project {

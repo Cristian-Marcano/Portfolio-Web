@@ -2,6 +2,7 @@
 import "../styles/header.css";
 import { HEADER_NAV_LINKS, SOCIAL_LINKS } from "../data/site-config";
 import type { Language } from "../data/site-config";
+import CornerGrid from "../assets/corner-grid.svg";
 
 const lang = (Astro.currentLocale ?? "es") as Language;
 ---
@@ -81,6 +82,12 @@ const lang = (Astro.currentLocale ?? "es") as Language;
   <!-- Right extreme line -->
   <div class="site-header__corner site-header__corner--right"></div>
 
+  <!-- Rounder corner grid below header -->
+  <div class="site-header__rounder">
+    <CornerGrid class="site-header__rounder-path site-header__rounder-path--flipped" />
+    <CornerGrid class="site-header__rounder-path" />
+  </div>
+
   <!-- Mobile nav overlay (inside header for correct semantics) -->
   <section
     class="site-header__mobile-overlay"
@@ -94,12 +101,14 @@ const lang = (Astro.currentLocale ?? "es") as Language;
             href={link.path}
             class={`site-header__mobile-nav-link ${link.active ? "site-header__mobile-nav-link--active" : ""}`}
           >
-            <span class="site-header__mobile-nav-brackets" aria-hidden="true">
-              &lt;
-            </span>
-            {link.name[lang]}
-            <span class="site-header__mobile-nav-brackets" aria-hidden="true">
-              /&gt;
+            <span class="site-header__mobile-nav-text">
+              <span class="site-header__mobile-nav-brackets" aria-hidden="true">
+                &lt;
+              </span>
+              {link.name[lang]}
+              <span class="site-header__mobile-nav-brackets" aria-hidden="true">
+                /&gt;
+              </span>
             </span>
           </a>
         ))

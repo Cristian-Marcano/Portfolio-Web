@@ -4,8 +4,6 @@
 
   padding-bottom: 1px;
 
-  position: relative;
-
   display: flex;
   gap: 1px;
 
@@ -157,6 +155,10 @@
     background-color: var(--color-accent);
     color: var(--color-bg-main);
 
+    &::before {
+      color: var(--color-bg-main);
+    }
+
     .site-header__lang-sep {
       opacity: 0.5;
     }
@@ -274,12 +276,45 @@
   }
 }
 
+/* ─── HEADER CORNER ROUNDER ──────────────────────────── */
+.site-header__rounder {
+  width: 100%;
+  height: 9px;
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 90;
+
+  display: flex;
+  justify-content: space-between;
+
+  border-top: 1px solid var(--color-border-grid);
+
+  pointer-events: none;
+}
+
+.site-header__rounder-path {
+  fill: var(--color-border-grid);
+}
+
+.site-header__rounder-path--flipped {
+  transform: rotate(270deg);
+}
+
 /* ─── MOBILE HEADER ──────────────────────────────────────── */
 /* On mobile, collapse the full nav into a minimal MENU bar  */
 @media (width < 768px) {
   .site-header {
     height: 44px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
   }
+
 
   .site-header__corner {
     display: none;
@@ -322,6 +357,9 @@
 
     font-size: var(--font-size-xs);
     letter-spacing: 2px;
+
+    transition: border-radius 0.1s ease;
+    will-change: border-radius;
   }
 
   /* Hide current/sep/other spans, show text via content trick */
@@ -351,9 +389,11 @@
   }
 
   .site-header__lang-btn--open {
-    /* position: fixed; */
     color: var(--color-bg-main);
     background-color: var(--color-accent);
+
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .site-header__lang-btn--open::before {
@@ -378,7 +418,7 @@
   flex-direction: column;
   gap: var(--spacing-sm);
 
-  background-color: var(--color-bg-main);
+  background: linear-gradient(var(--color-accent) 0%, var(--color-border-grid) 20%);
   border-bottom: var(--border-width-base) solid var(--color-border-grid);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 
@@ -399,8 +439,6 @@
 
 /* Nav links list */
 .site-header__mobile-nav {
-  /* box-sizing: border-box; */
-
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
@@ -414,36 +452,70 @@
 
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
+  justify-content: center;
 
   background-color: var(--color-accent-bg);
   color: var(--color-accent);
   border-radius: var(--border-radius-base);
 
   font-size: var(--font-size-sm);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.05em;
   text-decoration: none;
 
   transition: background-color 200ms, color 200ms;
   will-change: background-color, color;
 
-  &:hover, &:active {
-    background-color: var(--color-accent);
-    color: var(--color-bg-main);
+  &:hover {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-muted);
+  }
+
+  &.site-header__mobile-nav-link--active {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-muted);
+    border: var(--border-width-base) solid var(--color-border-grid);
+
+    .site-header__mobile-nav-brackets {
+      color: var(--color-accent);
+      opacity: 1;
+    }
+  }
+
+  &:hover .site-header__mobile-nav-brackets {
+    color: var(--color-accent);
+    opacity: 1;
+  }
+
+  &:hover .site-header__mobile-nav-text {
+    font-size: 13.3px;
+  }
+
+  &:active .site-header__mobile-nav-text {
+    font-size: 12.7px;
   }
 }
 
-.site-header__mobile-nav-link--active {
-  background-color: var(--color-bg-main);
-  color: var(--color-text-muted);
-  border: var(--border-width-base) solid var(--color-border-grid);
+.site-header__mobile-nav-text {
+  display: flex;
+  align-items: center;
+
+  font-size: var(--font-size-sm);
+  transition: font-size 200ms;
+  will-change: font-size;
 }
 
 .site-header__mobile-nav-brackets {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+
+  opacity: 0;
+
   font-family: 'Space Mono', monospace;
   font-weight: 400;
-  color: var(--color-accent);
+
+  transition: opacity 200ms;
+  will-change: opacity;
 }
 
 /* Social links row */
@@ -469,10 +541,19 @@
   text-decoration: none;
 
   transition: background-color 200ms, color 200ms;
+  will-change: background-color, color;
 
   &:hover {
-    background-color: var(--color-accent);
-    color: var(--color-bg-main);
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+  }
+
+  &:hover .site-header__social-icon {
+    transform: scale(1.15);
+  }
+
+  &:active .site-header__social-icon {
+    transform: scale(0.95);
   }
 }
 
@@ -504,7 +585,8 @@
   letter-spacing: 2px;
   cursor: pointer;
 
-  transition: background-color 200ms, color 200ms;
+  transition: background-color 200ms, color 200ms, transform 200ms;
+  will-change: background-color, color, transform;
 
   &:hover {
     background-color: var(--color-accent);
@@ -512,6 +594,7 @@
   }
 
   &:active {
-    transform: scale(0.97);
+    transform: scale(0.95);
   }
 }
+
