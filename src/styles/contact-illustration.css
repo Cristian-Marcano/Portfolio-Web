@@ -90,6 +90,7 @@
 
 .contact__illustration-img {
   width: 100%;
+  height: auto;
   max-height: 420px;
 
   pointer-events: none;

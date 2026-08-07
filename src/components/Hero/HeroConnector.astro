@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Arrow from "../../assets/arrow.svg";
 import HeroGameIlustration from "../../assets/dev-illustration.webp";
 import "../../styles/hero-connector.css";
@@ -15,8 +16,8 @@ import "../../styles/hero-connector.css";
   <!-- Right Cell: Chest Window -->
   <div class="hero__connector-chest-cell">
     <div class="hero__connector-chest-wrapper">
-      <img
-        src={HeroGameIlustration.src}
+      <Image
+        src={HeroGameIlustration}
         alt="Game illustration"
         class="hero__chest-illustration"
       />

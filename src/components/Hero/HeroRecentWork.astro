@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import ArrowTitle from "../ui/ArrowTitle.astro";
 import CornerGrid from "../../assets/corner-grid.svg";
 import Plus from "../../assets/plus.svg";
@@ -92,10 +93,12 @@ const expYearsDigits = expYears.toString().split("");
 
     <div class="hero__recent-img-wrapper">
       <div class="hero__recent-img-container">
-        <img
-          src={DigitanAgency.src}
+        <Image
+          src={DigitanAgency}
           alt={HERO_CONTENT.recentWork.project.title}
           class="hero__recent-img"
+          fetchpriority="high"
+          loading="eager"
         />
       </div>
     </div>
@@ -143,7 +146,7 @@ const expYearsDigits = expYears.toString().split("");
     );
 
     containers.forEach((container) => {
-      const rects = container.querySelectorAll<SVGRectElement>("svg rect");
+      const rects = Array.from(container.querySelectorAll<SVGRectElement>("svg rect"));
       const baseOpacity = 1;
       const minOpacity = 0.1;
       const maxDist = 45;
@@ -152,29 +155,44 @@ const expYearsDigits = expYears.toString().split("");
       let lastMouseY = 0;
       let isHovering = false;
 
+      // Cache for rect centers to avoid Layout Thrashing on mousemove
+      let cachedCenters: {x: number, y: number}[] = [];
+      let cachedContainerTop = 0;
+
+      container.addEventListener("mouseenter", () => {
+        const containerBounds = container.getBoundingClientRect();
+        cachedContainerTop = containerBounds.top;
+        
+        cachedCenters = rects.map(rect => {
+          const bounds = rect.getBoundingClientRect();
+          return {
+            x: bounds.left + bounds.width / 2,
+            y: bounds.top + bounds.height / 2
+          };
+        });
+      });
+
       container.addEventListener("mousemove", (e: MouseEvent) => {
         isHovering = true;
         lastMouseX = e.clientX;
         lastMouseY = e.clientY;
 
-        rects.forEach((rect: SVGRectElement) => {
+        rects.forEach((rect, index) => {
           if (rect.dataset.waveTimeout1)
             clearTimeout(Number(rect.dataset.waveTimeout1));
           if (rect.dataset.waveTimeout2)
             clearTimeout(Number(rect.dataset.waveTimeout2));
 
-          const rectBounds = rect.getBoundingClientRect();
-          const rectCenterX = rectBounds.left + rectBounds.width / 2;
-          const rectCenterY = rectBounds.top + rectBounds.height / 2;
+          const center = cachedCenters[index];
+          if (!center) return;
 
           const distance = Math.hypot(
-            lastMouseX - rectCenterX,
-            lastMouseY - rectCenterY,
+            lastMouseX - center.x,
+            lastMouseY - center.y,
           );
 
           let opacity = minOpacity;
           if (distance < maxDist) {
-            // El más cercano es 1, los lejanos bajan hasta minOpacity
             opacity = 1 - (distance / maxDist) * (1 - minOpacity);
           }
 
@@ -186,27 +204,20 @@ const expYearsDigits = expYears.toString().split("");
       container.addEventListener("mouseleave", () => {
         isHovering = false;
 
-        const containerBounds = container.getBoundingClientRect();
+        rects.forEach((rect, index) => {
+          const center = cachedCenters[index];
+          if (!center) return;
 
-        rects.forEach((rect: SVGRectElement) => {
-          const rectBounds = rect.getBoundingClientRect();
-          const rectCenterY = rectBounds.top + rectBounds.height / 2;
-
-          // Distancia vertical desde la parte superior del contenedor
-          const y = rectCenterY - containerBounds.top;
-
-          // Delay basado únicamente en el eje Y para que la ola sea de arriba hacia abajo
+          const y = center.y - cachedContainerTop;
           const delay = y * 6;
 
           rect.style.transition = `opacity 0.2s ease-out`;
 
-          // La opacidad baja para crear la "sombra" de la ola
           const t1 = setTimeout(() => {
             if (isHovering) return;
             rect.style.opacity = minOpacity.toString();
           }, delay);
 
-          // Después de un instante (que equivale a 2-3 líneas de altura temporal), regresa a 1
           const t2 = setTimeout(() => {
             if (isHovering) return;
             rect.style.opacity = baseOpacity.toString();

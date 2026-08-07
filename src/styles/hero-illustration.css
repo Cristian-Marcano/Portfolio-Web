@@ -23,6 +23,7 @@
   width: 100%;
   min-width: 0;
   height: 511px;
+  box-sizing: content-box;
 
   padding-bottom: calc(538px - 511px);
 
@@ -56,6 +57,7 @@
 .hero__avatar-card {
   height: 480px;
   min-height: 400px;
+  box-sizing: content-box;
 
   position: relative;
 
@@ -196,6 +198,7 @@
 .hero__font-terminal {
   width: 257px;
   height: 338px;
+  box-sizing: content-box;
 
   padding: var(--spacing-sm) 0.7rem;
 

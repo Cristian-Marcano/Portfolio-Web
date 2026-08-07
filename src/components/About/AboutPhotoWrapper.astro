@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import myPhoto from "../../assets/me-irl.webp";
 import ArrowTitle from "../ui/ArrowTitle.astro";
 import "../../styles/about-photo-wrapper.css";
@@ -21,9 +22,9 @@ const t = ABOUT_SECTION.photo;
   <!-- Photo card (~404px, padding 21px) -->
   <div class="about__photo-card">
     <div class="about__photo-wrapper">
-      <img
+      <Image
         class="about__photo"
-        src={myPhoto.src}
+        src={myPhoto}
         alt={t.alt[lang]}
         loading="lazy"
         decoding="async"
