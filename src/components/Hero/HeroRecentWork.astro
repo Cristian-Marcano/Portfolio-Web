@@ -81,7 +81,13 @@ const expYearsDigits = expYears.toString().split("");
   </article>
 
   <!-- LEFT (Bottom in this column): Recent Work Thumbnail & Info -->
-  <article class="hero__recent-project-cell has-arrow-title">
+  <a
+    href={HERO_CONTENT.recentWork.project.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    role="article"
+    class="hero__recent-project-cell has-arrow-title"
+  >
     <h4 class="hero__recent-header">{HERO_CONTENT.recentWork.header[lang]}</h4>
 
     <div class="hero__recent-img-wrapper">
@@ -118,7 +124,7 @@ const expYearsDigits = expYears.toString().split("");
         {HERO_CONTENT.recentWork.project.description[lang]}
       </p>
     </div>
-  </article>
+  </a>
   <CornerGrid class="hero__corner-grid hero__corner-grid--bottom-right" />
 </section>
 

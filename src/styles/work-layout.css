@@ -8,21 +8,31 @@
 }
 
 .work__corner {
+  min-width: 20px;
   flex-grow: 1;
 
   background-color: var(--color-bg-main);
   border-radius: var(--border-radius-base);
+  
+  transition: background-color 0.3s ease;
+}
+
+@media (width < 1200px) {
+  .work__corner {
+    background-color: var(--color-accent-bg);
+  }
 }
 
 .work__content {
   width: 100%;
+  min-width: 0;
   max-width: 1400px;
 
   display: flex;
   flex-direction: column;
   gap: var(--border-width-base);
 
-  @media (width >= 768px) {
+  @media (width >= 1200px) {
     flex-direction: row;
     align-items: stretch;
   }
@@ -40,7 +50,7 @@
   /* Text and Projects side */
   position: relative;
 
-  @media (width >= 768px) {
+  @media (width >= 1200px) {
     width: 54.5%;
   }
 }
@@ -51,21 +61,13 @@
 
   background-color: var(--color-accent-bg);
 
-  @media (width >= 768px) {
+  @media (width >= 1200px) {
     width: calc(45.5% - var(--border-width-base));
   }
 }
 
 /* ─── MOBILE ─────────────────────────────────────────────── */
-@media (width < 768px) {
-  .work {
-    gap: 0;
-  }
-
-  .work__corner {
-    display: none;
-  }
-
+@media (width < 1200px) {
   /* Hide the mockup column entirely on mobile */
   .work__column--right {
     display: none;
@@ -76,4 +78,5 @@
     width: 100%;
   }
 }
+
 

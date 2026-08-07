@@ -3,7 +3,7 @@ export const HERO_CONTENT = {
     title: {
       line1: { es: "Si puedes ", en: "If you can " },
       accent1: { es: "imaginarlo", en: "imagine it" },
-      line2: { es: ", puedes ", en: ", you can " },
+      line2: { es: " puedes ", en: " you can " },
       accent2: { es: "programarlo", en: "code it" },
     },
     intro: {
@@ -32,6 +32,7 @@ export const HERO_CONTENT = {
     header: { es: "TRABAJO RECIENTE", en: "RECENT WORK" },
     project: {
       title: "DIGITAN AGENCY", // Generalmente los nombres propios no se traducen
+      url: "https://digitan.agency",
       role: {
         es: "Ingeniero de Software Junior",
         en: "Junior Software Engineer",

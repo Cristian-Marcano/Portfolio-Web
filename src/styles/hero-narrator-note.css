@@ -17,13 +17,10 @@
   
   overflow: hidden;
 
-  @media (width < 768px) {
+  @media (width < 1200px) {
     order: 4;
   }
 }
-
-
-
 
 .hero__narrator-spacer {
   width: 100%;

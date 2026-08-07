@@ -26,6 +26,7 @@ export const PROJECTS = [
     },
     tags: ["C++", "graphics.h", "Embarcadero"],
     image: RouletteCasino.src,
+    url: "https://github.com/Cristian-Marcano/Roulette-Casino-Simulator",
     active: true,
   },
   {
@@ -40,6 +41,7 @@ export const PROJECTS = [
     },
     tags: ["C++", "raylib.h"],
     image: Pong.src,
+    url: "https://github.com/Cristian-Marcano/Pong",
     active: false,
   },
   {
@@ -56,21 +58,7 @@ export const PROJECTS = [
     },
     tags: ["Java", "Swing", "MySQL"],
     image: Reporter.src,
-    active: false,
-  },
-  {
-    id: "real-time-chat",
-    title: {
-      en: "REAL-TIME CHAT",
-      es: "CHAT EN TIEMPO REAL",
-    },
-    description: {
-      en: "A scalable chat application with WebSocket integration.",
-      es: "Una aplicación de chat escalable con integración de WebSockets.",
-    },
-    tags: ["Web App", "Node.js", "Socket.io"],
-    image:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80",
+    url: "https://github.com/Cristian-Marcano/FerromineraReport",
     active: false,
   },
 ];

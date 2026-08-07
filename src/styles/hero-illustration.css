@@ -289,7 +289,24 @@
   100% { transform: translateY(60px); }
 }
 
-/* ─── MOBILE ─────────────────────────────────────────────── */
+@media (width >= 768px) and (width < 1200px) {
+  .hero__avatar-card {
+    /* flex-grow: 0; */
+  }
+
+  .hero__avatar {
+    height: 100%;
+    /* width: auto; */
+    object-fit: contain;
+    object-position: bottom right;
+  }
+
+  .hero__font-terminal {
+    /* align-self: center; */
+  }
+}
+
+/* ─── MOBILE & TABLET ─────────────────────────────────────────────── */
 @media (width < 768px) {
   .hero__illustration-column {
     height: auto;
@@ -371,6 +388,11 @@
     border-bottom: var(--border-width-heavy) solid var(--color-border-grid);
 
     overflow: hidden;
+
+    /* @media (width >= 768px) {
+      height: 480px;
+      align-self: center;
+    } */
   }
 
   .hero__avatar {
@@ -382,6 +404,7 @@
      same width as avatar card, dark panel just like the reference */
   .hero__font-terminal {
     width: 100%;
+    /* max-width: 500px; */
     height: auto;
     min-height: 210px;
     box-sizing: border-box;
@@ -403,6 +426,10 @@
 
     /* Small gap after the avatar card */
     margin-bottom: var(--spacing-md);
+
+    /* @media (width >= 768px) {
+      align-self: center;
+    } */
   }
 
   /* Cell wrapper (corner piece) hidden */

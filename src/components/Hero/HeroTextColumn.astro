@@ -11,9 +11,12 @@ const lang = (Astro.currentLocale ?? "es") as Language;
 <article class="hero__text-column">
   <!-- Title -->
   <h1 class="hero__title">
-    {HERO_CONTENT.textColumn.title.line1[lang]}<span class="hero__title-accent"
-      >{HERO_CONTENT.textColumn.title.accent1[lang]}</span
-    >{HERO_CONTENT.textColumn.title.line2[lang]}
+    {HERO_CONTENT.textColumn.title.line1[lang]}
+    <span class="hero__title-accent">
+      {HERO_CONTENT.textColumn.title.accent1[lang]}
+    </span>
+    <span class="hero__title-dot">,</span>
+    {HERO_CONTENT.textColumn.title.line2[lang]}
     <br class="hero__title-break" />
     <span class="hero__title-accent">
       {HERO_CONTENT.textColumn.title.accent2[lang]}

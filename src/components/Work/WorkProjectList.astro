@@ -26,31 +26,36 @@ const lang = (Astro.currentLocale ?? "es") as Language;
   <ul class="work__projects-list">
     {
       PROJECTS.map((project) => (
-        <li
-          class={`work__project has-arrow-title ${project.active ? "work__project--active has-arrow-title--active" : ""}`}
-          data-project-id={project.id}
-        >
-          <ArrowTitle
-            text={project.title[lang]}
-            headingTag="h3"
-            className="work__project-title"
-          />
+        <li>
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`work__project has-arrow-title ${project.active ? "work__project--active has-arrow-title--active" : ""}`}
+            data-project-id={project.id}
+          >
+            <ArrowTitle
+              text={project.title[lang]}
+              headingTag="h3"
+              className="work__project-title"
+            />
 
-          <div class="work__project-description">
-            <p>{project.description[lang]}</p>
-          </div>
+            <div class="work__project-description">
+              <p>{project.description[lang]}</p>
+            </div>
 
-          <ul class="work__project-tags">
-            {project.tags.map((tag, index) => (
-              <li
-                class="work__project-tag"
-                style={`--star-delay: ${(index + 1) * 0.75}s`}
-              >
-                <Star class="work__tag-star" />
-                {tag}
-              </li>
-            ))}
-          </ul>
+            <ul class="work__project-tags">
+              {project.tags.map((tag, index) => (
+                <li
+                  class="work__project-tag"
+                  style={`--star-delay: ${(index + 1) * 0.75}s`}
+                >
+                  <Star class="work__tag-star" />
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          </a>
         </li>
       ))
     }
