@@ -113,3 +113,26 @@ body {
   }
 }
 
+/* ─── CORNER RESPONSIVE SHRINKING ────────────────────────── */
+@media (width <= 375px) {
+  .site-header__corner,
+  .hero__corner,
+  .work__corner,
+  .about__corner,
+  .contact__corner,
+  .site-footer__corner {
+    min-width: calc(100vw - 355px) !important;
+  }
+}
+
+@media (width < 355px) {
+  .site-header__corner,
+  .hero__corner,
+  .work__corner,
+  .about__corner,
+  .contact__corner,
+  .site-footer__corner {
+    display: none;
+  }
+}
+
