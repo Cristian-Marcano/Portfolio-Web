@@ -1,12 +1,57 @@
+---
+import { SEO_METADATA, type Language } from "../data/site-config";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const lang = (Astro.currentLocale ?? "es") as Language;
+
+const {
+  title = SEO_METADATA.title[lang],
+  description = SEO_METADATA.description[lang],
+  image = "/og-image.webp", // Ruta a tu imagen de preview en la carpeta public/
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
+const ogImageURL = new URL(image, Astro.site || Astro.url);
+---
+
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>Cristian Marcano — Software Engineer</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Cristian Marcano" />
+    <meta name="keywords" content={SEO_METADATA.keywords[lang]} />
+    <meta name="theme-color" content="#00A084" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImageURL} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,16 +85,16 @@
 
           if (width >= MOBILE_BREAKPOINT && width > STANDARD_WIDTH) {
             const scale = width / STANDARD_WIDTH;
-            root.style.setProperty('--app-scale', scale);
+            root.style.setProperty("--app-scale", scale);
             root.style.zoom = scale;
           } else {
-            root.style.setProperty('--app-scale', 1);
+            root.style.setProperty("--app-scale", 1);
             root.style.zoom = 1;
           }
         }
 
         applyScale();
-        window.addEventListener('resize', applyScale);
+        window.addEventListener("resize", applyScale);
       })();
     </script>
   </head>

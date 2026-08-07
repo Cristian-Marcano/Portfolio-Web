@@ -15,6 +15,22 @@ export const PERSONAL_LINKS = {
   site2024: "https://cristian-marcano.github.io",
 };
 
+// ─── SEO Metadata ─────────────────────────────────────────
+export const SEO_METADATA = {
+  title: {
+    es: "Cristian Marcano — Ingeniero de Software",
+    en: "Cristian Marcano — Software Engineer",
+  },
+  description: {
+    es: "Portafolio de Cristian Marcano. Ingeniero de Software que usa paradigmas y tecnologías para aplicar la solución correcta en el sitio correcto.",
+    en: "Cristian Marcano's Portfolio. Software Engineer aengineer who uses paradigms and technologies to apply the right solution in the right place.",
+  },
+  keywords: {
+    es: "Cristian Marcano, Software Engineer, Ingeniero de Software, Web Developer, Devops, Desarrollador Web, Frontend, Backend, Android, Portfolio, Portafolio",
+    en: "Cristian Marcano, Software Engineer, Web Developer, Devops, Frontend, Backend, Android, Portfolio",
+  },
+};
+
 // ─── Navigation (bilingual) ───────────────────────────────
 export const HEADER_NAV_LINKS = [
   {

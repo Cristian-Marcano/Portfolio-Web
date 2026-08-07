@@ -31,7 +31,7 @@ export const HERO_CONTENT = {
     },
     header: { es: "TRABAJO RECIENTE", en: "RECENT WORK" },
     project: {
-      title: "DIGITAN AGENCY", // Generalmente los nombres propios no se traducen
+      title: "DIGITAN AGENCY",
       url: "https://digitan.agency",
       role: {
         es: "Ingeniero de Software Junior",

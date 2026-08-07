@@ -66,8 +66,9 @@ const lang = (Astro.currentLocale ?? "es") as Language;
   document.addEventListener("DOMContentLoaded", () => {
     // Project Hover Logic
     const projects = document.querySelectorAll(".work__project");
+
     projects.forEach((project) => {
-      project.addEventListener("mouseenter", () => {
+      const activateProject = () => {
         projects.forEach((p) => {
           p.classList.remove(
             "work__project--active",
@@ -78,7 +79,11 @@ const lang = (Astro.currentLocale ?? "es") as Language;
           "work__project--active",
           "has-arrow-title--active",
         );
-      });
+      };
+
+      project.addEventListener("mouseenter", activateProject);
+      project.addEventListener("touchstart", activateProject, { passive: true });
+      project.addEventListener("focus", activateProject);
     });
   });
 </script>
