@@ -1,46 +1,36 @@
-# Astro Starter Kit: Basics
+# Cristian Marcano — Portfolio
 
-```sh
-pnpm create astro@latest -- --template basics
+Portafolio web personal enfocado en mostrar mi experiencia como **_Ingeniero de Software_** y **_Desarrollador Web_**, construido bajo estrictos estándares de rendimiento, UI/UX y diseño escalable.
+
+## Instalar Dependencias
+```bash
+pnpm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+## Ejecutar el Proyecto en Desarrollo
+```bash
+pnpm dev
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Construir Proyecto para Producción
+```bash
+pnpm build
+```
 
-## 🧞 Commands
+## Previsualizar Proyecto de Producción
+```bash
+pnpm preview
+```
 
-All commands are run from the root of the project, from a terminal:
+### Herramientas
+***
+- **Astro**
+- **TypeScript**
+- **Vanilla CSS**
+- **Sharp (Optimización de imágenes)**
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+> [!NOTE]
+> La arquitectura CSS del proyecto aplica metodología **BEM**, **Nesting Nativo** y **Diseño Responsivo manejado por Variables**.
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+> [!TIP]
+> El proyecto goza de rendimiento optimizado (Lighthouse 100/100) gestionando imágenes en WebP con *lazy/eager loading*, previniendo el *Layout Thrashing* y controlando la carga inicial del hilo principal de JavaScript.
