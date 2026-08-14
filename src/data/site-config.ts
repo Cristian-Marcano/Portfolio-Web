@@ -11,7 +11,8 @@ export const PERSONAL_LINKS = {
     "https://www.linkedin.com/in/cristian-ram%C3%B3n-marcano-mirabal-379782278/",
   email: "mailto:cristianmm.1112@gmail.com",
   github: "https://github.com/Cristian-Marcano",
-  resume: "#", // TODO: replace with hosted PDF URL
+  resume:
+    "https://drive.google.com/file/d/1BFOhmMQn-_lgGu5jIqXZ1culsy3xGMGl/view",
   site2024: "https://cristian-marcano.github.io",
 };
 
