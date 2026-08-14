@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import ArrowTitle from "../ui/ArrowTitle.astro";
 import CornerGrid from "../../assets/corner-grid.svg";
 import Plus from "../../assets/plus.svg";
@@ -93,8 +92,8 @@ const expYearsDigits = expYears.toString().split("");
 
     <div class="hero__recent-img-wrapper">
       <div class="hero__recent-img-container">
-        <Image
-          src={DigitanAgency}
+        <img
+          src={DigitanAgency.src}
           alt={HERO_CONTENT.recentWork.project.title}
           class="hero__recent-img"
           fetchpriority="high"
@@ -146,7 +145,9 @@ const expYearsDigits = expYears.toString().split("");
     );
 
     containers.forEach((container) => {
-      const rects = Array.from(container.querySelectorAll<SVGRectElement>("svg rect"));
+      const rects = Array.from(
+        container.querySelectorAll<SVGRectElement>("svg rect"),
+      );
       const baseOpacity = 1;
       const minOpacity = 0.1;
       const maxDist = 45;
@@ -156,18 +157,18 @@ const expYearsDigits = expYears.toString().split("");
       let isHovering = false;
 
       // Cache for rect centers to avoid Layout Thrashing on mousemove
-      let cachedCenters: {x: number, y: number}[] = [];
+      let cachedCenters: { x: number; y: number }[] = [];
       let cachedContainerTop = 0;
 
       container.addEventListener("mouseenter", () => {
         const containerBounds = container.getBoundingClientRect();
         cachedContainerTop = containerBounds.top;
-        
-        cachedCenters = rects.map(rect => {
+
+        cachedCenters = rects.map((rect) => {
           const bounds = rect.getBoundingClientRect();
           return {
             x: bounds.left + bounds.width / 2,
-            y: bounds.top + bounds.height / 2
+            y: bounds.top + bounds.height / 2,
           };
         });
       });

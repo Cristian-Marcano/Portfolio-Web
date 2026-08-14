@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import illustration from "../../assets/9s-dev-green.webp";
 import "../../styles/contact-illustration.css";
 ---
@@ -15,8 +14,8 @@ import "../../styles/contact-illustration.css";
 
   <!-- Illustration -->
   <div class="contact__illustration-wrapper">
-    <Image
-      src={illustration}
+    <img
+      src={illustration.src}
       alt="9S illustration"
       class="contact__illustration-img"
       loading="lazy"

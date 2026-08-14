@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import myPhoto from "../../assets/me-irl.webp";
 import ArrowTitle from "../ui/ArrowTitle.astro";
 import "../../styles/about-photo-wrapper.css";
@@ -22,38 +21,14 @@ const t = ABOUT_SECTION.photo;
   <!-- Photo card (~404px, padding 21px) -->
   <div class="about__photo-card">
     <div class="about__photo-wrapper">
-      <Image
+      <img
         class="about__photo"
-        src={myPhoto}
+        src={myPhoto.src}
         alt={t.alt[lang]}
         loading="lazy"
         decoding="async"
       />
     </div>
-
-    <!-- Slideshow-style progress control bar -->
-    <!-- <div class="about__photo-controls">
-      <button class="about__play-btn" aria-label="Play slideshow" type="button">
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path d="M8 5v14l11-7z"></path>
-        </svg>
-      </button>
-      <div
-        class="about__progress-track"
-        role="progressbar"
-        aria-valuenow="0"
-        aria-valuemin="0"
-        aria-valuemax="100"
-      >
-        <div class="about__progress-fill"></div>
-      </div>
-    </div> -->
   </div>
 
   <!-- Decorative green right cell (~136px wide) -->

@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import myIllustration from "../../assets/my-illustration-portfolio-green.webp";
 import "../../styles/hero-illustration.css";
 import { HERO_CONTENT } from "../../data/hero";
@@ -39,8 +38,8 @@ const lang = (Astro.currentLocale ?? "es") as Language;
 
       <!-- User Illustration -->
       <div class="hero__avatar-wrapper">
-        <Image
-          src={myIllustration}
+        <img
+          src={myIllustration.src}
           alt="Cristian Marcano Illustration"
           class="hero__avatar"
           fetchpriority="high"
