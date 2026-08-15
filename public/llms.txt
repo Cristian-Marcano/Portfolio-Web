@@ -1,0 +1,20 @@
+Title: Cristian Marcano — Software Engineer Portfolio
+Description: Cristian Marcano's Portfolio. Software Engineer who uses paradigms and technologies to apply the right solution in the right place.
+
+## Site Summary
+This website serves as the professional portfolio for Cristian Marcano, a Software Engineer, Web Developer, and DevOps. Built with modern web standards (Astro, Vanilla CSS), it features a premium, responsive design with dynamic animations and a custom UI.
+
+The site is divided into four main sections:
+1. **Home / Hero**: Introduction to Cristian's profile, value proposition, and highlights of his recent work and professional experience.
+2. **Work**: A curated collection of selected projects, including:
+   - **Casino Roulette**: A desktop application of the classic game of chance built with C++ and graphics.h.
+   - **Pong**: A classic ping pong video game based on the 1972 arcade game, built with C++ and raylib.h.
+   - **News Reporter**: A desktop application for managing and reporting incidents for Ferrominera Orinoco, built with Java, Swing, and MySQL.
+3. **About**: Details about Cristian's background, skills, and approach to software engineering.
+4. **Contact**: Links and methods to get in touch for collaborations.
+
+## Links & Contact
+- LinkedIn: https://www.linkedin.com/in/cristian-ram%C3%B3n-marcano-mirabal-379782278/
+- GitHub: https://github.com/Cristian-Marcano
+- Email: cristianmm.1112@gmail.com
+- Resume: https://drive.google.com/file/d/1BFOhmMQn-_lgGu5jIqXZ1culsy3xGMGl/view
