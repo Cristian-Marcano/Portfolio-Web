@@ -137,10 +137,13 @@ const lang = (Astro.currentLocale ?? "es") as Language;
         if (!isHovering) return;
 
         // We use clientX/clientY relative to the viewport because the tooltip
-        // will be position: fixed
+        // will be position: fixed. We divide by the app scale to compensate
+        // for the zoom applied on large screens in Layout.astro.
         const mouseEvent = e as MouseEvent;
-        tooltip.style.left = `${mouseEvent.clientX}px`;
-        tooltip.style.top = `${mouseEvent.clientY}px`;
+        const scale = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--app-scale")) || 1;
+        
+        tooltip.style.left = `${mouseEvent.clientX / scale}px`;
+        tooltip.style.top = `${mouseEvent.clientY / scale}px`;
       });
     }
   });
