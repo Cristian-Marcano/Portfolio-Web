@@ -7,8 +7,7 @@ export type Language = "en" | "es";
 
 // ─── Personal URLs (single source of truth) ───────────────
 export const PERSONAL_LINKS = {
-  linkedin:
-    "https://www.linkedin.com/in/cristian-ram%C3%B3n-marcano-mirabal-379782278/",
+  linkedin: "https://www.linkedin.com/in/cristian-marcano/",
   email: "mailto:cristianmm.1112@gmail.com",
   github: "https://github.com/Cristian-Marcano",
   resume:
